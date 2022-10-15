@@ -20,6 +20,10 @@ class CreateBooksTable extends Migration
             $table->string('book_price');
             $table->string('book_description')->nullable();
             $table->integer('book_quantity');
+            $table->integer('book_pageNum');
+            $table->string('book_lang');
+            $table->string('book_publisher');
+            $table->date('book_publishDate');
             $table->string('book_isbn');
             $table->boolean('isBookPaid');
 

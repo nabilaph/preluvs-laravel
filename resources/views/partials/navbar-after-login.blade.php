@@ -25,6 +25,9 @@
                 <a class="nav-link mt-3 mt-lg-0" href="/wishlist">
                     <i class='bx bx-bookmark'></i>
                 </a>
+                <a class="nav-link mt-3 mt-lg-0" href="/notification">
+                    <i class='bx bx-bell'></i>
+                </a>
                 <a class="nav-link me-3" href="/cart">
                     <i class='bx bx-cart-alt'></i>
                     <span class="badge text-bg-warning rounded-circle position-absolute">

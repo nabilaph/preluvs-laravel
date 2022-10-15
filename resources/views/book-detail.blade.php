@@ -4,14 +4,14 @@
 
     <!-- breadcrumbs -->
     <div class="bc section-margin">
-        <nav aria-label="breadcrumb">
+        <!-- <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item"><a href="#">Books</a></li>
                 <li class="breadcrumb-item"><a href="#">Comics</a></li>
                 <li class="breadcrumb-item active fw-semibold" aria-current="page">Demon Slayer</li>
             </ol>
-        </nav>
+        </nav> -->
     </div>
 
     <!-- content -->
@@ -65,6 +65,10 @@
                             </div>
                             <div class="row lang">
                                 <p class="fs-6 mb-0">Language</p>
+                                <p>60</p>
+                            </div>
+                            <div class="row qty">
+                                <p class="fs-6 mb-0">Quantity</p>
                                 <p>60</p>
                             </div>
                         </div>

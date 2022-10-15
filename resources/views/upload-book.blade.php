@@ -6,8 +6,8 @@
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="col-xs-5">
             <div class="p-2 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Upload Book Information 📒📝</h4>
+                <div class="d-flex justify-content-center align-items-center mb-5">
+                    <h2 class="text-center fw-bolder">Upload Book Information 📒📝</h2>
                 </div>
                 <div class="row mt-3">
                     <form>

@@ -60,6 +60,10 @@
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
+                        <input type="text" name="user_name" id="nameregis" placeholder="Name" required value="{{ old('user_name') }}"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-at"></i>
                         <input type="text" name="username" id="usernameregis" placeholder="Username" required value="{{ old('username') }}"/>
                     </div>
                     <div class="input-field">

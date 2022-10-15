@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -15,6 +16,7 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
+// Homepage
 Route::get('/', function () {
     return view('index',[
         "title" => "Home",
@@ -24,30 +26,19 @@ Route::get('/', function () {
     ]);
 });
 
+// Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
+
+// Logout
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/uploadbook', function () {
-    return view('upload-book',[
-        "title" => "Upload Book",
-        "active" => 'upload',
-        "css" => 'css/upload-book.css',
-        "js" => '',
-    ]);
-});
-
-Route::get('/profile', function () {
-    return view('profile',[
-        "title" => "Profile",
-        "active" => 'profile',
-        "css" => 'css/profile.css',
-        "js" => '',
-    ]);
-})->middleware('auth');
+// Profile
+Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 
 Route::get('/edit-profile', function () {
     return view('edit-profile',[
@@ -56,7 +47,16 @@ Route::get('/edit-profile', function () {
         "css" => 'css/profile.css',
         "js" => '',
     ]);
-});
+})->middleware('auth');
+
+Route::get('/uploadbook', function () {
+    return view('upload-book',[
+        "title" => "Upload Book",
+        "active" => 'upload',
+        "css" => 'css/upload-book.css',
+        "js" => '',
+    ]);
+})->middleware('auth');
 
 Route::get('/book-detail', function () {
     return view('book-detail',[
@@ -74,7 +74,7 @@ Route::get('/enter-receipt', function () {
         "css" => 'css/enter-receipt.css',
         "js" => '',
     ]);
-});
+})->middleware('auth');
 
 Route::get('/notification', function () {
     return view('notifications',[
@@ -83,7 +83,7 @@ Route::get('/notification', function () {
         "css" => 'css/notification.css',
         "js" => 'js/notifications.js',
     ]);
-});
+})->middleware('auth');
 
 Route::get('/list-books', function () {
     return view('list-books',[

@@ -17,8 +17,8 @@
                             <img src="img/comics-haikyuu.png" alt="">
                         </div>
                         <div class="main-text text-center position-relative">
-                            <h3 class="fw-bold">Profile name</h3>
-                            <p>@username</p>
+                            <h3 class="fw-bold">{{ auth()->user()->user_name }}</h3>
+                            <p>{{ auth()->user()->username }}</p>
                         </div>
                     </div>
                 </div>
@@ -28,23 +28,23 @@
                             <h3 class="mb-5 fw-bold">User Information</h3>
                             <div class="info-block">
                                 <h5 class="fw-semibold">Name</h5>
-                                <p>User Name</p>
+                                <p>{{ auth()->user()->user_name }}</p>
                             </div>
                             <div class="info-block">
                                 <h5 class="fw-semibold">Username</h5>
-                                <p>@username</p>
+                                <p>{{ auth()->user()->username }}</p>
                             </div>
                             <div class="info-block">
                                 <h5 class="fw-semibold">Email</h5>
-                                <p>username@email.com</p>
+                                <p>{{ auth()->user()->email }}</p>
                             </div>
                             <div class="info-block">
                                 <h5 class="fw-semibold">Phone</h5>
-                                <p>089554546</p>
+                                <p>{{ auth()->user()->user_phoneNumber }}</p>
                             </div>
                             <div class="info-block">
                                 <h5 class="fw-semibold">Address</h5>
-                                <p>089554546</p>
+                                <p>{{ auth()->user()->address }}</p>
                             </div>
                             <a class="nav-link btn-second mt-lg-0 mt-2" href="/editprofile">
                                 Edit profile

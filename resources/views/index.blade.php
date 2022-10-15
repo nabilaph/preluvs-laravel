@@ -2,7 +2,7 @@
 
 @section('container')
 
-    <div class="container menu-wrapper fixed-top d-none d-lg-block">
+    <!-- <div class="container menu-wrapper fixed-top d-none d-lg-block">
         <div class="menu d-flex justify-content-center align-items-center">
             <a class="nav-link" id="section" href="#">
                 Home
@@ -17,7 +17,7 @@
                 Seller leaderboard
             </a>
         </div>
-    </div>
+    </div> -->
 
     <!-- Header -->
     <section class="header">
