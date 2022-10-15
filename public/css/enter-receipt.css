@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --primaryColor: #898aa6;
+  --primaryDarkColor: #6c6d89;
+  --secondaryColor: #d6efed;
+  --secondaryDarkColor: #c3dee1;
+  --black: #1d1d1d;
+
+  /* font */
+  --mainFont: "Nunito Sans", sans-serif;
+}
+
+html,body{
+    background-color:#eee;
+    font-family: var(--mainFont);
+}
+
+.card{
+    width:350px;
+    height:400px;
+    background-color:#fff;
+    border:none;
+    border-radius:13px;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    
+    cursor:pointer;
+    transition:all 0.5s;
+    z-index:1;
+}
+
+.card::after{
+    position:absolute;
+    content:"";
+    height:120px;
+    width:120px;
+    background-color: var(--secondaryColor);
+    left:-20px;
+    top:-20px;
+    border-radius:50%;
+    transition:all 2s;
+    z-index:1;
+}
+
+.card:hover::after{
+    height:500px;
+    width:500px;
+    border-radius:10px;
+   
+}
+
+
+
+.card:hover .content{
+    color:#0c0c0c !important;
+    
+}
+
+.content{
+    z-index:11;
+    transition:all 1.5s;
+}
+
+.content input{
+    height:45px;
+    border:2px solid #eee;
+    transition:all 0.5s;
+}
+
+.content input:focus{
+    outline:none;
+    box-shadow:none;
+    border: 2px solid var(--primaryDarkColor);
+}
+
+.sub-button{
+    height:45px;
+}

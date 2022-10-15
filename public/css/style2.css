@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --primaryColor: #898aa6;
+  --primaryDarkColor: #6c6d89;
+  --secondaryColor: #d6efed;
+  --secondaryDarkColor: #c3dee1;
+  --black: #1d1d1d;
+
+  /* font */
+  --mainFont: "Nunito Sans", sans-serif;
+}
+
+
+/* header */
+.header {
+  margin-top: 200px;
+}
+
+/* Genres */
+.card-genre {
+  background-color: var(--secondaryColor);
+}
+.card-genre:hover {
+  border: 2px solid var(--primaryColor);
+}
+.card-genre p {
+  color: var(--black);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.card-genre .img-genre img {
+  top: -60px;
+}
+
+
+/* New uploads */
+.btn-cart{
+  background-color: var(--primaryColor);
+  color: white;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+}
+.btn-cart:hover{
+  background-color: var(--primaryDarkColor);
+  color: white;
+}
+.new-uploads .title{
+  font-size: 25px;
+  font-weight: 800;
+}
+.new-uploads .card-body .badge{
+  background-color: var(--secondaryColor);
+  color: var(--primaryColor);
+}
+
+/* seller leaderboard */
+.seller-leaderboard i{
+  font-size: 1.1rem  !important;
+}
+.seller-leaderboard .table-container{
+  background-color: var(--secondaryColor);
+}
+.seller-leaderboard a{
+  color: var(--primaryDarkColor);
+}
+.seller-leaderboard a:hover{
+  text-decoration: underline !important;
+}
+
+
+
+/* Tablet responsive */
+@media screen and (max-width: 987px) {
+  .input-group {
+    width: 100%;
+  }
+  .dropdown button {
+    padding: 10px 24px !important;
+    text-align: start;
+    width: 100%;
+    background-color: var(--primaryColor) !important;
+  }
+
+  /* header */
+  .header {
+    margin-top: 160px;
+  }
+
+  /* genre */
+  .genres .row2 {
+    display: none;
+  }
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 768px) {
+  
+  /* genre */
+  .click-genre {
+    margin-bottom: 20px;
+  }
+  .genres .card-genre p{
+    font-size: 16px;
+  }
+
+  /* new uploads */
+  .new-uploads .title,.price{
+    font-size: 18px;
+  }
+  .new-uploads .author{
+    font-size: 14px;
+  }
+  .new-uploads .btn-cart{
+    padding: 6px 8px;
+    font-size: 16px;
+  }
+
+  /* footer */
+  footer h4{
+    margin-top: 30px;
+  }
+  
+}

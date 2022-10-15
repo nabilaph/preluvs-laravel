@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+.jumbotron {
+  padding-top: 3rem;
+  background-color: #dfc9f1;
+}
+
+.checked {
+  color: orange;
+}
+
+#buku {
+  background-color: #ffffff;
+  margin-top: -100px;
+}
+
+.card {
+  background-color: #ffffff;
+  max-width: 18em;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 5px;
+  box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.08);
+}
+
+img {
+  max-width: 100%;
+  object-fit: contain;
+  height: 15em;
+}
