@@ -36,7 +36,22 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        $validatedData = $request->validate([
+                        'book_title' => 'required|min:3|max:255',
+                        'book_price' => 'required|min:3|max:255|unique:users',
+                        'book_quantity' => 'required|email:dns|unique:users',
+                        'book_pageNum' => 'required|min:6|max:255',
+                        'book_lang' => 'required|min:6|max:255',
+                        'book_publisher' => 'required|min:6|max:255',
+                        'book_publishDate' => 'required|min:6|max:255',
+                        'book_isbn' => 'required|min:6|max:255',
+                        'book_pageNum' => 'required|min:6|max:255',
+                        'book_pageNum' => 'required|min:6|max:255',
+                    ]);
+
+        Book::create($validatedData);
+
+        return redirect('/login')->with('success', 'Registeration Successful! Please login.');
     }
 
     /**

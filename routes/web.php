@@ -58,6 +58,15 @@ Route::get('/uploadbook', function () {
     ]);
 })->middleware('auth');
 
+Route::get('/genres', function () {
+    return view('genres',[
+        "title" => "Genres",
+        "active" => 'genres',
+        "css" => 'css/genre-detail.css',
+        "js" => '',
+    ]);
+});
+
 Route::get('/book-detail', function () {
     return view('book-detail',[
         "title" => "Book detail",

@@ -31,13 +31,14 @@
                         </div>
                         <div class="form-group mt-3">
                             <label for="pricebook">Price</label>
-                            <input type="text" class="form-control" id="pricebook" placeholder="Price of Book" />
+                            <input type="number" class="form-control" id="pricebook" placeholder="Price of Book" />
                         </div>
                         <div class="form-group mt-3">
                             <label for="pagenumbook">Page Number</label>
-                            <input type="text" class="form-control" id="pagenumbook"
+                            <input type="number" class="form-control" id="pagenumbook"
                                 placeholder="Page Number of Book" />
                         </div>
+
                 </div>
                 <div class="form-group mt-3">
                     <label for="datetimepicker1">Date of Publish</label>
@@ -49,7 +50,7 @@
                     <input type="text" class="form-control" id="pubbook" placeholder="Publisher of Book" />
                 </div>
                 <div class="form-group mt-3">
-                    <label for="languagebook">Languange</label>
+                    <label for="languagebook">Language</label>
                     <input type="text" class="form-control" id="languagebook" placeholder="Language of Book" />
                 </div>
                 <div class="form-group mt-3">
@@ -57,20 +58,24 @@
                     <input type="text" class="form-control" id="isbnbook" placeholder="ISBN of Book" />
                 </div>
                 <div class="form-group mt-3">
-                    <label for="itembook">Total Item</label>
-                    <input type="text" class="form-control" id="itembook" placeholder="Total Item of Book" />
+                    <label for="itembook">Quantity</label>
+                    <input type="number" class="form-control" id="itembook" placeholder="Quantity of Book" />
                 </div>
                 <div class="form-group mt-3">
                     <label for="exampleFormControlSelect1">Genre of Book</label>
                     <select class="form-control" id="exampleFormControlSelect1">
                         <option>Novel</option>
                         <option>Education</option>
-                        <option>Comic</option>
+                        <option>Comics</option>
                         <option>Technology</option>
-                        <option>Sains</option>
+                        <option>Self Improvement</option>
+                        <option>Poetry</option>
                     </select>
                 </div>
                 </form>
+            </div>
+            <div class="d-none">
+                <input type="text" name="user_id" value="{{ auth()->user()->id }}" />
             </div>
             <div class="mt-5 text-right"><button class="btn btn-prim profile-button" type="button">Upload</button></div>
         </div>

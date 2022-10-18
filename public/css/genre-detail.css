@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --primaryColor: #898aa6;
+  --primaryDarkColor: #6c6d89;
+  --secondaryColor: #d6efed;
+  --secondaryDarkColor: #c3dee1;
+  --black: #1d1d1d;
+
+  /* font */
+  --mainFont: "Nunito Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none !important;
+}
+body {
+  font-family: var(--mainFont);
+  font-size: 1.1rem;
+}
+i {
+  font-size: 1.8rem;
+}
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+}
+.sub-heading {
+  font-weight: 300;
+}
+.btn-prim {
+  padding: 10px 24px !important;
+  border-radius: 8px;
+  background-color: var(--primaryColor);
+  color: white;
+  text-align: center;
+}
+.btn-prim:hover {
+  background-color: var(--primaryDarkColor);
+  color: white;
+}
+.btn-second {
+  padding: 10px 24px !important;
+  border-radius: 8px;
+  border: 2px solid var(--primaryColor);
+  color: var(--primaryColor);
+  text-align: center;
+}
+.btn-second:hover {
+  background-color: var(--primaryColor);
+  color: white !important;
+  border: none;
+}
+
+/* Genres */
+.genres {
+  margin-top: 180px;
+}
+.card-genre {
+  background-color: var(--secondaryColor);
+  height: 170px !important;
+}
+.card-genre:hover {
+  border: 2px solid var(--primaryColor);
+}
+.card-genre p {
+  margin-left: 15px;
+  color: var(--black);
+  font-size: 2rem;
+  font-weight: 600;
+}
+.card-genre .img-genre img {
+  height: 24vh !important;
+  top: -90px;
+  width: auto;
+}
