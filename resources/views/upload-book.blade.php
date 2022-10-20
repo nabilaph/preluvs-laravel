@@ -123,7 +123,6 @@
         </div>
     </div>
 </div>
-</div>
 
 <!-- <script>
     const title = document.querySelector('#titlebook');

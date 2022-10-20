@@ -44,7 +44,7 @@
                         </div>
                         <div class="info-block">
                             <h5 class="fw-semibold">Address</h5>
-                            <p>{{ auth()->user()->address }}</p>
+                            <p>{{ auth()->user()->user_address }}</p>
                         </div>
                         <a class="nav-link btn-second mt-lg-0 mt-2" href="/editprofile">
                             Edit profile
@@ -101,35 +101,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if (!$purchase->isEmpty())
+                                    @foreach ($purchase as $book)
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
+                                        <th scope="row">{{ $loop->iteration }}</th>
+                                        <td>apakek</td>
+                                        <td><img src="{{ $book->book_pict }}" alt="{{ $book->book_title }}" class="w-75"></td>
+                                        <td>{{ $book->book_title }}</td>
                                         <td>@mdo</td>
-                                        <td><a href="other-user.html">Mark</a></td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td><a href="#">Mark</a></td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>Mark</td>
-                                        <td><a href="#">Mark</a></td>
-                                        <td>@mdo</td>
+                                        <td>{{ $book->book_price }}</td>
                                         <td>@mdo</td>
                                     </tr>
+                                    @endforeach
+                                    @else
+                                    <div>Nothing here...</div>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -145,62 +131,49 @@
                                         <th scope="col">Picture</th>
                                         <th scope="col">Book title</th>
                                         <th scope="col">Price</th>
-                                        <th scope="col">Sold date</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Buyer</th>
                                         <th scope="col">Receipt number</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="d-flex flex-column justify-content-between">
-                                            <a class="btn btn-secondary" href="#" role="button">Edit</a>
-                                            <a class="btn btn-outline-secondary my-2" href="enter-receipt.html"
-                                                role="button">Add
-                                                receipt</a>
-                                            <a class="btn btn-danger" href="#">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="d-flex flex-column justify-content-between">
-                                            <a class="btn btn-secondary" href="#" role="button">Edit</a>
-                                            <a class="btn btn-outline-secondary my-2" href="#" role="button">Add
-                                                receipt</a>
-                                            <a class="btn btn-danger" href="#">Delete</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>Larry the Bird</td>
-                                        <td>@twitter</td>
-                                        <td>Mark</td>
-                                        <td>Mark</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td>@mdo</td>
-                                        <td class="d-flex flex-column justify-content-between">
-                                            <a class="btn btn-secondary" href="#" role="button">Edit</a>
-                                            <a class="btn btn-outline-secondary my-2" href="#" role="button">Add
-                                                receipt</a>
-                                            <a class="btn btn-danger" href="#">Delete</a>
-                                        </td>
-                                    </tr>
+                                    @if (!$selling->isEmpty())
+                                        @foreach ($selling as $book)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $book->created_at }}</td>
+                                                <td><img src="{{ $book->book_pict }}" alt="{{ $book->book_title }}" class="w-100"></td>
+                                                <td>{{ $book->book_title }}</td>
+                                                <td>{{ $book->book_price }}</td>
+                                                @if ($book->isBookPaid == 0)
+                                                    <td class="text-success">
+                                                        Available
+                                                    </td>
+                                                @else   
+                                                    <td class="text-muted">
+                                                        Sold
+                                                    </td>
+                                                @endif
+                                                <td>@mdo</td>
+                                                <td>@mdo</td>
+                                                <td class="d-flex flex-column justify-content-between">
+                                                    <a class="btn btn-prim mb-2" href="/book-detail/{{ $book->book_id }}" role="button">Details</a>
+                                                    <a class="btn btn-second" href="#" role="button">Edit</a>
+                                                    <a class="btn btn-outline-secondary my-2" href="enter-receipt.html" role="button">Add
+                                                        receipt</a>
+                                                    <form action="/profile/books/{{ $book->book_id }}" method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <button class="btn btn-danger w-100" onclick="return confirm('Are you sure want to delete this book?')">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach                                    
+                                    @else
+                                        <div>Nothing here...</div>    
+                                    @endif
+                                        
                                 </tbody>
                             </table>
                         </div>

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,20 +42,16 @@ Route::post('/register', [RegisterController::class, 'store']);
 // Profile
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 
-Route::get('/edit-profile', function () {
-    return view('edit-profile',[
-        "title" => "Edit Profile",
-        "active" => 'edit profile',
-        "css" => 'css/profile.css',
-        "js" => '',
-    ]);
-})->middleware('auth');
+Route::get('/editprofile', [ProfileController::class, 'edit'])->middleware('auth');
+//Route::post('/edit-profile', [ProfileController::class, 'edit'])->middleware('auth');
 
 Route::get('/uploadbook', [BookController::class, 'create'])->middleware('auth');
 
 Route::get('/uploadbook/checkSlug', [BookController::class, 'checkSlug'])->middleware('auth');
 
 Route::post('/uploadbook', [BookController::class, 'store'])->middleware('auth');
+
+Route::post('/profile/books/', [BookController::class, 'destroy'])->middleware('auth');
 
 Route::get('/genres', function () {
     return view('genres',[
@@ -65,14 +62,7 @@ Route::get('/genres', function () {
     ]);
 });
 
-Route::get('/book-detail', function () {
-    return view('book-detail',[
-        "title" => "Book detail",
-        "active" => 'book det',
-        "css" => 'css/book-detail.css',
-        "js" => '',
-    ]);
-});
+Route::get('/book-detail', [BookController::class, 'detailBook']);
 
 Route::get('/enter-receipt', function () {
     return view('enter-receipt',[

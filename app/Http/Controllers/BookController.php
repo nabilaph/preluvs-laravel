@@ -64,12 +64,24 @@ class BookController extends Controller
             $validatedData['book_pict'] = $request->file('book_pict')->store('book-pics');
         }
 
-        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['seller_id'] = auth()->user()->id;
 
         Book::create($validatedData);
 
         return redirect('/profile')->with('success', 'Book has been uploaded!');
     }
+
+    public function detailBook(Book $book){
+        return view('book-detail',[
+            "title" => "Book detail",
+            "active" => 'book det',
+            "css" => 'css/book-detail.css',
+            "js" => '',
+            "selected" => Book::where('book_id', $book->book_id)->get(),
+        ]);
+    }
+
+    
 
     /**
      * Display the specified resource.
@@ -79,7 +91,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        
     }
 
     /**
@@ -113,7 +125,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        Book::destroy($book->id);
+
+        return redirect('/profile')->with('deleted', 'Book has been deleted!');
     }
 
     public function checkSlug(Request $request){
