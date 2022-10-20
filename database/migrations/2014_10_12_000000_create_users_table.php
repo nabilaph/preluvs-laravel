@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('user_name');
             $table->string('user_address')->nullable();
             $table->string('user_phoneNumber')->nullable();
-            $table->binary('user_pict')->nullable();
+            $table->string('user_pict')->nullable();
             $table->integer('user_rating')->nullable();
             $table->dateTime('created_at');
             $table->dateTime('updated_at');

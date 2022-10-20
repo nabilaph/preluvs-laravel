@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -49,14 +50,11 @@ Route::get('/edit-profile', function () {
     ]);
 })->middleware('auth');
 
-Route::get('/uploadbook', function () {
-    return view('upload-book',[
-        "title" => "Upload Book",
-        "active" => 'upload',
-        "css" => 'css/upload-book.css',
-        "js" => '',
-    ]);
-})->middleware('auth');
+Route::get('/uploadbook', [BookController::class, 'create'])->middleware('auth');
+
+Route::get('/uploadbook/checkSlug', [BookController::class, 'checkSlug'])->middleware('auth');
+
+Route::post('/uploadbook', [BookController::class, 'store'])->middleware('auth');
 
 Route::get('/genres', function () {
     return view('genres',[

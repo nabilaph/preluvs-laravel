@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use GuzzleHttp\Psr7\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class BookController extends Controller
 {
@@ -25,7 +28,13 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('upload-book',[
+            'categories' => Category::all(),
+            "title" => "Upload Book",
+            "active" => 'upload',
+            "css" => 'css/upload-book.css',
+            "js" => '',
+            ]);
     }
 
     /**
@@ -36,22 +45,30 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
+        // ddd($request);
         $validatedData = $request->validate([
                         'book_title' => 'required|min:3|max:255',
-                        'book_price' => 'required|min:3|max:255|unique:users',
-                        'book_quantity' => 'required|email:dns|unique:users',
-                        'book_pageNum' => 'required|min:6|max:255',
+                        'book_pict' => 'image|file|max:3000',
+                        'book_price' => 'required|integer',
+                        'book_author' => 'required|min:3|max:255',
+                        'book_quantity' => 'required|integer',
+                        'book_pageNum' => 'required|integer',
                         'book_lang' => 'required|min:6|max:255',
-                        'book_publisher' => 'required|min:6|max:255',
-                        'book_publishDate' => 'required|min:6|max:255',
-                        'book_isbn' => 'required|min:6|max:255',
-                        'book_pageNum' => 'required|min:6|max:255',
-                        'book_pageNum' => 'required|min:6|max:255',
+                        // 'book_publisher' => '',
+                        // 'book_publishDate' => 'date',
+                        // 'book_isbn' => '',
+                        'category_id' => 'required',
                     ]);
+                    
+        if($request->file('book_pict')){
+            $validatedData['book_pict'] = $request->file('book_pict')->store('book-pics');
+        }
+
+        $validatedData['user_id'] = auth()->user()->id;
 
         Book::create($validatedData);
 
-        return redirect('/login')->with('success', 'Registeration Successful! Please login.');
+        return redirect('/profile')->with('success', 'Book has been uploaded!');
     }
 
     /**
@@ -97,5 +114,10 @@ class BookController extends Controller
     public function destroy(Book $book)
     {
         //
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Book::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

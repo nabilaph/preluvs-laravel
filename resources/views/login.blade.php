@@ -17,26 +17,30 @@
                     @csrf
 
                     @if(session()->has('success'))
-                        <div class="alert" style="background-color:#d6efed ; padding: 12px; border-radius: 10px; margin-bottom: 20px;">
-                            <p>{{ session('success') }}</p>
-                        </div>
+                    <div class="alert"
+                        style="background-color:#d6efed ; padding: 12px; border-radius: 10px; margin-bottom: 20px;">
+                        <p>{{ session('success') }}</p>
+                    </div>
                     @endif
 
                     @if(session()->has('loginError'))
-                        <div class="alert" style="background-color: #FAD4D4; padding: 12px; border-radius: 10px; margin-bottom: 20px;">
-                            <p>{{ session('loginError') }}</p>
-                        </div>
+                    <div class="alert"
+                        style="background-color: #FAD4D4; padding: 12px; border-radius: 10px; margin-bottom: 20px;">
+                        <p>{{ session('loginError') }}</p>
+                    </div>
                     @endif
-                    
+
                     <h2 class="title">Sign in</h2>
-                    
+
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="email" name="email" id="emaillogin" placeholder="Email" required value="{{ old('email') }}" autofocus/>
+                        <input type="email" name="email" id="emaillogin" placeholder="Email" required
+                            value="{{ old('email') }}" autofocus />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" id="passwordlogin" placeholder="Password" required value="{{ old('password') }}"/>
+                        <input type="password" name="password" id="passwordlogin" placeholder="Password" required
+                            value="{{ old('password') }}" />
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
                     <p class="social-text">Or Sign in with social platforms</p>
@@ -60,19 +64,23 @@
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="user_name" id="nameregis" placeholder="Name" required value="{{ old('user_name') }}"/>
+                        <input type="text" name="user_name" id="nameregis" placeholder="Name" required
+                            value="{{ old('user_name') }}" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-at"></i>
-                        <input type="text" name="username" id="usernameregis" placeholder="Username" required value="{{ old('username') }}"/>
+                        <input type="text" name="username" id="usernameregis" placeholder="Username" required
+                            value="{{ old('username') }}" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="email" name="email" id="email" placeholder="Email" required value="{{ old('email') }}"/>
+                        <input type="email" name="email" id="email" placeholder="Email" required
+                            value="{{ old('email') }}" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" name="password" id="passwordregis" placeholder="Password" required value="{{ old('password') }}"/>
+                        <input type="password" name="password" id="passwordregis" placeholder="Password" required
+                            value="{{ old('password') }}" />
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
                     <p class="social-text">Or Sign up with social platforms</p>
