@@ -11,6 +11,13 @@
   --mainFont: "Nunito Sans", sans-serif;
 }
 
+a{
+    color: var(--black);
+}
+a:hover{
+    color: var(--primaryColor);
+}
+
 
 /* header */
 .header {

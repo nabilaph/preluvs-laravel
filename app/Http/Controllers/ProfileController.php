@@ -19,12 +19,30 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function edit(){
+    public function edit(User $user){
         return view('edit-profile',[
             "title" => "Edit Profile",
             "active" => 'edit profile',
             "css" => 'css/profile.css',
             "js" => '',
+            "user" => $user
         ]);
     }
+
+    public function update(Request $request){
+
+       $validatedData = $request->validate([
+                        'user_name' => 'required|min:3|max:255',
+                        'username' => 'required|min:3|max:255',
+                        'email' => 'required|email:dns',
+                        'user_phoneNumber' => 'required',
+                        'user_address' => 'required',
+                    ]);
+
+       User::where('id', auth()->user()->id)
+                ->update($validatedData);
+
+       return redirect('/profile')->with('success', 'Profile detail has been saved.');
+    }
+
 }

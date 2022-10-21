@@ -12,6 +12,7 @@
                 </div>
                 <div class="row mt-3">
                     <form method="post" action="/editprofile" enctype="multipart/form-data">
+                        @method('put')
                         @csrf
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Picture</label>
@@ -27,7 +28,7 @@
                             <label for="user_name">Name</label>
                             <input type="text" class="form-control @error('user_name') is-invalid @enderror"
                                 id="user_name" placeholder="Name" name="user_name"
-                                value="{{ auth()->user()->user_name }}" required />
+                                value="{{ old('user_name', auth()->user()->user_name) }}" required />
                             @error('user_name')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -37,7 +38,7 @@
                         <div class="form-group mt-3">
                             <label for="username">Username</label>
                             <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Username"
-                                name="username" value="{{ auth()->user()->username }}" required />
+                                name="username" value="{{ old('username', auth()->user()->username) }}" required />
                             @error('username')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -47,7 +48,7 @@
                         <div class="form-group mt-3">
                             <label for="email">Email</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email"
-                                name="email" value="{{ auth()->user()->email }}" required />
+                                name="email" value="{{ old('email', auth()->user()->email) }}" required />
                             @error('email')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -57,7 +58,7 @@
                         <div class="form-group mt-3">
                             <label for="user_phoneNumber">Phone Number</label>
                             <input type="tel" class="form-control @error('user_phoneNumber') is-invalid @enderror" id="user_phoneNumber" placeholder="Phone Number"
-                                name="user_phoneNumber" value="{{ auth()->user()->user_phoneNumber }}" required />
+                                name="user_phoneNumber" value="{{ old('user_phoneNumber', auth()->user()->user_phoneNumber) }}" required />
                             @error('user_phoneNumber')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -67,7 +68,7 @@
                         <div class="form-group mt-3">
                             <label for="user_address">Address</label>
                             <textarea class="form-control" id="user_address" placeholder="Address"
-                                name="user_address" rows="3">{{ auth()->user()->user_address }}</textarea>
+                                name="user_address" rows="3">{{ old('user_address', auth()->user()->user_address) }}</textarea>
                         </div>
 
                         <div class="mt-5 text-right">

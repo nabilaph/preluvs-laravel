@@ -46,6 +46,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 
 Route::get('/editprofile', [ProfileController::class, 'edit'])->middleware('auth');
+Route::put('/editprofile', [ProfileController::class, 'update'])->middleware('auth');
 //Route::post('/edit-profile', [ProfileController::class, 'edit'])->middleware('auth');
 
 // upload book
