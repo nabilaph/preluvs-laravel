@@ -14,7 +14,7 @@
                         <img src="img/Banner.png" alt="">
                     </div>
                     <div class="img2 position-relative">
-                        <img src="img/comics-haikyuu.png" alt="">
+                        <img src="/{{ auth()->user()->user_pict }}" alt="">
                     </div>
                     <div class="main-text text-center position-relative">
                         <h3 class="fw-bold">{{ auth()->user()->user_name }}</h3>
@@ -70,6 +70,12 @@
             </div>
             @endif
 
+            @if(session()->has('deleted'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('deleted') }}
+            </div>
+            @endif
+
             <div class="row">
                 <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -107,7 +113,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>apakek</td>
-                                        <td><img src="{{ $book->book_pict }}" alt="{{ $book->book_title }}"
+                                        <td><img src="/{{ $book->book_pict }}" alt="{{ $book->book_title }}"
                                                 class="w-75"></td>
                                         <td>{{ $book->book_title }}</td>
                                         <td>@mdo</td>
@@ -146,7 +152,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $book->created_at }}</td>
-                                        <td><img src="{{ $book->book_pict }}" alt="{{ $book->book_title }}"
+                                        <td><img src="/{{ $book->book_pict }}" alt="{{ $book->book_title }}"
                                                 class="w-100"></td>
                                         <td>{{ $book->book_title }}</td>
                                         <td>{{ $book->book_price }}</td>
@@ -168,7 +174,7 @@
                                             <a class="btn btn-outline-secondary my-2" href="enter-receipt.html"
                                                 role="button">Add
                                                 receipt</a>
-                                            <form action="/profile/books/{{ $book->book_id }}" method="post">
+                                            <form action="/profile/books/{{ $book->book_title }}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <button class="btn btn-danger w-100"

@@ -37,7 +37,12 @@ class ProfileController extends Controller
                         'email' => 'required|email:dns',
                         'user_phoneNumber' => 'required',
                         'user_address' => 'required',
+                        'user_pict' => 'image|file|max:3000',
                     ]);
+
+        if($request->file('user_pict')){
+            $validatedData['user_pict'] = $request->file('user_pict')->store('user-pics');
+        }
 
        User::where('id', auth()->user()->id)
                 ->update($validatedData);

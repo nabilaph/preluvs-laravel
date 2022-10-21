@@ -135,9 +135,9 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        Book::destroy($book->id);
+        Book::destroy($book->book_id);
 
-        return redirect('/profile')->with('deleted', 'Book has been deleted!');
+        return redirect('/profile')->with('success', 'Book has been deleted!');
     }
 
     public function checkSlug(Request $request){

@@ -17,7 +17,7 @@
                         <div class="mb-3">
                             <label for="formFile" class="form-label">Picture</label>
                             <input class="form-control @error('user_pict') is-invalid @enderror" type="file"
-                                id="formFile" name="book_pict">
+                                id="formFile" name="user_pict">
                             @error('book_pict')
                             <div class="invalid-feedback">
                                 {{ $message }}

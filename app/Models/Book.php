@@ -10,8 +10,10 @@ class Book extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $primaryKey = 'book_id';
+
     protected $guarded = [
-        'id'
+        'book_id'
     ];
 
     public function sluggable(): array
