@@ -48,17 +48,20 @@ class BookController extends Controller
         // ddd($request);
         $validatedData = $request->validate([
                         'book_title' => 'required|min:3|max:255',
+                        'slug' => 'min:3|max:255',
                         'book_pict' => 'image|file|max:3000',
                         'book_price' => 'required|integer',
+                        'book_description' => 'max:1000',
                         'book_author' => 'required|min:3|max:255',
                         'book_quantity' => 'required|integer',
                         'book_pageNum' => 'required|integer',
                         'book_lang' => 'required|min:6|max:255',
-                        // 'book_publisher' => '',
-                        // 'book_publishDate' => 'date',
-                        // 'book_isbn' => '',
+                        'book_publisher' => 'min:3|max:100',
+                        'book_publishDate' => 'date',
+                        'book_isbn' => 'min:6|max:10',
                         'category_id' => 'required',
                     ]);
+                    
                     
         if($request->file('book_pict')){
             $validatedData['book_pict'] = $request->file('book_pict')->store('book-pics');
@@ -75,9 +78,9 @@ class BookController extends Controller
         return view('book-detail',[
             "title" => "Book detail",
             "active" => 'book det',
-            "css" => 'css/book-detail.css',
+            "css" => '/css/book-detail.css',
             "js" => '',
-            "selected" => Book::where('book_id', $book->book_id)->get(),
+            "book" => $book
         ]);
     }
 
@@ -91,7 +94,14 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        
+        return view('list-books',[
+            "title" => "Book List",
+            "active" => 'book list',
+            "css" => 'css/list-books.css',
+            "js" => 'js/list-books.js',
+            "books" => $book::all()->sortByDesc('created_at'),
+            "categories" => Category::all()
+        ]);
     }
 
     /**

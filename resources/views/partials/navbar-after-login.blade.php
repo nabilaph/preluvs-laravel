@@ -2,12 +2,12 @@
 <nav class="navbar navbar-expand-lg fixed-top py-3 shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="img/logo-round.png" alt="" width="76">
+            <img src="/img/logo-round.png" alt="" width="76">
         </a>
         <div class="list-nav ms-3 w-25 d-lg-flex justify-content-evenly d-none">
             <a href="/">Home</a>
             <a href="/genres">Genres</a>
-            <a href="/newuploads">New uploads</a>
+            <a href="/books">New uploads</a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +43,8 @@
                         <li>
                             <form action="/logout" method="post">
                                 @csrf
-                                <button type="submit" class="dropdown-item text-danger btnlogout" style="background-color: white !important;">Logout</button>
+                                <button type="submit" class="dropdown-item text-danger btnlogout"
+                                    style="background-color: white !important;">Logout</button>
                             </form>
                         </li>
                     </ul>

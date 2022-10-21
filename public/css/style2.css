@@ -47,12 +47,17 @@
   color: white;
 }
 .new-uploads .title{
-  font-size: 25px;
+  /* font-size: 25px; */
   font-weight: 800;
 }
 .new-uploads .card-body .badge{
   background-color: var(--secondaryColor);
   color: var(--primaryColor);
+}
+.img-container {
+    max-width: 100%;
+    object-fit: contain;
+    height: 300px !important;
 }
 
 /* seller leaderboard */

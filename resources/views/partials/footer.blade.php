@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row row-content">
             <div class="col-md 6">
-                <img src="img/logo-round.png" class="img-fluid" alt="" width="90">
+                <img src="/img/logo-round.png" class="img-fluid" alt="" width="90">
                 <p>is a good place to explore and buy preloved books</p>
             </div>
             <div class="col-md-3">

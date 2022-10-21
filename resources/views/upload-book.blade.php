@@ -44,8 +44,13 @@
                         </div>
                         <div class="form-group mt-3">
                             <label for="decriptionbook">Description</label>
-                            <textarea class="form-control" id="decriptionbook" placeholder="Description of Book"
+                            <textarea class="form-control @error('book_description') is-invalid @enderror" id="decriptionbook" placeholder="Description of Book"
                                 name="book_description" rows="3" value="{{ old('book_description') }}"></textarea>
+                                @error('book_description')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                         </div>
                         <div class="form-group mt-3">
                             <label for="authorbook">Author</label>
@@ -89,18 +94,33 @@
                         </div>
                         <div class="form-group mt-3">
                             <label for="pubbook">Publisher</label>
-                            <input type="text" class="form-control" id="pubbook" placeholder="Publisher of Book"
+                            <input type="text" class="form-control @error('book_publisher') is-invalid @enderror" id="pubbook" placeholder="Publisher of Book"
                                 name="book_publisher" value="{{ old('book_publisher') }}" />
+                                @error('book_publisher')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                         </div>
                         <div class="form-group mt-3">
                             <label for="datetimepicker1">Date of Publish</label>
-                            <input type="text" class="form-control" id="datetimepicker1" name="book_publishDate"
+                            <input type="text" class="form-control @error('book_publishDate') is-invalid @enderror" id="datetimepicker1" name="book_publishDate"
                                 placeholder="Date of Publish of Book" value="{{ old('book_publishDate') }}" />
+                                @error('book_publishDate')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                         </div>
                         <div class="form-group mt-3">
                             <label for="isbnbook">ISBN</label>
-                            <input type="text" class="form-control" id="isbnbook" placeholder="ISBN of Book"
+                            <input type="text" class="form-control @error('book_isbn') is-invalid @enderror" id="isbnbook" placeholder="ISBN of Book"
                                 name="book_isbn" value="{{ old('book_isbn') }}" />
+                                @error('book_isbn')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                         </div>
                         <div class="form-group mt-3">
                             <label for="exampleFormControlSelect1">Genre of Book</label>
@@ -111,6 +131,7 @@
                                     @endif
                                     <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
                                 @endforeach
+                                
                             </select>
                         </div>
 

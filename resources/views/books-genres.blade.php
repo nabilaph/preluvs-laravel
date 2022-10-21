@@ -29,10 +29,10 @@
     <div id="products" class="container d-flex justify-content-center">
         <div class="row">
             @foreach ($books as $book)
-            <div class="col">
+            <div class="col-lg-3 col-md-6 col-12">
                 <div class="card card-body p-lg-4 p-sm-3 rounded-4 mx-3 mb-3">
-                    <img src="/{{ $book->book_pict }}" alt="" class="img-container rounded-4">
-                    <a href="/books/{{ $book->book_id }}""><h4 class="title mt-3">{{ $book->book_title }}</h4></a>
+                    <img src="{{ $book->book_pict }}" alt="" class="img-container rounded-4">
+                    <h4 class="title mt-3">{{ $book->book_title }}</h4>
                     <p class="author">{{ $book->book_author }}</p>
                     <div>
                         <a href="/genres/{{ $book->category->category_slug }}" class="badge">{{ $book->category->category_name }}</a>

@@ -15,8 +15,8 @@
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
   <!-- My Style -->
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="{{ $css }}">
 
   <!-- JS -->
