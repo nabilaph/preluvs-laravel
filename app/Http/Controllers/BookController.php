@@ -112,7 +112,14 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('edit-book',[
+            'categories' => Category::all(),
+            'book' => $book,
+            "title" => "Edit Book",
+            "active" => 'edit book',
+            "css" => 'css/upload-book.css',
+            "js" => '',
+            ]);
     }
 
     /**
@@ -124,7 +131,32 @@ class BookController extends Controller
      */
     public function update(UpdateBookRequest $request, Book $book)
     {
-        //
+        $validatedData = $request->validate([
+                        'book_title' => 'required|min:3|max:255',
+                        'slug' => 'min:3|max:255',
+                        'book_pict' => 'image|file|max:3000',
+                        'book_price' => 'required|integer',
+                        'book_description' => 'max:1000',
+                        'book_author' => 'required|min:3|max:255',
+                        'book_quantity' => 'required|integer',
+                        'book_pageNum' => 'required|integer',
+                        'book_lang' => 'required|min:6|max:255',
+                        'book_publisher' => 'min:3|max:100',
+                        'book_publishDate' => 'date',
+                        'book_isbn' => 'min:6|max:10',
+                        'category_id' => 'required',
+                    ]);
+
+        if($request->file('book_pict')){
+            $validatedData['book_pict'] = $request->file('book_pict')->store('book-pics');
+        }
+
+        $validatedData['seller_id'] = auth()->user()->id;
+
+        Book::where('book_id', $book->book_id)
+                ->update($validatedData);
+        
+        return redirect('/profile')->with('success', 'Book has been updated!');
     }
 
     /**

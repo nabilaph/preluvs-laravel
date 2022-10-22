@@ -27,7 +27,8 @@ Route::get('/', function () {
         "active" => 'home',
         "css" => 'css/style2.css',
         "js" => '',
-        "books" => Book::all()->take(4)->sortByDesc('created_at')
+        "books" => Book::all()->take(4)->sortByDesc('created_at'),
+        "categories" => Category::all()->take(4)
     ]);
 });
 
@@ -56,6 +57,10 @@ Route::post('/uploadbook', [BookController::class, 'store'])->middleware('auth')
 // delete book
 Route::delete('/profile/books/{book:book_title}', [BookController::class, 'destroy'])->middleware('auth');
 
+// edit book
+Route::get('/profile/books/{book:book_title}/edit', [BookController::class, 'edit'])->middleware('auth');
+Route::put('/profile/books/{book:book_title}', [BookController::class, 'update'])->middleware('auth');
+
 // show books
 Route::get('/books', [BookController::class, 'show']);
 
@@ -66,6 +71,7 @@ Route::get('/genres', function () {
         "active" => 'genres',
         "css" => 'css/genre-detail.css',
         "js" => '',
+        "categories" => Category::all()
     ]);
 });
 Route::get('/genres/{category:category_slug}', function(Category $category){

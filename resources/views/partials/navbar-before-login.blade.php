@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg fixed-top py-3 shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="img/logo-round.png" alt="" width="76">
+            <img src="/img/logo-round.png" alt="" width="76">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

@@ -11,7 +11,7 @@
                 <ul class="p-0">
                     <li><a href="/">Home</a></li>
                     <li class="mt-3"><a href="/genres">Genres</a></li>
-                    <li class="mt-3"><a href="/newuploads">New uploads</a></li>
+                    <li class="mt-3"><a href="/books">New uploads</a></li>
                     <li class="mt-3"><a href="/">Seller leaderboard</a></li>
                 </ul>
             </div>

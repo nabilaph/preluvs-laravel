@@ -11,20 +11,22 @@
             <div class="mb-2"></div>
         </div>
         <div class="row mt-5">
+            @foreach ($categories as $category)
             <div class="col-lg-6 col-md-12 mb-sm-5 click-genre">
-                <a href="#">
+                <a href="/genres/{{ $category->category_slug }}">
                     <div class="card-genre rounded-3 d-flex justify-content-between align-items-center px-3 py-3">
                         <p>
-                            Comics
+                            {{ $category->category_name }}
                         </p>
                         <div class="img-genre position-relative">
-                            <img src="img/books-category.png" class="position-absolute end-0" alt="">
+                            <img src=" {{ $category->category_pict }}" class="position-absolute end-0" alt="">
                         </div>
                     </div>
                 </a>
         
             </div>
-            <div class="col-lg-6 col-md-12 mb-sm-5 click-genre">
+            @endforeach
+            <!-- <div class="col-lg-6 col-md-12 mb-sm-5 click-genre">
                 <a href="#">
                     <div class="card-genre rounded-3 d-flex justify-content-between align-items-center px-3 py-3">
                         <p>
@@ -88,7 +90,7 @@
                     </div>
                 </a>
         
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

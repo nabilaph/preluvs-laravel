@@ -14,13 +14,14 @@
                         <img src="img/Banner.png" alt="">
                     </div>
                     <div class="img2 position-relative">
-                        <img src="/{{ auth()->user()->user_pict }}" alt="">
+                        <img src="{{ auth()->user()->user_pict }}" alt="">
                     </div>
                     <div class="main-text text-center position-relative">
                         <h3 class="fw-bold">{{ auth()->user()->user_name }}</h3>
                         <p>{{ auth()->user()->username }}</p>
                     </div>
                 </div>
+                
             </div>
             <div class="row mt-3">
                 <div class=" card card2 p-5">
@@ -170,7 +171,7 @@
                                         <td class="d-flex flex-column justify-content-between">
                                             <a class="btn btn-prim mb-2" href="/books/{{ $book->book_id }}"
                                                 role="button">Details</a>
-                                            <a class="btn btn-second" href="#" role="button">Edit</a>
+                                            <a class="btn btn-second" href="/profile/books/{{ $book->book_title }}/edit" role="button">Edit</a>
                                             <a class="btn btn-outline-secondary my-2" href="enter-receipt.html"
                                                 role="button">Add
                                                 receipt</a>
