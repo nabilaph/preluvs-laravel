@@ -5,9 +5,9 @@
             <img src="/img/logo-round.png" alt="" width="76">
         </a>
         <div class="list-nav ms-3 w-25 d-lg-flex justify-content-evenly d-none">
-            <a href="/">Home</a>
-            <a href="/genres">Genres</a>
-            <a href="/books">New uploads</a>
+            <a href="/" class="{{ ($active === " home") ? 'navactive' : '' }}">Home</a>
+            <a href="/genres" class="{{ ($active === " genres") ? 'navactive' : '' }}">Genres</a>
+            <a href="/books" class="{{ ($active === " books") ? 'navactive' : '' }}">New uploads</a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,11 +15,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="input-group mx-auto mt-4 mt-lg-0">
-                <input type="text" class="form-control" placeholder="Search here..." aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-addon2">
-                    <i class='bx bx-search'></i>
-                </button>
+                <form action="/books" class="w-100 d-flex">
+                    <input type="text" class="form-control" placeholder="Search here..." name="searchbook">
+                    <button class="btn btn-outline-secondary d-flex align-items-center" type="submit"
+                        id="button-addon2">
+                        <i class='bx bx-search'></i>
+                    </button>
+
+                </form>
             </div>
             <div class="navbar-nav ms-auto d-flex align-items-lg-center">
                 <a class="nav-link mt-3 mt-lg-0" href="/wishlist">

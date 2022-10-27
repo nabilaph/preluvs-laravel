@@ -4,11 +4,11 @@
 
 <div class="wrapper">
     <div id="buttons" class="d-flex justify-content-center">
-        <button class="button-value mx-2" onclick="">
+        <button class="button-value mx-2" onclick="filterProduct('All')">
             All
         </button>
         @foreach ($categories as $category)
-            <button class="button-value mx-2" onclick="">{{ $category->category_name }}</button>
+            <a class="button-value mx-2" onclick="filterProduct('{{ $category->category_name }}')" href="/genres/{{ $category->category_slug }}">{{ $category->category_name }}</a>
         @endforeach
         <!-- <button class="button-value mx-2" onclick="filterProduct('Comic')">
             Comic
@@ -50,5 +50,20 @@
         </div>
     </div>
 </div>
+
+<script>
+    function filterProduct(value) {
+            //Button class code
+            let buttons = document.querySelectorAll(".button-value");
+            buttons.forEach((button) => {
+                //check if value equals innerText
+                if (value.toUpperCase() == button.innerText.toUpperCase()) {
+                    button.classList.add("active");
+                } else {
+                    button.classList.remove("active");
+                }
+            });
+        }
+</script>
 
 @endsection

@@ -80,6 +80,11 @@ i {
   margin: 0 25px;
 }
 
+.navactive{
+  font-weight: 800 !important;
+  color: var(--primaryDarkColor) !important;
+}
+
 /* navbar after login */
 .profile-dd > a{
   color: var(--bs-nav-link-color) !important;

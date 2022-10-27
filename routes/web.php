@@ -62,7 +62,10 @@ Route::get('/profile/books/{book:book_title}/edit', [BookController::class, 'edi
 Route::put('/profile/books/{book:book_title}', [BookController::class, 'update'])->middleware('auth');
 
 // show books
-Route::get('/books', [BookController::class, 'show']);
+Route::get('/books', [BookController::class, 'index']);
+
+// search books
+// Route::get('/books', [BookController::class, 'index']);
 
 // show genres
 Route::get('/genres', function () {

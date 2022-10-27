@@ -18,7 +18,20 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $books= Book::latest();
+
+        if(request('searchbook')){
+            $books->where('book_title','like', '%'. request('searchbook' . '%'));
+        }
+
+        return view('list-books',[
+            "title" => "Book List",
+            "active" => 'books',
+            "css" => 'css/list-books.css',
+            "js" => '',
+            "books" => $books->get(),
+            "categories" => Category::all()
+        ]);
     }
 
     /**
@@ -94,14 +107,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        return view('list-books',[
-            "title" => "Book List",
-            "active" => 'book list',
-            "css" => 'css/list-books.css',
-            "js" => 'js/list-books.js',
-            "books" => $book::all()->sortByDesc('created_at'),
-            "categories" => Category::all()
-        ]);
+        // dd(request('search'));
+        
     }
 
     /**
