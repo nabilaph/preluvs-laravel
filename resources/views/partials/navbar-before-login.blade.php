@@ -10,11 +10,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="input-group mx-auto mt-4 mt-lg-0">
-                <input type="text" class="form-control" placeholder="Search here..." aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary d-flex align-items-center" type="button" id="button-addon2">
-                    <i class='bx bx-search'></i>
-                </button>
+                <form action="/search" class="w-100 d-flex">
+                    @csrf
+                    <input type="text" class="form-control" placeholder="Search here..." name="searchbook">
+                    <button class="btn btn-outline-secondary d-flex align-items-center" type="submit"
+                        id="button-addon2">
+                        <i class='bx bx-search'></i>
+                    </button>
+
+                </form>
             </div>
             <div class="navbar-nav ms-auto d-flex align-items-lg-center">
                 <!-- Mobile menu -->

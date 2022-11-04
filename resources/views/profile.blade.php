@@ -189,7 +189,7 @@
                             </table>
                         </div>
                         @else
-                        <div class="alert alert-secondary text-center" role="alert">Nothing here...</div>
+                        <div class="alert alert-secondary" role="alert">Nothing here...</div>
                         @endif
                     </div>
 

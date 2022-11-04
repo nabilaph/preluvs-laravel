@@ -18,10 +18,11 @@ class BookController extends Controller
      */
     public function index()
     {
+        // dd(request('searchbook'));
         $books= Book::latest();
 
         if(request('searchbook')){
-            $books->where('book_title','like', '%'. request('searchbook' . '%'));
+            $books->where('book_title','like', '%'. request('searchbook'). '%');
         }
 
         return view('list-books',[

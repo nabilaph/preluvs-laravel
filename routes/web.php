@@ -65,7 +65,7 @@ Route::put('/profile/books/{book:book_title}', [BookController::class, 'update']
 Route::get('/books', [BookController::class, 'index']);
 
 // search books
-// Route::get('/books', [BookController::class, 'index']);
+Route::get('/search', [BookController::class, 'index']);
 
 // show genres
 Route::get('/genres', function () {
@@ -109,3 +109,13 @@ Route::get('/notification', function () {
         "js" => 'js/notifications.js',
     ]);
 })->middleware('auth');
+
+Route::get('/cart', function () {
+    return view('cart',[
+        "title" => "Cart",
+        "active" => 'cart',
+        "css" => 'css/cart.css',
+        "js" => '',
+    ]);
+})->middleware('auth');
+

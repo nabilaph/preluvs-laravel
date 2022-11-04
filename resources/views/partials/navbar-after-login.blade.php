@@ -15,7 +15,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="input-group mx-auto mt-4 mt-lg-0">
-                <form action="/books" class="w-100 d-flex">
+                <form action="/search" class="w-100 d-flex">
+                    @csrf
                     <input type="text" class="form-control" placeholder="Search here..." name="searchbook">
                     <button class="btn btn-outline-secondary d-flex align-items-center" type="submit"
                         id="button-addon2">
