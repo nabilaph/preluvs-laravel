@@ -98,6 +98,12 @@ a:hover {
 }
 
 /* book description */
+.book-pict img{
+    max-width: 100%;
+    object-fit: cover;
+    height: 300px !important;
+    width: 240px;
+}
 .badge {
   background-color: var(--secondaryColor);
   color: var(--primaryColor);

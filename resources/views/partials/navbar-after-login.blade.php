@@ -26,7 +26,7 @@
                 </form>
             </div>
             <div class="navbar-nav ms-auto d-flex align-items-lg-center">
-                <a class="nav-link mt-3 mt-lg-0" href="/wishlist">
+                <a class="nav-link mt-3 mt-lg-0" href="{{ route('showwishlist') }}">
                     <i class='bx bx-bookmark'></i>
                 </a>
                 <a class="nav-link mt-3 mt-lg-0" href="/notification">

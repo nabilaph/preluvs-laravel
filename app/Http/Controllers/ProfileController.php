@@ -50,4 +50,15 @@ class ProfileController extends Controller
        return redirect('/profile')->with('success', 'Profile detail has been saved.');
     }
 
+    public function otheruser(User $user){
+        return view('other-user2',[
+            "title" => "other-user",
+            "active" => 'other-user',
+            "css" => 'css/other-user.css',
+            "js" => '',
+            "user" => $user,
+            "books" => Book::where('seller_id', $user->id)->get(),
+        ]);
+    }
+
 }

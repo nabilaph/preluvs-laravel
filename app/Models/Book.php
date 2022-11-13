@@ -37,4 +37,8 @@ class Book extends Model
         return $this->belongsTo(User::class, 'buyer_id');
     }
 
+    public function wishlist(){
+        return $this->hasMany(Wishlist::class);
+    }
+
 }

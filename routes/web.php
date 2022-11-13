@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\WishlistController;
 use App\Models\Book;
 use App\Models\Category;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -92,6 +93,7 @@ Route::get('/genres/{category:category_slug}', function(Category $category){
 // book detail
 Route::get('/books/{book:book_id}', [BookController::class, 'detailBook']);
 
+//Receipt
 Route::get('/enter-receipt', function () {
     return view('enter-receipt',[
         "title" => "Enter Receipt",
@@ -101,6 +103,7 @@ Route::get('/enter-receipt', function () {
     ]);
 })->middleware('auth');
 
+//Notification
 Route::get('/notification', function () {
     return view('notifications',[
         "title" => "Notifications",
@@ -110,12 +113,16 @@ Route::get('/notification', function () {
     ]);
 })->middleware('auth');
 
-Route::get('/cart', function () {
-    return view('cart',[
-        "title" => "Cart",
-        "active" => 'cart',
-        "css" => 'css/cart.css',
-        "js" => '',
-    ]);
-})->middleware('auth');
+//Cart
+  
+
+// wishlist
+Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth')->name('showwishlist');
+Route::post('/wishlist/{book:book_id}', [WishlistController::class, 'store'])->middleware('auth');
+
+//Cart
+// Route::get('/otheruser',[ProfileController::class, 'otheruser']);
+
+// book detail
+Route::get('/user/{user:username}', [ProfileController::class, 'otheruser']);
 

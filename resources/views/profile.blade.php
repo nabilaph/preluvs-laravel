@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="card p-0">
                     <div class="img1">
-                        <img src="img/Banner.png" alt="">
+                        <img src="img/banner-profile.png" alt="">
                     </div>
                     <div class="img2 position-relative">
                         <img src="{{ auth()->user()->user_pict }}" alt="">
@@ -166,13 +166,13 @@
                                             Sold
                                         </td>
                                         @endif
-                                        <td>@mdo</td>
+                                        <td>{{ $book->category->category_name }}</td>
                                         <td>@mdo</td>
                                         <td class="d-flex flex-column justify-content-between">
                                             <a class="btn btn-prim mb-2" href="/books/{{ $book->book_id }}"
                                                 role="button">Details</a>
                                             <a class="btn btn-second" href="/profile/books/{{ $book->book_title }}/edit" role="button">Edit</a>
-                                            <a class="btn btn-outline-secondary my-2" href="enter-receipt.html"
+                                            <a class="btn btn-second my-2" href="enter-receipt.html"
                                                 role="button">Add
                                                 receipt</a>
                                             <form action="/profile/books/{{ $book->book_title }}" method="post">

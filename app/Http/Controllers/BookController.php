@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Category;
+use App\Models\Wishlist;
+use GuzzleHttp\Psr7\Request;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
-use GuzzleHttp\Psr7\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class BookController extends Controller
@@ -183,5 +184,19 @@ class BookController extends Controller
     public function checkSlug(Request $request){
         $slug = SlugService::createSlug(Book::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
+    }
+
+    public function storeWishlist(Request $request, Book $book){
+
+        dd($book->book_id);
+
+        $wldata = [
+            "user_id" => auth()->user()->id, 
+            "book_id" => $book->book_id
+        ];
+
+        Wishlist::create($wldata);
+
+        return redirect('/profile')->with('success', 'wishlist saved!');
     }
 }

@@ -107,7 +107,7 @@
                         </div>
                         <div class="form-group mt-3">
                             <label for="datetimepicker1">Date of Publish</label>
-                            <input type="text" class="form-control @error('book_publishDate') is-invalid @enderror" id="datetimepicker1"
+                            <input type="date" data-provide="datepicker" class="form-control @error('book_publishDate') is-invalid @enderror" id="datetimepicker1"
                                 name="book_publishDate" placeholder="Date of Publish of Book" value="{{ old('book_publishDate', $book->book_publishDate) }}" />
                             @error('book_publishDate')
                             <div class="invalid-feedback">

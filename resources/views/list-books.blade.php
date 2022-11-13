@@ -33,7 +33,9 @@
             @foreach ($books as $book)
             <div class="col">
                 <div class="card card-body p-lg-4 p-sm-3 rounded-4 mx-3 mb-3">
-                    <img src="/{{ $book->book_pict }}" alt="" class="img-container rounded-4">
+                    <div class="img-wrapper">
+                        <img src="/{{ $book->book_pict }}" alt="" class="img-container rounded-4">
+                    </div>
                     <a href="/books/{{ $book->book_id }}""><h4 class=" title mt-3">{{ $book->book_title }}</h4></a>
                     <p class="author">{{ $book->book_author }}</p>
                     <div>

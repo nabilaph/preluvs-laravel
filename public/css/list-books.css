@@ -115,7 +115,7 @@ i {
 }
 .card {
     background-color: #ffffff;
-    max-width: 18em;
+    width: 15.5em;
     height: fit-content !important;
     margin-top: 1em;
     padding: 1em;
@@ -132,6 +132,14 @@ i {
     object-fit: contain;
     height: 300px !important;
 }
+
+.img-wrapper img{
+    max-width: 100%;
+    object-fit: cover;
+    height: 300px !important;
+    width: 240px;
+}
+
 .container-product {
     padding-top: 1em;
     color: #110f29;
