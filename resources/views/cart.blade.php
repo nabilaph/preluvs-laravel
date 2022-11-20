@@ -38,7 +38,13 @@
                 <hr>
                 <p><span>Total</span> <span>$210</span></p>
 
-                <a href="#"><i class="fa fa-shopping-cart me-2"></i> Checkout</a>
+                <form action="/checkout" method="post" class="w-100">
+                    @csrf
+                    <button type="submit"
+                        class="nav-link btn-prim border-0 me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
+                        <i class='fa fa-shopping-cart me-2'></i> Checkout
+                    </button>
+                </form>
             </div>
         </div>
     </div>

@@ -17,7 +17,9 @@ class CreateCheckoutsTable extends Migration
             $table->id('id');
             $table->foreignId('cart_id')->constrained();
             $table->integer('number_invoice');
-            $table->string('payment_method');
+            $table->string('receipt_no');
+            $table->enum('payment_method', ['BCA', 'GOPAY','OVO', 'BNI', 'MANDIRI']);
+            $table->enum('status', ['Belum Dibayar', 'Sudah Dibayar','Sedang Dikirim']);
             $table->timestamps();
         });
     }

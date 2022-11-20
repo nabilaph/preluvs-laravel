@@ -129,3 +129,7 @@ Route::post('/wishlist/{book:id}', 'WishlistController@store')->middleware('auth
 // other user
 Route::get('/user/{user:username}', [ProfileController::class, 'otheruser']);
 
+//Checkout
+Route::get('/checkout','CheckoutController@index')->middleware('auth');
+Route::post('/checkout', 'CheckoutController@store')->middleware('auth');
+
