@@ -27,11 +27,6 @@ class CreateBooksTable extends Migration
             $table->string('book_publisher')->nullable();
             $table->date('book_publishDate')->nullable();
             $table->string('book_isbn')->nullable();
-            $table->boolean('isBookPaid')->default(false);
-            $table->date('book_soldDate')->nullable();
-            $table->string('receipt_num')->nullable();
-
-            $table->foreignId('buyer_id')->nullable();
             // $table->foreign('buyer_id')->references('id')->on('users');
 
             $table->foreignId('category_id');

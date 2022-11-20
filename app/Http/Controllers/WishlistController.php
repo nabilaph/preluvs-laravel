@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Wishlist;
 use App\Http\Requests\StoreWishlistRequest;
 use App\Http\Requests\UpdateWishlistRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class WishlistController extends Controller
 {
@@ -15,11 +17,12 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $wishlist = Wishlist::where('user_id', auth()->user()->id)->get();
-        
-        // dd($wishlist[0]);
+        //$user = User::where('id', auth()->user()->id)->get();
+        //$books = Book::where('book_id', $wishlist->book_id)->get();
+
+        //ddd($user->wishlist);
 
         // $books = Book::where('book_id', $wishlist[1]->book_id)->get();
 
@@ -36,13 +39,27 @@ class WishlistController extends Controller
         // dd($wishlist->wishlist_id);
         // $books = Book::where('book_id', $wishlist->book_id->get())->get();
 
-        return view('list-wishlist',[
-            "title" => "Wishlist",
-            "active" => 'books',
+        // return view('list-wishlist',[
+        //     "title" => "Wishlist",
+        //     "active" => 'books',
+        //     "css" => 'css/list-books.css',
+        //     "js" => '',
+        //     "user" => $user,
+        // ]);
+
+        $itemuser = $request->user();
+        $itemwishlist = Wishlist::where('user_id', $itemuser->id)->get();
+
+        //ddd($itemwishlist);
+                            
+        $data = array(
+            'title' => 'Wishlist',
+            "active" => 'wishlist',
             "css" => 'css/list-books.css',
             "js" => '',
-            "wishlist" => $wishlist,
-        ]);
+            'itemwishlist' => $itemwishlist);
+
+        return view('list-wishlist', $data);
     }
 
     /**
@@ -69,9 +86,19 @@ class WishlistController extends Controller
             "book_id" => $book->book_id
         ];
 
-        Wishlist::create($wldata);
+        $validasiwishlist = Wishlist::where('book_id', $book->book_id)
+                                    ->where('user_id', auth()->user()->id)
+                                    ->first();
+        if ($validasiwishlist) {
+            $validasiwishlist->delete();//kalo udah ada, berarti wishlist dihapus
+            return redirect('/profile')->with('success', 'Wishlist berhasil dihapus');
+        } 
+        else {
+            
+            Wishlist::create($wldata);
 
-        return redirect('/profile')->with('success', 'wishlist saved!');
+            return redirect('/profile')->with('success', 'Produk berhasil ditambahkan ke wishlist');
+        }
     }
 
     /**
@@ -116,6 +143,11 @@ class WishlistController extends Controller
      */
     public function destroy(Wishlist $wishlist)
     {
-        //
+        $itemwishlist = Wishlist::findOrFail($wishlist);
+        if ($itemwishlist->delete()) {
+            return redirect('/profile')->with('success', 'Wishlist berhasil dihapus');
+        } else {
+            return redirect('/profile')->with('error', 'Wishlist gagal dihapus');
+        }
     }
 }

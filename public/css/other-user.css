@@ -1,8 +1,181 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --primaryColor: #898aa6;
+  --primaryDarkColor: #6c6d89;
+  --secondaryColor: #d6efed;
+  --secondaryDarkColor: #c3dee1;
+  --black: #1d1d1d;
+
+  /* font */
+  --mainFont: "Nunito Sans", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none !important;
+    /* padding: 0;
+  margin: 0; */
+    border: none;
+    outline: none;
+    font-family: var(--mainFont);
+}
+a{
+    color: var(--black);
+}
+a:hover{
+    color: var(--primaryColor);
+}
+body {
+    font-family: var(--mainFont);
+    font-size: 1.1rem;
+    background-color: white;
+}
+i {
+    font-size: 1.8rem;
+}
+.heading {
+    font-size: 24px;
+    font-weight: 700;
+}
+.sub-heading {
+    font-weight: 300;
+}
+.btn-prim {
+    padding: 10px 24px !important;
+    border-radius: 8px;
+    background-color: var(--primaryColor);
+    color: white;
+    text-align: center;
+}
+.btn-prim:hover {
+    background-color: var(--primaryDarkColor);
+    color: white;
+}
+.btn-second {
+    padding: 10px 24px !important;
+    border-radius: 8px;
+    border: 2px solid var(--primaryColor);
+    color: var(--primaryColor);
+    text-align: center;
+}
+.btn-second:hover {
+    background-color: var(--primaryColor);
+    color: white !important;
+    border: none;
+}
+.section-margin {
+    margin-top: 80px;
+}
+
+.wrapper {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
+#search-container {
+    margin: 1em 0;
+}
+#search-container input {
+    background-color: transparent;
+    width: 40%;
+    border-bottom: 2px solid #110f29;
+    padding: 1em 0.3em;
+}
+#search-container input:focus {
+    border-bottom-color: var(--primaryColor);
+}
+#search-container button {
+    padding: 1em 2em;
+    margin-left: 1em;
+    background-color: var(--primaryColor);
+    color: #ffffff;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    position: absolute;
+}
+.button-value {
+    border: 2px solid var(--primaryColor);
+    padding: 0.5em 2em;
+    border-radius: 3em;
+    color: var(--black);
+    cursor: pointer;
+}
+.active {
+    background-color: var(--primaryDarkColor);
+    color: #ffffff;
+}
+#products {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 1.5em;
+    padding: 2em 0;
+}
+.card {
+    background-color: #ffffff;
+    width: 15.5em;
+    height: fit-content !important;
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 1em 2em 2.5em rgba(1, 2, 68, 0.08);
+    cursor: pointer;
+}
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.img-container {
+    max-width: 100%;
+    object-fit: contain;
+    height: 300px !important;
+}
+
+.img-wrapper img{
+    max-width: 100%;
+    object-fit: cover;
+    height: 300px !important;
+    width: 240px;
+}
+
+.container-product {
+    padding-top: 1em;
+    color: #110f29;
+}
+.container-product h5 {
+    font-weight: 500;
+}
+.hide {
+    display: none;
+}
+
+/* btn */
+.btn-cart {
+    background-color: var(--primaryColor);
+    color: white;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+}
+.btn-cart:hover {
+    background-color: var(--primaryDarkColor);
+    color: white;
+}
+#products .title {
+    
+    font-weight: 800;
+}
+#products .card-body .badge {
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
+}
+
 
 .jumbotron {
   padding-top: 3rem;
-  background-color: #dfc9f1;
+  background-color: var(--secondaryColor);
 }
 
 .checked {
@@ -10,7 +183,7 @@
 }
 
 #buku {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   margin-top: -100px;
 }
 
@@ -41,4 +214,36 @@
     object-fit: cover;
     height: 300px !important;
     width: 240px;
+}
+
+.img2 img {
+  position: relative;
+  display: block;
+  margin: 80px auto 0px auto;
+  z-index: 1;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  /* border: 7px solid white;
+  top: -60%; */
+}
+
+footer{
+  margin-top: 0 !important;
+}
+
+@media screen and (max-width: 720px) {
+    .img-container {
+        max-width: 100%;
+        object-fit: contain;
+        height: 200px;
+    }
+    .card {
+        max-width: 10em;
+        margin-top: 1em;
+    }
+    #products {
+        grid-template-columns: auto auto;
+        grid-column-gap: 1em;
+    }
 }

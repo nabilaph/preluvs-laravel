@@ -1,14 +1,15 @@
 <?php
 
-use App\Http\Controllers\BookController;
+use App\Models\Book;
+use App\Models\Cart;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
-use App\Models\Book;
-use App\Models\Category;
-use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +24,15 @@ use Symfony\Component\HttpKernel\Profiler\Profile;
 
 // Homepage
 Route::get('/', function () {
+
     return view('index',[
         "title" => "Home",
         "active" => 'home',
         "css" => 'css/style2.css',
         "js" => '',
-        "books" => Book::all()->take(4)->sortByDesc('created_at'),
-        "categories" => Category::all()->take(4)
+        "books" => Book::all()->take(4),
+        "categories" => Category::all()->take(4),
+        // "totalcart" => Cart::where('user_id', auth()->user->id)->all()
     ]);
 });
 
@@ -114,15 +117,15 @@ Route::get('/notification', function () {
 })->middleware('auth');
 
 //Cart
-  
+Route::post('/cart/{book:book_id}','\App\Http\Controllers\CartController@store')->middleware('auth');
+Route::get('/cart','\App\Http\Controllers\CartController@index')->middleware('auth');
 
 // wishlist
-Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth')->name('showwishlist');
-Route::post('/wishlist/{book:book_id}', [WishlistController::class, 'store'])->middleware('auth');
+Route::get('/wishlist', 'WishlistController@index')->middleware('auth');
+Route::post('/wishlist/{book:book_id}', 'WishlistController@store')->middleware('auth');
+// Route::get('/wishlist', '\App\Http\Controllers\WishlistController@index')->middleware('auth');
+// Route::post('/wishlist/{book:book_id}', '\App\Http\Controllers\WishlistController@store')->middleware('auth');
 
-//Cart
-// Route::get('/otheruser',[ProfileController::class, 'otheruser']);
-
-// book detail
+// other user
 Route::get('/user/{user:username}', [ProfileController::class, 'otheruser']);
 

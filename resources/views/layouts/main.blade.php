@@ -14,6 +14,8 @@
   <!-- BoxIcon -->
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
   <!-- My Style -->
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/footer.css">
@@ -27,11 +29,11 @@
 </head>
 
 <body>
-  
+
   @auth
-    @include('partials\navbar-after-login')
+  @include('partials\navbar-after-login')
   @else
-    @include('partials\navbar-before-login')
+  @include('partials\navbar-before-login')
   @endauth
 
   <div class="container-fluid">

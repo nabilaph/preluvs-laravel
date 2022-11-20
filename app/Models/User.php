@@ -51,7 +51,7 @@ class User extends Authenticatable
         return $this->hasMany(Book::class);
     }
     
-    public function wishlist(){
-        return $this->hasMany(Wishlist::class);
-    }
+    // public function wishlist(){
+    //     return $this->belongsToMany(Book::class, 'wishlists', 'user_id', 'book_id');
+    // }
 }

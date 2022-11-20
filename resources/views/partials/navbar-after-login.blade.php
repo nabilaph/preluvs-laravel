@@ -26,7 +26,7 @@
                 </form>
             </div>
             <div class="navbar-nav ms-auto d-flex align-items-lg-center">
-                <a class="nav-link mt-3 mt-lg-0" href="{{ route('showwishlist') }}">
+                <a class="nav-link mt-3 mt-lg-0" href="/wishlist">
                     <i class='bx bx-bookmark'></i>
                 </a>
                 <a class="nav-link mt-3 mt-lg-0" href="/notification">
@@ -34,7 +34,7 @@
                 </a>
                 <a class="nav-link me-3" href="/cart">
                     <i class='bx bx-cart-alt'></i>
-                    <span class="badge text-bg-warning rounded-circle position-absolute">
+                    <span class="badge badge-cart rounded-circle position-absolute" style="background-color: #898aa6;">
                         5
                     </span>
                 </a>

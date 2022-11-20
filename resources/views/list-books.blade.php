@@ -27,11 +27,11 @@
             Sains
         </button> -->
     </div>
-    <div id="products" class="container d-flex justify-content-center">
-        <div class="row">
+    <div id="products" class="container d-flex justify-content-between">
+        <div class="row row-cols-2 row-cols-lg-4 row-cols-sm-1 w-100">
             @if ($books->count())
             @foreach ($books as $book)
-            <div class="col">
+            <div class="col-lg col ">
                 <div class="card card-body p-lg-4 p-sm-3 rounded-4 mx-3 mb-3">
                     <div class="img-wrapper">
                         <img src="/{{ $book->book_pict }}" alt="" class="img-container rounded-4">
@@ -46,14 +46,18 @@
                         <h5 class="price fw-semibold m-0">
                             Rp{{ $book->book_price }}
                         </h5>
-                        <a href="" class="btn-cart rounded text-center"><i class='bx bx-cart-alt'></i></a>
+                        <form action="/cart/{{ $book->book_id }}" method="post">
+                            @csrf
+                            <button type="submit" href="" class="btn-cart rounded text-center"><i
+                                    class='bx bx-cart-alt'></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
             @endforeach
             @else
-            <div class="col">
-                <div class="alert alert-secondary" role="alert">Nothing here...</div>
+            <div class="col text-center">
+                <div class="alert alert-secondary text-center" role="alert">Nothing here...</div>
             </div>
             @endif
 

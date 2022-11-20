@@ -36,6 +36,10 @@ class BookController extends Controller
         ]);
     }
 
+    public function home(){
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      *

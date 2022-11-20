@@ -6,42 +6,26 @@
         <h1 class="fw-bold">Shopping Cart</h1>
         <div class="project">
             <div class="shop">
-                <div class="box">
-                    <img src="img/book1.png" alt="">
-                    <div class="content">
-                        <h3> Harry Potter</h3>
-                        <h4>Price: IDR. 40.000</h4>
-                        <p class="unit">Quantity: <input value="2"></p>
-                        <p class="btn-area bg-danger">
-                            <i class='bx bx-trash'></i>
-                            <span class="btn2">Remove</span>
-                        </p>
+                @if ($itemcart->count())
+                    @foreach ($itemcart as $cart)
+                    <div class="box">
+                        <img src="{{ $cart->book->book_pict }}" alt="">
+                        <div class="content">
+                            <h3 class="fw-bold">{{ $cart->book->book_title }}</h3>
+                            <h4>Price: IDR. {{ $cart->book->book_price }}</h4>
+                            <p class="unit">Quantity: <input value="{{ $cart->book->book_quantity }}"></p>
+                            <p class="btn-area bg-danger">
+                                <i class='bx bx-trash'></i>
+                                <span class="btn2">Remove</span>
+                            </p>
+                        </div>
                     </div>
+                    @endforeach
+                @else
+                <div class="col text-center">
+                    <div class="alert alert-secondary text-center" role="alert">Nothing here...</div>
                 </div>
-                <div class="box">
-                    <img src="img/book5.png" alt="">
-                    <div class="content">
-                        <h3>Invisible Library</h3>
-                        <h4>Price: IDR. 24.000</h4>
-                        <p class="unit">Quantity: <input value="1"></p>
-                        <p class="btn-area bg-danger">
-                            <i class='bx bx-trash'></i>
-                            <span class="btn2">Remove</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="box">
-                    <img src="img/book7.png" alt="">
-                    <div class="content">
-                        <h3>Sherlock Holmes</h3>
-                        <h4>Price: IDR. 54.000</h4>
-                        <p class="unit">Quantity: <input value="0"></p>
-                        <p class="btn-area bg-danger">
-                            <i class='bx bx-trash'></i>
-                            <span class="btn2">Remove</span>
-                        </p>
-                    </div>
-                </div>
+                @endif
             </div>
             <div class="right-bar">
                 <p><span>Subtotal</span> <span>$120</span></p>
@@ -52,7 +36,7 @@
                 <hr>
                 <p><span>Total</span> <span>$210</span></p>
 
-                <a href="#"><i class="fa fa-shopping-cart"></i> Checkout</a>
+                <a href="#"><i class="fa fa-shopping-cart me-2"></i> Checkout</a>
             </div>
         </div>
     </div>

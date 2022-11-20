@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Book;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Database\Seeder;
@@ -22,6 +23,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'omegari26@gmail.com',
             'password' => bcrypt('omegari'),
             'user_name' => 'bia',
+        ]);
+
+        Book::create(
+        [
+            'category_id' => 1,
+            'category_name' => 'Novel',
+            'category_pict' => '/img/Novel.png',
+            'category_slug' => 'novel'
         ]);
 
         Category::create(

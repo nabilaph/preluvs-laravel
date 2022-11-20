@@ -149,7 +149,10 @@
                         <h5 class="price fw-semibold m-0">
                             Rp{{ $book->book_price }}
                         </h5>
-                        <a href="" class="btn-cart rounded text-center"><i class='bx bx-cart-alt'></i></a>
+                        <form action="/cart/{{ $book->book_id }}" method="post">
+                            @csrf
+                            <button type="submit" href="" class="btn-cart rounded text-center border-0"><i class='bx bx-cart-alt'></i></button>
+                        </form>
                     </div>
                 </div>
             </div>

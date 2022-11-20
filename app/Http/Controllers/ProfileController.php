@@ -54,7 +54,7 @@ class ProfileController extends Controller
         return view('other-user2',[
             "title" => "other-user",
             "active" => 'other-user',
-            "css" => 'css/other-user.css',
+            "css" => '/css/other-user.css',
             "js" => '',
             "user" => $user,
             "books" => Book::where('seller_id', $user->id)->get(),

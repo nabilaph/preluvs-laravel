@@ -5,24 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Wishlist extends Model
+class Cart extends Model
 {
     use HasFactory;
 
-    protected $table = "wishlists";
-
-    protected $primaryKey = 'wishlist_id';
-
     protected $guarded = [
-        'wishlist_id'
+        'cart_id'
     ];
 
     public function user(){
         return $this->belongsTo(User::class, 'user_id');
     }
-    
+
     public function book(){
         return $this->belongsTo(Book::class, 'book_id');
     }
-     
+
+    public function updatetotal($itemcart, $subtotal) {
+        $this->attributes['subtotal'] = $itemcart->subtotal + $subtotal;
+        $this->attributes['total'] = $itemcart->total + $subtotal;
+        self::save();
+    }
 }

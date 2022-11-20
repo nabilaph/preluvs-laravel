@@ -1,31 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts\main')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.rtl.min.css"
-        integrity="sha384-OXTEbYDqaX2ZY/BOaZV/yFGChYHtrXH2nyXJ372n2Y8abBhrqacCEe+3qhSHtLjy" crossorigin="anonymous" />
-
-    <!-- my css -->
-    <link rel="stylesheet" href="/css/other-user.css" />
-    <link rel="stylesheet" href="/css/list-books.css" />
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
-    <title>Other User Profile | Preluvs</title>
-</head>
-
-<body>
+@section('container')
     <!-- jumbotron -->
-    <section class="jumbotron text-center">
-        <img src="/{{ $user->user_pict}}" alt="Image" width="170" class="rounded-circle img-thumbnail" />
-        <h3>{{ $user->user_name }}</h3>
+    <section class="jumbotron text-center mt-5">
+        <div class="img2 position-relative">
+            <img src="/{{ $user->user_pict}}" alt="Image" width="170" class="rounded-circle img-thumbnail" />
+        </div>
+        
+        <h2 class="fw-bold mt-2">{{ $user->user_name }}</h2>
         <p class="lead">Sell Second Book | Seller</p>
-        <h4>Star Rating</h4>
+        <p>Star Rating</p>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
@@ -43,15 +27,15 @@
     <!-- gambar buku -->
     <section id="buku">
         <div class="container">
-            <div class="row text-end">
+            <div class="row">
                 <div class="col">
-                    <h2 style="font-family: 'Poppins';">Books Sold</h2>
+                    <h3 class="fw-bold">Books Sold</h3>
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row row-cols-2 row-cols-lg-4 row-cols-sm-1 w-100 mt-2">
                 @if ($books->count())
                 @foreach ($books as $book)
-                <div class="col">
+                <div class="col-lg col">
                     <div class="card card-body p-lg-4 p-sm-3 rounded-4 mx-3 mb-3">
                         <div class="img-wrapper">
                             <img src="/{{ $book->book_pict }}" alt="" class="img-container rounded-4">
@@ -79,7 +63,7 @@
             </div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#dfc9f1" fill-opacity="1"
+            <path fill="#d6efed" fill-opacity="1"
                 d="M0,160L48,154.7C96,149,192,139,288,117.3C384,96,480,64,576,53.3C672,43,768,53,864,74.7C960,96,1056,128,1152,122.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
             </path>
         </svg>
@@ -87,14 +71,13 @@
     <!-- akhir buku -->
 
     <!-- footer -->
-    <footer class="text-black text-center pb-5" style="background-color: #dfc9f1">
+    <!-- <footer class="text-black text-center pb-5" style="background-color: #dfc9f1">
         <p>Created with ❤ by Preluvs Books</p>
-    </footer>
+    </footer> -->
     <!-- akhir footer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-</body>
 
-</html>
+@endsection

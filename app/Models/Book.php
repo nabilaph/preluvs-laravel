@@ -12,6 +12,8 @@ class Book extends Model
 
     protected $primaryKey = 'book_id';
 
+    protected $table = "books";
+
     protected $guarded = [
         'book_id'
     ];
@@ -37,8 +39,8 @@ class Book extends Model
         return $this->belongsTo(User::class, 'buyer_id');
     }
 
-    public function wishlist(){
-        return $this->hasMany(Wishlist::class);
-    }
+    // public function wishlist(){
+    //     return $this->belongsToMany(User::class, 'wishlists', 'book_id', 'id');
+    // }
 
 }
