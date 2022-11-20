@@ -3,8 +3,10 @@
 @section('container')
 
     <div class="wrapper">
-        <h1 class="fw-bold">Shopping Cart</h1>
-        <div class="project">
+        <div class="d-flex justify-content-center align-items-center mb-3 section-margin">
+            <h2 class="text-center fw-bolder">{{ auth()->user()->user_name }} 's Cart</h2>
+        </div>
+        <div class="project section-margin">
             <div class="shop">
                 @if ($itemcart->count())
                     @foreach ($itemcart as $cart)
