@@ -14,10 +14,10 @@ class CreateWishlistsTable extends Migration
     public function up()
     {
         Schema::create('wishlists', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->foreignId('book_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            
+
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class CreateReportSalesTable extends Migration
     public function up()
     {
         Schema::create('report_sales', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('checkout_id')->constrained();
             $table->timestamps();

@@ -14,7 +14,7 @@ class CreateCheckoutsTable extends Migration
     public function up()
     {
         Schema::create('checkouts', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->foreignId('cart_id')->constrained();
             $table->integer('number_invoice');
             $table->string('payment_method');

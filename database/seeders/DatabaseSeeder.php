@@ -25,6 +25,43 @@ class DatabaseSeeder extends Seeder
             'user_name' => 'bia',
         ]);
 
+        Category::create(
+        [
+            'category_name' => 'Novel',
+            'category_pict' => '/img/Novel.png',
+            'category_slug' => 'novel'
+        ]);
+        Category::create(
+        [
+            'category_name' => 'Education',
+            'category_pict' => '/img/Education.png',
+            'category_slug' => 'education'
+        ]);
+        Category::create(
+        [
+            'category_name' => 'Comics',
+            'category_pict' => '/img/Comics.png',
+            'category_slug' => 'comics'
+        ]);
+        Category::create(
+        [
+            'category_name' => 'Technology',
+            'category_pict' => '/img/Technology.png',
+            'category_slug' => 'technology'
+        ]);
+        Category::create(
+        [
+            'category_name' => 'Self Improvement',
+            'category_pict' => '/img/Selfimpr.png',
+            'category_slug' => 'self-improvement'
+        ]);
+        Category::create(
+        [
+            'category_name' => 'Poetry',
+            'category_pict' => '/img/Poetry.png',
+            'category_slug' => 'poetry'
+        ]);
+
         Book::create(
         [
             'book_title' => 'Riwayat Sang Kala',
@@ -120,49 +157,6 @@ class DatabaseSeeder extends Seeder
             'book_isbn' => '9381738473',
             'category_id' =>'1',
             'user_id' =>'1'
-        ]);
-
-        Category::create(
-        [
-            'category_id' => 1,
-            'category_name' => 'Novel',
-            'category_pict' => '/img/Novel.png',
-            'category_slug' => 'novel'
-        ]);
-        Category::create(
-        [
-            'category_id' => 2,
-            'category_name' => 'Education',
-            'category_pict' => '/img/Education.png',
-            'category_slug' => 'education'
-        ]);
-        Category::create(
-        [
-            'category_id' => 3,
-            'category_name' => 'Comics',
-            'category_pict' => '/img/Comics.png',
-            'category_slug' => 'comics'
-        ]);
-        Category::create(
-        [
-            'category_id' => 4,
-            'category_name' => 'Technology',
-            'category_pict' => '/img/Technology.png',
-            'category_slug' => 'technology'
-        ]);
-        Category::create(
-        [
-            'category_id' => 5,
-            'category_name' => 'Self Improvement',
-            'category_pict' => '/img/Selfimpr.png',
-            'category_slug' => 'self-improvement'
-        ]);
-        Category::create(
-        [
-            'category_id' => 6,
-            'category_name' => 'Poetry',
-            'category_pict' => '/img/Poetry.png',
-            'category_slug' => 'poetry'
         ]);
     }
 }
