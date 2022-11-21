@@ -10,7 +10,7 @@ class Cart extends Model
     use HasFactory;
 
     protected $guarded = [
-        'cart_id'
+        'id'
     ];
 
     public function user(){

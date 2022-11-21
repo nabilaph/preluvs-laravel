@@ -10,7 +10,7 @@
             <div class="shop">
                 @if ($itemcart->count())
                     @foreach ($itemcart as $cart)
-                    <div class="box">
+                    <div class="box shadow-lg">
                         <img src="{{ $cart->book->book_pict }}" alt="">
                         <div class="content">
                             <h3 class="fw-bold">{{ $cart->book->book_title }}</h3>
@@ -29,7 +29,7 @@
                 </div>
                 @endif
             </div>
-            <div class="right-bar">
+            <div class="right-bar shadow-lg">
                 <p><span>Subtotal</span> <span>$120</span></p>
                 <hr>
                 <p><span>Tax (5%)</span> <span>$20</span></p>
@@ -38,7 +38,7 @@
                 <hr>
                 <p><span>Total</span> <span>$210</span></p>
 
-                <form action="/checkout" method="post" class="w-100">
+                <form action="/checkout" method="get" class="w-100">
                     @csrf
                     <button type="submit"
                         class="nav-link btn-prim border-0 me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">

@@ -131,5 +131,5 @@ Route::get('/user/{user:username}', [ProfileController::class, 'otheruser']);
 
 //Checkout
 Route::get('/checkout','CheckoutController@index')->middleware('auth');
-Route::post('/checkout', 'CheckoutController@store')->middleware('auth');
+Route::post('/checkout/{cart:id}', 'CheckoutController@store')->middleware('auth');
 

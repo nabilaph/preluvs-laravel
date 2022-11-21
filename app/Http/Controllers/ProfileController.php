@@ -61,7 +61,7 @@ class ProfileController extends Controller
             "css" => '/css/other-user.css',
             "js" => '',
             "user" => $user,
-            "books" => Book::where('seller_id', $user->id)->get(),
+            "books" => Book::where('user_id', $user->id)->get(),
         ]);
     }
 

@@ -11,8 +11,7 @@
             <section class="address card p-3">
                 <h5 class="mb-4 fw-bolder">Address</h5>
                 <p class="mb-2">My Address</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor doloribus fugit, repellat qui
-                    molestiae sint recusandae.</p>
+                <p>{{ auth()->user()->user_address }}</p>
                 <a class="nav-link btn-second mt-3 d-flex align-items-center justify-content-center" href="#"
                     data-bs-toggle="modal" data-bs-target="#addressEdit">
                     <i class='bx bx-pencil me-2'></i> Edit address
@@ -30,15 +29,18 @@
                                 <form>
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                        <input type="text" class="form-control" id="recipient-name">
+                                        <input type="text" class="form-control" id="recipient-name"
+                                            value="{{ auth()->user()->user_name }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">Phone:</label>
-                                        <input type="text" class="form-control" id="recipient-name">
+                                        <input type="text" class="form-control" id="recipient-name"
+                                            value="{{ auth()->user()->user_phoneNumber }}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="recipient-name" class="col-form-label">Email:</label>
-                                        <input type="text" class="form-control" id="recipient-name">
+                                        <input type="text" class="form-control" id="recipient-name"
+                                            value="{{ auth()->user()->email}}">
                                     </div>
                                     <div class="mb-3">
                                         <label for="message-text" class="col-form-label">City:</label>
@@ -61,36 +63,37 @@
             </section>
             <section class="payment-select card p-3 mt-4">
                 <h5 class="mb-4 fw-bold">Select Payment</h5>
+                
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault1" value="BCA">
                     <img class="img-fluid mx-3" src="img/bca-logo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault1">
                         BCA Virtual Account
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="MANDIRI">
                     <img class="img-fluid mx-3" src="img/mandiri-logo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         Mandiri Virtual Account
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="BNI">
                     <img class="img-fluid mx-3" src="img/bni-logo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         BNI Virtual Account
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="GOPAY">
                     <img class="img-fluid mx-3" src="img/GoPay.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         GoPay
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="OVO">
                     <img class="img-fluid mx-3" src="img/logo-ovo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         OVO
@@ -101,18 +104,18 @@
                 <h5 class="mb-4 fw-bold">Order details</h5>
                 <table class="table">
                     <tbody>
+                        @foreach ($itemcart as $item)
                         <tr>
-                            <td><img src="img/comics-demonslayer.png" alt="" width="100"></td>
-                            <td>Demon Slayer Comic</td>
-                            <td><a href="#">@username</a></td>
-                            <td class="fw-bold">Rp. 20.000</td>
+                            <td><img src="{{ $item->book->book_pict }}" alt="" width="100"></td>
+                            <td>{{ $item->book->book_title }}</td>
+                            <td>
+                                <a href="/user/{{ $item->book->seller->username }}">
+                                    {{ $item->book->seller->username }}
+                                </a>
+                            </td>
+                            <td class="fw-bold">Rp. {{ $item->book->book_price }}</td>
                         </tr>
-                        <tr>
-                            <td><img src="img/comics-miko.png" alt="" width="100"></td>
-                            <td>Miiko Comic</td>
-                            <td><a href="#">@username</a></td>
-                            <td class="fw-bold">Rp. 25.000</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </section>
@@ -142,9 +145,13 @@
                     </tr>
                 </tbody>
             </table>
-            <a class="nav-link btn-prim mt-3 d-flex align-items-center justify-content-center" href="#">
-                Proceed to payment
-            </a>
+            <form action="/checkout" method="post" class="w-100">
+                @csrf
+                <button type="submit"
+                    class="nav-link btn-prim border-0 me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
+                    Proceed to payment
+                </button>
+            </form>
         </div>
     </div>
 </div>

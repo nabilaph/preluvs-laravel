@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Cart;
 use App\Models\Checkout;
 use App\Http\Requests\StoreCheckoutRequest;
 use App\Http\Requests\UpdateCheckoutRequest;
@@ -15,7 +17,19 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        //
+        $itemuser = auth()->user()->id;
+        $itemcart = Cart::where('user_id', $itemuser)->get();
+
+        //ddd($itemwishlist);
+                            
+        $data = array(
+            'title' => 'Checkout',
+            "active" => '',
+            "css" => 'css/checkout.css',
+            "js" => '',
+            'itemcart' => $itemcart);
+
+        return view('checkout', $data);
     }
 
     /**
@@ -34,9 +48,45 @@ class CheckoutController extends Controller
      * @param  \App\Http\Requests\StoreCheckoutRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCheckoutRequest $request)
+    public function store(StoreCheckoutRequest $request, Cart $cart)
     {
-        
+        //dd($cart->all());
+
+        $itemuser = auth()->user()->id;
+        $no_invoice = Cart::where('user_id', $itemuser)->count();
+        $invoice = 'INV'.str_pad(($no_invoice + 1),'3', '0', STR_PAD_LEFT);
+
+        //dd($request['payment_method']);
+
+        $inputan = [
+            "cart_id" => $cart, 
+            "number_invoice" => $invoice,
+            "payment_method" => $request->payment_method,
+            "status" => 'Belum Dibayar'
+        ];
+
+        $checkout = Checkout::where('cart_id', $cart->id)
+                    ->first();
+
+        if ($checkout) {
+            return redirect('/profile')->with('success', 'Checkout already added!');
+        } else {
+            //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
+            
+            // $qty_book = $book->book_quantity;
+            // $total_price = $qty_book * $book->book_price;
+
+            // $inputancart['qty'] = $qty_book;
+            // $inputancart['total_price'] = $total_price;
+
+            // dd($inputancart);
+            
+            Checkout::create($inputan);
+            
+            return redirect('/profile')->with('success', 'Checkout added');
+            
+        }
+
     }
 
     /**
