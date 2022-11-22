@@ -63,37 +63,42 @@
             </section>
             <section class="payment-select card p-3 mt-4">
                 <h5 class="mb-4 fw-bold">Select Payment</h5>
-                
+
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault1" value="BCA">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault1"
+                        value="BCA">
                     <img class="img-fluid mx-3" src="img/bca-logo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault1">
                         BCA Virtual Account
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="MANDIRI">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2"
+                        value="MANDIRI">
                     <img class="img-fluid mx-3" src="img/mandiri-logo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         Mandiri Virtual Account
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="BNI">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2"
+                        value="BNI">
                     <img class="img-fluid mx-3" src="img/bni-logo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         BNI Virtual Account
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="GOPAY">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2"
+                        value="GOPAY">
                     <img class="img-fluid mx-3" src="img/GoPay.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         GoPay
                     </label>
                 </div>
                 <div class="form-check mb-2">
-                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2" value="OVO">
+                    <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault2"
+                        value="OVO">
                     <img class="img-fluid mx-3" src="img/logo-ovo.png" alt="" width="70">
                     <label class="form-check-label" for="flexRadioDefault2">
                         OVO
@@ -145,8 +150,11 @@
                     </tr>
                 </tbody>
             </table>
-            <form action="/checkout" method="post" class="w-100">
+            <form action="/checkout/{{ $itemcart }}" method="post" class="w-100">
                 @csrf
+                @foreach ($itemcart as $item)
+                <input type="text" name="cart_id[]" value="{{ $item->id }}">
+                @endforeach
                 <button type="submit"
                     class="nav-link btn-prim border-0 me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
                     Proceed to payment

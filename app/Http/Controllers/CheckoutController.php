@@ -55,8 +55,9 @@ class CheckoutController extends Controller
         $itemuser = auth()->user()->id;
         $no_invoice = Cart::where('user_id', $itemuser)->count();
         $invoice = 'INV'.str_pad(($no_invoice + 1),'3', '0', STR_PAD_LEFT);
+        $cart_id[] = $request->cart_id;
 
-        //dd($request['payment_method']);
+        dd($cart_id);
 
         $inputan = [
             "cart_id" => $cart, 
@@ -64,6 +65,8 @@ class CheckoutController extends Controller
             "payment_method" => $request->payment_method,
             "status" => 'Belum Dibayar'
         ];
+
+        dd($request);
 
         $checkout = Checkout::where('cart_id', $cart->id)
                     ->first();
