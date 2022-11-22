@@ -35,7 +35,11 @@
             </div>
             <div class="seller d-flex align-items-center justify-content-center">
                 <img class="me-3 prof-pict" src="/img/comics-haikyuu.png" alt="">
+                @if($book->user_id == auth()->user()->id)
+                <a href="/profile" class="seller-name">{{ $book->seller->user_name }}</a>
+                @else
                 <a href="/user/{{ $book->seller->username }}" class="seller-name">{{ $book->seller->user_name }}</a>
+                @endif
             </div>
         </div>
         <div class="description col-lg-6 mt-5 mt-lg-0 mx-4 mx-lg-0">
@@ -88,6 +92,9 @@
             </div>
         </div>
         <div class="buttons col-lg-3 d-flex flex-column align-items-center">
+            @if($book->user_id == auth()->user()->id)
+            <div></div>
+            @else
             <form action="/cart/{{ $book->id }}" method="post" class="w-100">
                 @csrf
                 <input type="number" value="{{ $book->id }}" name="bookId" class="d-none">
@@ -108,6 +115,7 @@
                 </button>
                 @endif
             </form>
+            @endif
         </div>
     </div>
 

@@ -58,28 +58,37 @@ class CartController extends Controller
         $itemuser = auth()->user()->id;
         //$itemproduk = Book::findOrFail($book->book_id);
         // cek dulu apakah sudah ada shopping cart untuk user yang sedang login
-        $cart = Cart::where('book_id', $book->id)
-                    ->where('user_id', $itemuser)
-                    ->first();
 
-        if ($cart) {
-            return back()->with('deleted', 'Book is already in the cart!');
+        $validateBook = Book::where('id', $book->id)
+                            ->where('user_id', $itemuser)
+                            ->first();
+        if ($validateBook) {
+            return back()->with('deleted', 'The book is yours. You cannot buy your own book.');
         } else {
-            //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
-            
-            $qty_book = $book->book_quantity;
-            $total_price = $qty_book * $book->book_price;
+            $cart = Cart::where('book_id', $book->id)
+                        ->where('user_id', $itemuser)
+                        ->first();
 
-            $inputancart['qty'] = $qty_book;
-            $inputancart['total_price'] = $total_price;
+            if ($cart) {
+                return back()->with('deleted', 'Book is already in the cart!');
+            } else {
+                //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
+                
+                $qty_book = $book->book_quantity;
+                $total_price = $qty_book * $book->book_price;
 
-            // dd($inputancart);
-            
-            Cart::create($inputancart);
-            
-            return back()->with('success', 'Book is saved to cart!');
-            
+                $inputancart['qty'] = $qty_book;
+                $inputancart['total_price'] = $total_price;
+
+                // dd($inputancart);
+                
+                Cart::create($inputancart);
+                
+                return back()->with('success', 'Book is saved to cart!');
+                
+            }
         }
+    
     }
 
     /**

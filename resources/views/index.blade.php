@@ -2,25 +2,19 @@
 
 @section('container')
 
-<!-- <div class="container menu-wrapper fixed-top d-none d-lg-block">
-        <div class="menu d-flex justify-content-center align-items-center">
-            <a class="nav-link" id="section" href="#">
-                Home
-            </a>
-            <a class="nav-link" href="#genres">
-                Genres
-            </a>
-            <a class="nav-link" href="#new-uploads">
-                New uploads
-            </a>
-            <a class="nav-link" href="#seller-leaderboard">
-                Seller leaderboard
-            </a>
-        </div>
-    </div> -->
-
 <!-- Header -->
 <section class="header">
+    @if(session()->has('success'))
+    <div class="alert alert-success mt-3 text-center" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    
+    @if(session()->has('deleted'))
+    <div class="alert alert-danger mt-3 text-center" role="alert">
+        {{ session('deleted') }}
+    </div>
+    @endif
     <div class="container">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -74,52 +68,14 @@
                             {{ $category->category_name }}
                         </p>
                         <div class="img-genre position-relative">
-                            <img src="{{ $category->category_pict }}" class="position-absolute end-0" alt="" width="100">
+                            <img src="{{ $category->category_pict }}" class="position-absolute end-0" alt=""
+                                width="100">
                         </div>
                     </div>
                 </a>
 
             </div>
             @endforeach
-            <!-- <div class="col-lg-3 col-sm-6 mb-sm-4 click-genre">
-                <a href="#">
-                    <div class="card-genre rounded-3 d-flex justify-content-between align-items-center px-3 py-3 h-100">
-                        <p>
-                            Novel
-                        </p>
-                        <div class="img-genre position-relative">
-                            <img src="img/Novel.png" class="position-absolute end-0" alt="" width="100">
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-sm-4 click-genre">
-                <a href="#">
-                    <div class="card-genre rounded-3 d-flex justify-content-between align-items-center px-3 py-3 h-100">
-                        <p>
-                            Education
-                        </p>
-                        <div class="img-genre position-relative">
-                            <img src="img/Education.png" class="position-absolute end-0" alt="" width="100">
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-sm-4 click-genre">
-                <a href="#">
-                    <div class="card-genre rounded-3 d-flex justify-content-between align-items-center px-3 py-3 h-100">
-                        <p>
-                            Technology
-                        </p>
-                        <div class="img-genre position-relative">
-                            <img src="img/Technology.png" class="position-absolute end-0" alt="" width="100">
-                        </div>
-                    </div>
-                </a>
-
-            </div> -->
         </div>
     </div>
 </section>
@@ -133,6 +89,7 @@
                 <a class="see-all" href="/books">View all</a>
             </div>
         </div>
+        
         <div class="row mt-3">
             @foreach ($books as $book)
             <div class="col-lg-3 col-md-6 col-12">
@@ -140,10 +97,11 @@
                     <div class="img-wrapper">
                         <img src="/{{ $book->book_pict }}" alt="" class="img-container rounded-4">
                     </div>
-                    <a href="/books/{{ $book->id }}""><h4 class="title mt-3">{{ $book->book_title }}</h4></a>
+                    <a href="/books/{{ $book->id }}""><h4 class=" title mt-3">{{ $book->book_title }}</h4></a>
                     <p class="author">{{ $book->book_author }}</p>
                     <div>
-                        <a href="/genres/{{ $book->category->category_slug }}" class="badge">{{ $book->category->category_name }}</a>
+                        <a href="/genres/{{ $book->category->category_slug }}" class="badge">{{
+                            $book->category->category_name }}</a>
                     </div>
                     <div class="detail d-flex justify-content-between align-items-center mt-2">
                         <h5 class="price fw-semibold m-0">
@@ -151,7 +109,8 @@
                         </h5>
                         <form action="/cart/{{ $book->id }}" method="post">
                             @csrf
-                            <button type="submit" href="" class="btn-cart rounded text-center border-0"><i class='bx bx-cart-alt'></i></button>
+                            <button type="submit" href="" class="btn-cart rounded text-center border-0"><i
+                                    class='bx bx-cart-alt'></i></button>
                         </form>
                     </div>
                 </div>
