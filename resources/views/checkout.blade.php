@@ -156,7 +156,7 @@
                 </table>
 
                 @foreach ($itemcart as $item)
-                <input type="text" name="cart_id[]" value="{{ $item->id }}">
+                <input type="hidden" name="cart_id[]" value="{{ $item->id }}">
                 @endforeach
 
                 <button type="submit"

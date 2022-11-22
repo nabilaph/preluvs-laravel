@@ -60,6 +60,7 @@ class CheckoutController extends Controller
         
         foreach ($cart as $key => $value) {
             $checkout = new Checkout();
+            $checkout->user_id = $itemuser;
             $checkout->cart_id = $value;
             $checkout->number_invoice = $invoice;
             $checkout->receipt_no = 1;

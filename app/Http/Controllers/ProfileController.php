@@ -11,8 +11,8 @@ class ProfileController extends Controller
 {
     public function index(){
         
-        $purchase = Checkout::whereId('user_id', auth()->user()->id)->get();
-        // dd($purchase);
+        $purchase = Checkout::where('user_id', auth()->user()->id)->get();
+        // dd($purchase->all());
         return view('profile',[
             "title" => "Profile",
             "active" => 'profile',

@@ -13,6 +13,10 @@ class Checkout extends Model
         'id'
     ];
 
+    public function cart(){
+        return $this->belongsTo(Cart::class, 'cart_id');
+    }
+
     public function total($itemcart, $subtotal) {
         $this->attributes['subtotal'] = $itemcart->subtotal + $subtotal;
         $this->attributes['total'] = $itemcart->total + $subtotal;

@@ -110,16 +110,16 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($purchase as $book)
+                                    @foreach ($purchase as $item)
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
-                                        <td>apakek</td>
-                                        <td><img src="/{{ $book->book_pict }}" alt="{{ $book->book_title }}"
+                                        <td>{{ $item->created_at }}</td>
+                                        <td><img src="/{{ $item->cart->book->book_pict }}" alt="{{ $item->cart->book->book_title }}"
                                                 class="w-75"></td>
-                                        <td>{{ $book->book_title }}</td>
-                                        <td>@mdo</td>
-                                        <td>{{ $book->book_price }}</td>
-                                        <td>@mdo</td>
+                                        <td>{{ $item->cart->book->book_title }}</td>
+                                        <td>{{ $item->cart->book->user_id }}</td>
+                                        <td>{{ $item->cart->book->book_price }}</td>
+                                        <td>{{ $item->receipt_no }}</td>
                                     </tr>
                                     @endforeach
 
