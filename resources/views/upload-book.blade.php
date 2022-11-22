@@ -102,7 +102,7 @@
                                 </div>
                                 @enderror
                         </div>
-                        <div class="form-group mt-3">
+                        <div class="form-group mt-3 w-25">
                             <label for="datetimepicker1">Date of Publish</label>
                             <input type="date" data-provide="datepicker" class="form-control @error('book_publishDate') is-invalid @enderror" id="datetimepicker1" name="book_publishDate"
                                 placeholder="Date of Publish of Book" value="{{ old('book_publishDate') }}" />
@@ -124,12 +124,12 @@
                         </div>
                         <div class="form-group mt-3">
                             <label for="exampleFormControlSelect1">Genre of Book</label>
-                            <select class="form-select"name="category_id">
+                            <select class="form-select" name="category_id">
                                 @foreach ($categories as $category)
                                     @if (old('category_id')) == $category->category_id)
-                                    <option value="{{ $category->category_id }}" selected>{{ $category->category_name }}</option>
+                                    <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
                                     @else
-                                    <option value="{{ $category->category_id }}">{{ $category->category_name }}</option>
+                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                     @endif
                                 @endforeach
                                 

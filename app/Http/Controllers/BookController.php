@@ -36,10 +36,6 @@ class BookController extends Controller
         ]);
     }
 
-    public function home(){
-        
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -64,7 +60,7 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        // ddd($request);
+        //dd($request->category_id);
         $validatedData = $request->validate([
                         'book_title' => 'required|min:3|max:255',
                         'slug' => 'min:3|max:255',
@@ -94,13 +90,33 @@ class BookController extends Controller
     }
 
     public function detailBook(Book $book){
-        return view('book-detail',[
-            "title" => "Book detail",
-            "active" => 'book det',
-            "css" => '/css/book-detail.css',
-            "js" => '',
-            "book" => $book
-        ]);
+
+        $itemuser = auth()->user()->id;
+        $wishlist = Wishlist::where('book_id', $book->id)
+                            ->where('user_id', $itemuser)
+                            ->first();
+
+        if ($wishlist) {
+            return view('book-detail',[
+                "title" => "Book detail",
+                "active" => 'book det',
+                "css" => '/css/book-detail.css',
+                "js" => '',
+                "book" => $book,
+                "inWishlist" => 1
+            ]);
+        } else {
+            return view('book-detail',[
+                "title" => "Book detail",
+                "active" => 'book det',
+                "css" => '/css/book-detail.css',
+                "js" => '',
+                "book" => $book,
+                "inWishlist" => 0
+            ]);
+        }
+        
+
     }
 
     

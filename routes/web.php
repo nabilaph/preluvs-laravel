@@ -54,9 +54,9 @@ Route::get('/editprofile', [ProfileController::class, 'edit'])->middleware('auth
 Route::put('/editprofile', [ProfileController::class, 'update'])->middleware('auth');
 
 // upload book
-Route::get('/uploadbook', [BookController::class, 'create'])->middleware('auth');
-Route::get('/uploadbook/checkSlug', [BookController::class, 'checkSlug'])->middleware('auth');
-Route::post('/uploadbook', [BookController::class, 'store'])->middleware('auth');
+Route::get('/uploadbook', 'BookController@create')->middleware('auth');
+//Route::get('/uploadbook/checkSlug', [BookController::class, 'checkSlug'])->middleware('auth');
+Route::post('/uploadbook', 'BookController@store')->middleware('auth');
 
 // delete book
 Route::delete('/profile/books/{book:book_title}', [BookController::class, 'destroy'])->middleware('auth');

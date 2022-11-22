@@ -14,6 +14,18 @@
         </nav> -->
 </div>
 
+@if(session()->has('success'))
+<div class="alert alert-success mt-3 text-center" role="alert">
+    {{ session('success') }}
+</div>
+@endif
+
+@if(session()->has('deleted'))
+<div class="alert alert-danger mt-3 text-center" role="alert">
+    {{ session('deleted') }}
+</div>
+@endif
+
 <!-- content -->
 <section class="card p-3 m-4">
     <div class="row section-margin mt-lg-5 mt-4">
@@ -85,11 +97,16 @@
             </form>
             <form action="/wishlist/{{ $book->id }}" method="post" class="w-100">
                 @csrf
-                <input type="number" value="{{ $book->id}}" name="bookId" class="d-none">
+                @if($inWishlist)
+                <button type="submit" class="nav-link btn-second me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
+                    <i class='bx bx-bookmark me-3'></i> Remove from wishlist
+                </button>
+                @else
                 <button type="submit"
                     class="nav-link btn-second me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
                     <i class='bx bx-bookmark me-3'></i> Add to wishlist
                 </button>
+                @endif
             </form>
         </div>
     </div>

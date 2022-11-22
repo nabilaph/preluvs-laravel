@@ -27,6 +27,18 @@
             Sains
         </button> -->
     </div>
+    @if(session()->has('success'))
+    <div class="alert alert-success mt-3 text-center" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    
+    @if(session()->has('deleted'))
+    <div class="alert alert-danger mt-3 text-center" role="alert">
+        {{ session('deleted') }}
+    </div>
+    @endif
+
     <div id="products" class="container d-flex justify-content-between">
         <div class="row row-cols-2 row-cols-lg-4 row-cols-sm-1 w-100">
             @if ($books->count())

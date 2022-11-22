@@ -63,7 +63,7 @@ class CartController extends Controller
                     ->first();
 
         if ($cart) {
-            return redirect('/profile')->with('success', 'Book is already in the cart!');
+            return back()->with('deleted', 'Book is already in the cart!');
         } else {
             //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
             
@@ -77,21 +77,9 @@ class CartController extends Controller
             
             Cart::create($inputancart);
             
-            return redirect('/profile')->with('success', 'Product saved to cart!');
+            return back()->with('success', 'Book is saved to cart!');
             
         }
-
-    
-        /*
-        $cartdata = [
-            "user_id" => auth()->user()->id,
-            "book_id" => $book->book_id,
-            "cart_item_quantity" => 1
-        ];
-
-        Cart::create($cartdata);
-
-        return redirect('/profile')->with('success', 'cart saved!'); */
     }
 
     /**

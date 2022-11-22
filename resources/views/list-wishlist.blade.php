@@ -8,6 +8,18 @@
         <h2 class="text-center fw-bolder">{{ auth()->user()->user_name }} 's Wishlist</h2>
     </div>
 
+    @if(session()->has('success'))
+    <div class="alert alert-success mt-3 text-center" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    @if(session()->has('deleted'))
+    <div class="alert alert-danger mt-3 text-center" role="alert">
+        {{ session('deleted') }}
+    </div>
+    @endif
+
     <div id="products" class="container d-flex justify-content-between">
         <div class="row row-cols-2 row-cols-lg-4 row-cols-sm-1 w-100">
             @if ($itemwishlist->count())
@@ -18,7 +30,7 @@
                         <img src="/{{ $wl->book->book_pict }}" alt="" class="img-container rounded-4">
                     </div>
                     <a href="/books/{{ $wl->book->id }}""><h4 class=" title mt-3">{{ $wl->book->book_title }}</h4>
-                        </a>
+                    </a>
                     <p class="author">{{ $wl->book->book_author }}</p>
                     <div>
                         <a href="/genres/{{ $wl->book->category->category_slug }}" class="badge">{{

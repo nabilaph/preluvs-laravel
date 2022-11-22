@@ -19,34 +19,6 @@ class WishlistController extends Controller
      */
     public function index(Request $request)
     {
-        //$user = User::where('id', auth()->user()->id)->get();
-        //$books = Book::where('book_id', $wishlist->book_id)->get();
-
-        //ddd($user->wishlist);
-
-        // $books = Book::where('book_id', $wishlist[1]->book_id)->get();
-
-        // for ($i=0; $i <= $wishlist->count(); $i++) { 
-        //     $books[$i] = Book::where('book_id', $wishlist[$i]->book_id)->get();
-        // }
-
-        // $books = $wishlist->book()->get();
-
-        // dd($books);
-
-        // $wishlist = Wishlist::where('user_id', auth()->user()->id)->get();
-
-        // dd($wishlist->wishlist_id);
-        // $books = Book::where('book_id', $wishlist->book_id->get())->get();
-
-        // return view('list-wishlist',[
-        //     "title" => "Wishlist",
-        //     "active" => 'books',
-        //     "css" => 'css/list-books.css',
-        //     "js" => '',
-        //     "user" => $user,
-        // ]);
-
         $itemuser = $request->user();
         $itemwishlist = Wishlist::where('user_id', $itemuser->id)->get();
 
@@ -91,13 +63,13 @@ class WishlistController extends Controller
                                     ->first();
         if ($validasiwishlist) {
             $validasiwishlist->delete();//kalo udah ada, berarti wishlist dihapus
-            return redirect('/profile')->with('success', 'Wishlist berhasil dihapus');
+            return back()->with('success', 'Wishlist deleted.');
         } 
         else {
             
             Wishlist::create($wldata);
 
-            return redirect('/profile')->with('success', 'Produk berhasil ditambahkan ke wishlist');
+            return back()->with('success', 'Book is added to wishlist!');
         }
     }
 
