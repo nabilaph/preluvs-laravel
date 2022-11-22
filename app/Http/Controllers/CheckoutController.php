@@ -50,45 +50,31 @@ class CheckoutController extends Controller
      */
     public function store(StoreCheckoutRequest $request, Cart $cart)
     {
-        //dd($cart->all());
+        //dd($request->all());
 
         $itemuser = auth()->user()->id;
         $no_invoice = Cart::where('user_id', $itemuser)->count();
         $invoice = 'INV'.str_pad(($no_invoice + 1),'3', '0', STR_PAD_LEFT);
-        $cart_id[] = $request->cart_id;
-
-        dd($cart_id);
-
-        $inputan = [
-            "cart_id" => $cart, 
-            "number_invoice" => $invoice,
-            "payment_method" => $request->payment_method,
-            "status" => 'Belum Dibayar'
-        ];
-
-        dd($request);
-
-        $checkout = Checkout::where('cart_id', $cart->id)
-                    ->first();
-
-        if ($checkout) {
-            return redirect('/profile')->with('success', 'Checkout already added!');
-        } else {
-            //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
-            
-            // $qty_book = $book->book_quantity;
-            // $total_price = $qty_book * $book->book_price;
-
-            // $inputancart['qty'] = $qty_book;
-            // $inputancart['total_price'] = $total_price;
-
-            // dd($inputancart);
-            
-            Checkout::create($inputan);
-            
-            return redirect('/profile')->with('success', 'Checkout added');
-            
+        $cart = $request->cart_id;
+        $payment_method = $request->payment_method;
+        
+        foreach ($cart as $key => $value) {
+            $checkout = new Checkout();
+            $checkout->cart_id = $value;
+            $checkout->number_invoice = $invoice;
+            $checkout->receipt_no = 1;
+            $checkout->payment_method = $payment_method;
+            $checkout->status = 'Belum Dibayar';
+            $checkout->save();
         }
+        
+
+            if ($checkout->save) {
+                return redirect('/profile')->with('success', 'Checkout already added!');
+            } else {
+                
+                return redirect('/profile')->with('success', 'Checkout saved!');
+            }
 
     }
 
