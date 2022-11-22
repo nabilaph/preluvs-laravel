@@ -58,18 +58,28 @@ class WishlistController extends Controller
             "book_id" => $book->id
         ];
 
-        $validasiwishlist = Wishlist::where('book_id', $book->id)
-                                    ->where('user_id', auth()->user()->id)
-                                    ->first();
-        if ($validasiwishlist) {
-            $validasiwishlist->delete();//kalo udah ada, berarti wishlist dihapus
-            return back()->with('success', 'Wishlist deleted.');
-        } 
-        else {
-            
-            Wishlist::create($wldata);
+        $itemuser = auth()->user()->id;
 
-            return back()->with('success', 'Book is added to wishlist!');
+        $validateBook = Book::where('id', $book->id)
+                            ->where('user_id', $itemuser)
+                            ->first();
+
+        if ($validateBook) {
+            return back()->with('deleted', 'The book is yours. You cannot add your book to your wishlist.');
+        } else {
+            $validasiwishlist = Wishlist::where('book_id', $book->id)
+                                        ->where('user_id', auth()->user()->id)
+                                        ->first();
+            if ($validasiwishlist) {
+                $validasiwishlist->delete();//kalo udah ada, berarti wishlist dihapus
+                return back()->with('success', 'Wishlist deleted.');
+            } 
+            else {
+                
+                Wishlist::create($wldata);
+
+                return back()->with('success', 'Book is added to wishlist!');
+            }
         }
     }
 

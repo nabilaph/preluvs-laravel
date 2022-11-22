@@ -30,7 +30,7 @@ Route::get('/', function () {
         "active" => 'home',
         "css" => 'css/style2.css',
         "js" => '',
-        "books" => Book::all()->take(4),
+        "books" => Book::latest()->take(4),
         "categories" => Category::all()->take(4),
         // "totalcart" => Cart::where('user_id', auth()->user->id)->all()
     ]);
