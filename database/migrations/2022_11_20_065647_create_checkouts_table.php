@@ -16,8 +16,8 @@ class CreateCheckoutsTable extends Migration
         Schema::create('checkouts', function (Blueprint $table) {
             $table->id('id');
             $table->foreignId('cart_id')->constrained();
-            $table->integer('number_invoice');
-            $table->string('receipt_no');
+            $table->string('number_invoice');
+            $table->string('receipt_no')->nullable();
             $table->enum('payment_method', ['BCA', 'GOPAY','OVO', 'BNI', 'MANDIRI']);
             $table->enum('status', ['Belum Dibayar', 'Sudah Dibayar','Sedang Dikirim']);
             $table->timestamps();
