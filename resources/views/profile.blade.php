@@ -105,6 +105,7 @@
                                         <th scope="col">Book title</th>
                                         <th scope="col">Seller</th>
                                         <th scope="col">Price</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Receipt number</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -118,8 +119,9 @@
                                         <td><img src="/{{ $item->cart->book->book_pict }}"
                                                 alt="{{ $item->cart->book->book_title }}" class="w-75"></td>
                                         <td>{{ $item->cart->book->book_title }}</td>
-                                        <td>{{ $item->cart->book->user_id }}</td>
+                                        <td>{{ $item->cart->book->seller->username }}</td>
                                         <td>{{ $item->cart->book->book_price }}</td>
+                                        <td>{{ $item->status }}</td>
                                         <td>{{ $item->receipt_no }}</td>
                                         <td>
 

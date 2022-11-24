@@ -63,9 +63,9 @@ class CheckoutController extends Controller
             $checkout->user_id = $itemuser;
             $checkout->cart_id = $value;
             $checkout->number_invoice = $invoice;
-            $checkout->receipt_no = 1;
+            $checkout->receipt_no = '-';
             $checkout->payment_method = $payment_method;
-            $checkout->status = 'Belum Dibayar';
+            $checkout->status = 'UNPAID';
 
             
             $checkout->save();

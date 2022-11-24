@@ -20,7 +20,7 @@ class CreateCheckoutsTable extends Migration
             $table->string('number_invoice');
             $table->string('receipt_no')->nullable();
             $table->enum('payment_method', ['BCA', 'GOPAY','OVO', 'BNI', 'MANDIRI']);
-            $table->enum('status', ['Belum Dibayar', 'Sudah Dibayar','Sedang Dikirim']);
+            $table->enum('status', ['UNPAID', 'PAID','DELIVERED']);
             $table->timestamps();
         });
     }

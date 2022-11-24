@@ -140,3 +140,15 @@ Route::post('/checkout', 'CheckoutController@store')->middleware('auth');
 //Rating
 Route::post('/saverating/{user:id}', 'RatingController@store')->middleware('auth');
 
+//Notification
+Route::get('/notification','NotificationController@index')->middleware('auth');
+//Route::post('/notification', 'NotificationController@store')->middleware('auth');
+
+//Notificationdetail
+Route::get('/notification/detail/{checkout:id}','NotificationController@detail')->middleware('auth');
+Route::put('/editstatus/{checkout:id}','NotificationController@editStatus')->middleware('auth');
+//Route::post('/notification-detail', 'NotificationDetailController@store')->middleware('auth');
+
+//EnterReceipt
+Route::get('/addreceipt/{book:id}','CheckoutController@displayreceipt')->middleware('auth');
+Route::post('/addreceipt/{book:id}','CheckoutController@storereceipt')->middleware('auth');
