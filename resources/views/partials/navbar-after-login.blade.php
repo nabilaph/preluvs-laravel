@@ -5,9 +5,9 @@
             <img src="/img/logo-round.png" alt="" width="76">
         </a>
         <div class="list-nav ms-3 w-25 d-lg-flex justify-content-evenly d-none">
-            <a href="/" class="{{ ($active === " home") ? 'navactive' : '' }}">Home</a>
-            <a href="/genres" class="{{ ($active === " genres") ? 'navactive' : '' }}">Genres</a>
-            <a href="/books" class="{{ ($active === " books") ? 'navactive' : '' }}">New uploads</a>
+            <a href="/" class="{{ ($active === 'home') ? 'navactive' : '' }}">Home</a>
+            <a href="/genres" class="{{ ($active === 'genres') ? 'navactive' : '' }}">Genres</a>
+            <a href="/books" class="{{ ($active === 'books') ? 'navactive' : '' }}">New uploads</a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

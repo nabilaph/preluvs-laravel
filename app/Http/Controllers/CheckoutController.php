@@ -66,12 +66,18 @@ class CheckoutController extends Controller
             $checkout->receipt_no = 1;
             $checkout->payment_method = $payment_method;
             $checkout->status = 'Belum Dibayar';
+
+            
             $checkout->save();
+            // $validasicart = Cart::where('id', $checkout->cart_id)
+            //                             ->first();
+            // $validasicart->delete();
+
         }
         
 
             if ($checkout->save) {
-                return redirect('/profile')->with('success', 'Checkout already added!');
+                return redirect('/profile')->with('delete', 'Checkout already added!');
             } else {
                 
                 return redirect('/profile')->with('success', 'Checkout saved!');
@@ -121,6 +127,5 @@ class CheckoutController extends Controller
      */
     public function destroy(Checkout $checkout)
     {
-        //
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rating;
 use App\Http\Requests\StoreRatingRequest;
 use App\Http\Requests\UpdateRatingRequest;
+use App\Models\User;
 
 class RatingController extends Controller
 {
@@ -34,9 +35,18 @@ class RatingController extends Controller
      * @param  \App\Http\Requests\StoreRatingRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRatingRequest $request)
+    public function store(StoreRatingRequest $request, User $user)
     {
-        //
+        // dd($request->all());
+        // dd($user);
+        $rating = [
+            "user_id" => $user->id, 
+            "ratingNum" => $request->options
+        ];
+
+        Rating::create($rating);
+
+        return back()->with('success', 'Thank you for your rating!');
     }
 
     /**

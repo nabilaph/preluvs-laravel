@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Checkout;
+use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -55,6 +56,11 @@ class ProfileController extends Controller
     }
 
     public function otheruser(User $user){
+
+        $rating = Rating::where('id', $user->id)
+                                ->get();
+
+                            
         return view('other-user2',[
             "title" => "other-user",
             "active" => 'other-user',

@@ -9,6 +9,7 @@ use GuzzleHttp\Psr7\Request;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -91,7 +92,21 @@ class BookController extends Controller
 
     public function detailBook(Book $book){
 
-        $itemuser = auth()->user()->id;
+        
+
+        if (Auth::check()) {
+            $itemuser = auth()->user()->id;
+        } else {
+            return view('book-detail',[
+                "title" => "Book detail",
+                "active" => 'book det',
+                "css" => '/css/book-detail.css',
+                "js" => '',
+                "book" => $book,
+                "inWishlist" => 0
+            ]);
+        }
+        
         $wishlist = Wishlist::where('book_id', $book->id)
                             ->where('user_id', $itemuser)
                             ->first();
@@ -115,6 +130,7 @@ class BookController extends Controller
                 "inWishlist" => 0
             ]);
         }
+
         
 
     }

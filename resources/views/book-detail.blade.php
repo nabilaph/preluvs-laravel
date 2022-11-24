@@ -35,11 +35,15 @@
             </div>
             <div class="seller d-flex align-items-center justify-content-center">
                 <img class="me-3 prof-pict" src="/img/comics-haikyuu.png" alt="">
+                @auth
                 @if($book->user_id == auth()->user()->id)
                 <a href="/profile" class="seller-name">{{ $book->seller->user_name }}</a>
                 @else
                 <a href="/user/{{ $book->seller->username }}" class="seller-name">{{ $book->seller->user_name }}</a>
                 @endif
+                @else
+                <a href="/user/{{ $book->seller->username }}" class="seller-name">{{ $book->seller->user_name }}</a>
+                @endauth
             </div>
         </div>
         <div class="description col-lg-6 mt-5 mt-lg-0 mx-4 mx-lg-0">
@@ -92,20 +96,23 @@
             </div>
         </div>
         <div class="buttons col-lg-3 d-flex flex-column align-items-center">
+            @auth
             @if($book->user_id == auth()->user()->id)
             <div></div>
             @else
             <form action="/cart/{{ $book->id }}" method="post" class="w-100">
                 @csrf
                 <input type="number" value="{{ $book->id }}" name="bookId" class="d-none">
-                <button class="nav-link btn-prim me-lg-3 d-flex align-items-center justify-content-center w-100 border-0">
+                <button
+                    class="nav-link btn-prim me-lg-3 d-flex align-items-center justify-content-center w-100 border-0">
                     <i class='bx bx-cart-alt me-3'></i> Add to cart
                 </button>
             </form>
             <form action="/wishlist/{{ $book->id }}" method="post" class="w-100">
                 @csrf
                 @if($inWishlist)
-                <button type="submit" class="nav-link btn-second me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
+                <button type="submit"
+                    class="nav-link btn-second me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
                     <i class='bx bx-bookmark me-3'></i> Remove from wishlist
                 </button>
                 @else
@@ -116,6 +123,31 @@
                 @endif
             </form>
             @endif
+            @else
+            <form action="/cart/{{ $book->id }}" method="post" class="w-100">
+                @csrf
+                <input type="number" value="{{ $book->id }}" name="bookId" class="d-none">
+                <button
+                    class="nav-link btn-prim me-lg-3 d-flex align-items-center justify-content-center w-100 border-0">
+                    <i class='bx bx-cart-alt me-3'></i> Add to cart
+                </button>
+            </form>
+            <form action="/wishlist/{{ $book->id }}" method="post" class="w-100">
+                @csrf
+                @if($inWishlist)
+                <button type="submit"
+                    class="nav-link btn-second me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
+                    <i class='bx bx-bookmark me-3'></i> Remove from wishlist
+                </button>
+                @else
+                <button type="submit"
+                    class="nav-link btn-second me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
+                    <i class='bx bx-bookmark me-3'></i> Add to wishlist
+                </button>
+                @endif
+            </form>
+            @endauth
+
         </div>
     </div>
 

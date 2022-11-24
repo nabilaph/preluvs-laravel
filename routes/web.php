@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,7 @@ Route::get('/', function () {
         "active" => 'home',
         "css" => 'css/style2.css',
         "js" => '',
-        "books" => Book::latest()->take(4),
+        "books" => Book::all()->take(4),
         "categories" => Category::all()->take(4),
         // "totalcart" => Cart::where('user_id', auth()->user->id)->all()
     ]);
@@ -120,6 +121,9 @@ Route::get('/notification', function () {
 Route::post('/cart/{book:id}','CartController@store')->middleware('auth');
 Route::get('/cart','CartController@index')->middleware('auth');
 
+// delete cart
+Route::delete('/cart/{cart:id}', 'CartController@destroy')->middleware('auth');
+
 // wishlist
 Route::get('/wishlist', 'WishlistController@index')->middleware('auth');
 Route::post('/wishlist/{book:id}', 'WishlistController@store')->middleware('auth');
@@ -132,4 +136,7 @@ Route::get('/user/{user:username}', [ProfileController::class, 'otheruser']);
 //Checkout
 Route::get('/checkout','CheckoutController@index')->middleware('auth');
 Route::post('/checkout', 'CheckoutController@store')->middleware('auth');
+
+//Rating
+Route::post('/saverating/{user:id}', 'RatingController@store')->middleware('auth');
 
