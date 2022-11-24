@@ -50,6 +50,30 @@ class User extends Authenticatable
     public function book(){
         return $this->hasMany(Book::class);
     }
+
+    public function ratingtotal($user){
+
+        $rating = Rating::where('user_id', $user->id)
+                        ->get();
+        
+        $meanrating = 0;
+        
+        if ($rating->count()) {
+            $totalrow = $rating->count();
+            //dd($totalrow);
+            $totalrating = 0;
+            
+            foreach ($rating as $key => $value) {
+                $totalrating = $totalrating + $value->ratingNum;
+            }
+    
+            $meanrating = round(($totalrating / $totalrow), 2);
+           
+        }      
+
+
+        return $meanrating;
+    }
     
     // public function wishlist(){
     //     return $this->belongsToMany(Book::class, 'wishlists', 'user_id', 'book_id');

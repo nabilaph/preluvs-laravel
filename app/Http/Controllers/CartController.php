@@ -134,6 +134,8 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         $itemcart = Cart::findOrFail($cart);
+
+        dd($itemcart);
         if ($itemcart->delete()) {
             return back()->with('success', 'Cart berhasil dihapus');
         } else {

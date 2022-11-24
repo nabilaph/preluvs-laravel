@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Checkout;
 use Illuminate\Http\Request;
 
@@ -44,10 +45,15 @@ class NotificationController extends Controller
     public function editStatus(Checkout $checkout){
 
         $itemcheckout =$checkout->id;
-        //dd($itemcheckout);
+        $itembook =$checkout->cart()->first();
+        
+        //dd($itembook->book_id);
 
         Checkout::where('id', $itemcheckout)
-                ->update(['status' => 'Sudah Dibayar']);
+                ->update(['status' => 'PAID']);
+        
+        Book::where('id', $itembook->book_id)
+                ->update(['isBookPaid' => 1]);
 
         return redirect('/profile')->with('success', 'Your order is paid. The seller will send your book(s).');
     }

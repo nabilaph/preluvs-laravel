@@ -10,7 +10,7 @@
         <h2 class="fw-bold mt-2">{{ $user->user_name }}</h2>
         <p class="lead">Sell Second Book | Seller</p>
         <p>Star Rating</p>
-        <h2 class="fa fa-star checked badge bg-white">  5</h2>
+        <h2 class="fa fa-star checked badge bg-white">  {{ $rating }}</h2>
         <span class=""></span>
 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">

@@ -18,7 +18,7 @@
                 <h2 class="product-name fw-bold"> {{ $notif->cart->book->book_title }}</h2>
                 <h4 class="product-price mb-3">Rp. {{ $notif->cart->book->book_price }}</h4>
                 @switch($notif->status)
-                @case('Belum Dibayar')
+                @case('UNPAID')
                 <p class="product-description"> Your book has not been paid </p>
                 <form action="/editstatus/{{ $notif->id }}" method="post">
                     @method('put')
@@ -28,13 +28,13 @@
                     </div>
                 </form>
                 @break
-                @case('Sudah Dibayar')
+                @case('PAID')
                 <p class="product-description"> Your book has been paid</p>
                 <div class="btn-groups">
                     <button type="button" class="close-btn rounded">Back</button>
                 </div>
                 @break
-                @case('Sedang Dikirim')
+                @case('DELIVERED')
                 <p class="product-description"> Your book has been delivered. Your receipt number is {{
                     $notif->receipt_no }} </p>
                 <div class="btn-groups">

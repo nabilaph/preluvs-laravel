@@ -11,16 +11,23 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index(){
+
+        $itemuser = auth()->user();
+        $meanrating = User::ratingtotal($itemuser);
+
+        //dd($meanrating);
+        $purchase = Checkout::where('user_id', $itemuser->id)->get();
+
         
-        $purchase = Checkout::where('user_id', auth()->user()->id)->get();
         // dd($purchase->all());
         return view('profile',[
             "title" => "Profile",
             "active" => 'profile',
             "css" => 'css/profile.css',
             "js" => '',
-            "selling" => Book::where('user_id', auth()->user()->id)->get(),
-            "purchase" => $purchase
+            "selling" => Book::where('user_id', $itemuser->id)->get(),
+            "purchase" => $purchase,
+            "rating" => $meanrating,
         ]);
     }
 
@@ -55,11 +62,27 @@ class ProfileController extends Controller
        return redirect('/profile')->with('success', 'Profile detail has been saved.');
     }
 
+    
+
     public function otheruser(User $user){
 
-        $rating = Rating::where('id', $user->id)
-                                ->get();
+        // $rating = Rating::where('user_id', $user->id)
+        //                 ->get();
 
+        // $totalrow = $rating->count();
+        // //dd($totalrow);
+        // $totalrating = 0;
+        
+        // foreach ($rating as $key => $value) {
+        //     $totalrating = $totalrating + $value->ratingNum;
+        // }
+
+        // $meanrating = round(($totalrating / $totalrow), 2);
+
+        
+        $meanrating = User::ratingtotal($user);
+        
+        //dd($meanrating);
                             
         return view('other-user2',[
             "title" => "other-user",
@@ -68,7 +91,10 @@ class ProfileController extends Controller
             "js" => '',
             "user" => $user,
             "books" => Book::where('user_id', $user->id)->get(),
+            "rating" => $meanrating
         ]);
     }
+
+    
 
 }

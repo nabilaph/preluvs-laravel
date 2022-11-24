@@ -13,7 +13,7 @@
         @if ($checkout->count())
         @foreach ($checkout as $item)
         @switch($item->status)
-        @case('Belum Dibayar')
+        @case('UNPAID')
         <a href="/notification/detail/{{ $item->id }}">
             <div class="notify_item" id="notify_img">
                 <div class="notify_img">
@@ -30,7 +30,7 @@
             </div>
         </a>
         @break
-        @case('Sudah Dibayar')
+        @case('PAID')
         <a href="/notification/detail/{{ $item->id }}">
             <div class="notify_item" id="notify_img">
                 <div class="notify_img">
@@ -48,7 +48,7 @@
         </a>
 
         @break
-        @case('Sedang Dikirim')
+        @case('DELIVERED')
         <a href="/notification/detail/{{ $item->id }}">
             <div class="notify_item" id="notify_img">
                 <div class="notify_img">

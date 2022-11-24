@@ -19,6 +19,7 @@
                     <div class="main-text text-center position-relative">
                         <h3 class="fw-bold">{{ auth()->user()->user_name }}</h3>
                         <p>{{ auth()->user()->username }}</p>
+                        <h2 class="fa fa-star checked badge bg-white border mb-2" style="color: orange;"> {{ $rating }}</h2>
                     </div>
                 </div>
 

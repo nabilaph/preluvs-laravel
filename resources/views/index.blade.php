@@ -9,7 +9,7 @@
         {{ session('success') }}
     </div>
     @endif
-    
+
     @if(session()->has('deleted'))
     <div class="alert alert-danger mt-3 text-center" role="alert">
         {{ session('deleted') }}
@@ -89,7 +89,7 @@
                 <a class="see-all" href="/books">View all</a>
             </div>
         </div>
-        
+
         <div class="row mt-3">
             @foreach ($books as $book)
             <div class="col-lg-3 col-md-6 col-12">
@@ -141,31 +141,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($leaderboard as $item)
                         <tr>
-                            <th scope="row">1</th>
-                            <td><a href="#">Mark</a></td>
-                            <td>5.0 <i class='bx bxs-star text-warning fs-1'></i></td>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td><a href="/user/{{ $item->user->username }}">{{ $item->user->username }}</a></td>
+                            <td>{{ $item->totalrate }} <i class='bx bxs-star text-warning fs-1'></i></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td><a href="#">Jacob</a></td>
-                            <td>4.5 <i class='bx bxs-star text-warning fs-1'></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td><a href="#">Mark</a></td>
-                            <td>4.2 <i class='bx bxs-star text-warning fs-1'></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td><a href="#">Mark</a></td>
-                            <td>4.2 <i class='bx bxs-star text-warning fs-1'></i></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td><a href="#">Mark</a></td>
-                            <td>4.2 <i class='bx bxs-star text-warning fs-1'></i></td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

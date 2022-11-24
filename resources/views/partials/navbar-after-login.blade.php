@@ -34,11 +34,11 @@
                 </a>
                 <a class="nav-link me-3" href="/cart">
                     <i class='bx bx-cart-alt'></i>
-                    <span class="badge badge-cart rounded-circle position-absolute" style="background-color: #898aa6;">
+                    <!-- <span class="badge badge-cart rounded-circle position-absolute" style="background-color: #898aa6;">
                         5
-                    </span>
+                    </span> -->
                 </a>
-                <div class="dropdown profile-dd mx-3">
+                <div class="dropdown profile-dd">
                     <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class='bx bx-user-circle'></i>
                     </a>

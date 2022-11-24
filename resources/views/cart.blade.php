@@ -29,10 +29,10 @@
                     <h3 class="fw-bold">{{ $cart->book->book_title }}</h3>
                     <h4>Price: IDR. {{ $cart->book->book_price }}</h4>
                     <p class="unit">Quantity: <input value="{{ $cart->book->book_quantity }}"></p>
-                    <form action="/cart/{{ $cart->id }}" method="post" class="w-100 d-flex align-items-end">
-                        @method('delete')
+                    <form action="/cartdel/{{ $cart->id }}" method="post" class="w-100 d-flex align-items-end">
                         @csrf
-                        <button class="btn btn-danger d-flex w-50 justify-content-between align-items-center"
+                        @method("DELETE")
+                        <button type="submit" class="btn btn-danger d-flex justify-content-around align-items-center"
                             onclick="return confirm('Are you sure want to remove this item?')">
                             <i class='bx bx-trash mr-5'></i>
                             <span class="btn2">Remove</span></button>

@@ -2,15 +2,18 @@
 
 use App\Models\Book;
 use App\Models\Cart;
+use App\Models\User;
+use App\Models\Rating;
 use App\Models\Category;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +29,20 @@ use App\Http\Controllers\RatingController;
 // Homepage
 Route::get('/', function () {
 
+    $rating = DB::table('ratings')
+                 ->select('user_id', DB::raw('count(id) as total'))
+                 ->groupBy('user_id')
+                 ->select('user_id', DB::raw('round(avg(ratingNum),2) as totalrate'))
+                 //->select('user_id', DB::raw('avg(totalrate) as totalrate'))
+                 //->avg('totalrate')
+                 ->orderBy('totalrate', 'desc')
+                 ->get();
+                 //->avg('totalrate');
+    
+                 dd($rating);
+    $user = User::where('id', $rating->user_id)->get();
+    
+
     return view('index',[
         "title" => "Home",
         "active" => 'home',
@@ -33,7 +50,7 @@ Route::get('/', function () {
         "js" => '',
         "books" => Book::all()->take(4),
         "categories" => Category::all()->take(4),
-        // "totalcart" => Cart::where('user_id', auth()->user->id)->all()
+        "leaderboard" => $rating
     ]);
 });
 
@@ -120,9 +137,7 @@ Route::get('/notification', function () {
 //Cart
 Route::post('/cart/{book:id}','CartController@store')->middleware('auth');
 Route::get('/cart','CartController@index')->middleware('auth');
-
-// delete cart
-Route::delete('/cart/{cart:id}', 'CartController@destroy')->middleware('auth');
+Route::delete('/cartdel/{cart:id}', [CartController::class, 'destroy'])->middleware('auth');
 
 // wishlist
 Route::get('/wishlist', 'WishlistController@index')->middleware('auth');
