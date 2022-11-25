@@ -27,32 +27,7 @@ use App\Http\Controllers\WishlistController;
 */
 
 // Homepage
-Route::get('/', function () {
-
-    $rating = DB::table('ratings')
-                 ->select('user_id', DB::raw('count(id) as total'))
-                 ->groupBy('user_id')
-                 ->select('user_id', DB::raw('round(avg(ratingNum),2) as totalrate'))
-                 //->select('user_id', DB::raw('avg(totalrate) as totalrate'))
-                 //->avg('totalrate')
-                 ->orderBy('totalrate', 'desc')
-                 ->get();
-                 //->avg('totalrate');
-    
-                 dd($rating);
-    $user = User::where('id', $rating->user_id)->get();
-    
-
-    return view('index',[
-        "title" => "Home",
-        "active" => 'home',
-        "css" => 'css/style2.css',
-        "js" => '',
-        "books" => Book::all()->take(4),
-        "categories" => Category::all()->take(4),
-        "leaderboard" => $rating
-    ]);
-});
+Route::get('/', 'HomepageController@index');
 
 // Login
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
