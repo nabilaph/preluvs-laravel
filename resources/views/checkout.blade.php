@@ -1,4 +1,4 @@
-@extends('layouts\main')
+@extends('layoutsmain')
 
 @section('container')
 
@@ -157,6 +157,7 @@
 
                 @foreach ($itemcart as $item)
                 <input type="hidden" name="cart_id[]" value="{{ $item->id }}">
+
                 @endforeach
 
                 <button type="submit"

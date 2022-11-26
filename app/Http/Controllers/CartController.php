@@ -133,10 +133,10 @@ class CartController extends Controller
      */
     public function destroy(Cart $cart)
     {
-        $itemcart = Cart::findOrFail($cart);
+        $itemcart = Cart::destroy($cart->id);
 
-        dd($itemcart);
-        if ($itemcart->delete()) {
+        //dd($itemcart);
+        if ($itemcart) {
             return back()->with('success', 'Cart berhasil dihapus');
         } else {
             return back()->with('error', 'Cart gagal dihapus');

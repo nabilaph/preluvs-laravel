@@ -51,7 +51,7 @@ class User extends Authenticatable
         return $this->hasMany(Book::class);
     }
 
-    public function ratingtotal($user){
+    public static function ratingtotal($user){
 
         $rating = Rating::where('user_id', $user->id)
                         ->get();

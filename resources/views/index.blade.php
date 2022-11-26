@@ -141,13 +141,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- @foreach ($leaderboard as $item)
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td><a href="/user/{{ $item->user->username }}">{{ $item->user->username }}</a></td>
-                            <td>{{ $item->totalrate }} <i class='bx bxs-star text-warning fs-1'></i></td>
-                        </tr>
-                        @endforeach -->
+                        
 
                     </tbody>
                 </table>

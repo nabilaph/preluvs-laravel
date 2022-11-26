@@ -21,7 +21,7 @@ class BookController extends Controller
     public function index()
     {
         // dd(request('searchbook'));
-        $books= Book::latest();
+        $books= Book::orderBy('id', 'DESC');
 
         if(request('searchbook')){
             $books->where('book_title','like', '%'. request('searchbook'). '%');

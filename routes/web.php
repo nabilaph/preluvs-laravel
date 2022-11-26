@@ -142,3 +142,5 @@ Route::put('/editstatus/{checkout:id}','NotificationController@editStatus')->mid
 //EnterReceipt
 Route::get('/addreceipt/{book:id}','CheckoutController@displayreceipt')->middleware('auth');
 Route::post('/addreceipt/{book:id}','CheckoutController@storereceipt')->middleware('auth');
+
+Route::get('/billing','CheckoutController@displaybilling')->middleware('auth');
