@@ -14,6 +14,7 @@ class ProfileController extends Controller
 
         $itemuser = auth()->user();
         $meanrating = User::ratingtotal($itemuser);
+        $totalrating = Rating::where('user_id', $itemuser->id)->count();
 
         //dd($meanrating);
         $purchase = Checkout::where('user_id', $itemuser->id)->get();
@@ -28,6 +29,7 @@ class ProfileController extends Controller
             "selling" => Book::where('user_id', $itemuser->id)->get(),
             "purchase" => $purchase,
             "rating" => $meanrating,
+            "totalrating" => $totalrating
         ]);
     }
 
@@ -81,7 +83,7 @@ class ProfileController extends Controller
 
         
         $meanrating = User::ratingtotal($user);
-        
+        $totalrating = Rating::where('user_id', $user->id)->count();
         //dd($meanrating);
                             
         return view('other-user2',[
@@ -91,7 +93,8 @@ class ProfileController extends Controller
             "js" => '',
             "user" => $user,
             "books" => Book::where('user_id', $user->id)->get(),
-            "rating" => $meanrating
+            "rating" => $meanrating,            
+            "totalrating" => $totalrating
         ]);
     }
 

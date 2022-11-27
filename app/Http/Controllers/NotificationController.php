@@ -11,7 +11,9 @@ class NotificationController extends Controller
     public function index()
     {
         $itemuser = auth()->user()->id;
-        $itemcheckout = Checkout::where('user_id', $itemuser)->get();
+        $itemcheckout = Checkout::where('user_id', $itemuser)
+                                ->orderBy('updated_at', 'desc')
+                                ->get();
 
         //dd($itemcheckout);
         return view('notifications',[

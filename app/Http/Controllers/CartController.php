@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
 use App\Models\Book;
+use App\Models\Cart;
+use App\Models\Checkout;
 use App\Http\Requests\StoreCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 
@@ -74,31 +75,40 @@ class CartController extends Controller
         $validateBook = Book::where('id', $book->id)
                             ->where('user_id', $itemuser)
                             ->first();
+        $validatecheckout = Checkout::where('book_id', $book->id)
+                            ->first();
+
+        
         if ($validateBook) {
             return back()->with('deleted', 'The book is yours. You cannot buy your own book.');
         } else {
-            $cart = Cart::where('book_id', $book->id)
-                        ->where('user_id', $itemuser)
-                        ->first();
-
-            if ($cart) {
-                return back()->with('deleted', 'Book is already in the cart!');
+            if ($validatecheckout) {
+                return back()->with('deleted', 'The book is already sold for another buyer.');
             } else {
-                //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
-                
-                $qty_book = $book->book_quantity;
-                $total_price = $qty_book * $book->book_price;
-
-                $inputancart['qty'] = $qty_book;
-                $inputancart['total_price'] = $total_price;
-
-                // dd($inputancart);
-                
-                Cart::create($inputancart);
-                
-                return back()->with('success', 'Book is saved to cart!');
-                
+                $cart = Cart::where('book_id', $book->id)
+                            ->where('user_id', $itemuser)
+                            ->first();
+    
+                if ($cart) {
+                    return back()->with('deleted', 'Book is already in the cart!');
+                } else {
+                    //nyari jumlah cart berdasarkan user yang sedang login untuk dibuat no invoice
+                    
+                    $qty_book = $book->book_quantity;
+                    $total_price = $qty_book * $book->book_price;
+    
+                    $inputancart['qty'] = $qty_book;
+                    $inputancart['total_price'] = $total_price;
+    
+                    // dd($inputancart);
+                    
+                    Cart::create($inputancart);
+                    
+                    return back()->with('success', 'Book is saved to cart!');
+                    
+                }
             }
+            
         }
     
     }

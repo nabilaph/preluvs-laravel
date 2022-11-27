@@ -55,16 +55,16 @@
             <p><span>Shipping</span> <span>Rp. 9000</span></p>
             <hr>
             <p class="fw-bold"><span>Total</span> <span>Rp. {{ $total }}</span></p>
-            <form action="/checkout" method="get" class="w-75 d-flex">
+            <form action="/checkout" method="get" class="w-100 d-flex justify-content-center">
                 @csrf
                 @if($itemcart->count())
                 <button type="submit"
-                    class="nav-link btn-prim border-0 me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100">
+                    class="nav-link btn-prim border-0 d-flex align-items-center justify-content-center w-100">
                     <i class='fa fa-shopping-cart me-2'></i> Checkout
                 </button>
                 @else
                 <button type="submit"
-                    class="nav-link btn-prim border-0 me-lg-3 mt-3 d-flex align-items-center justify-content-center w-100 disabled">
+                    class="nav-link btn-prim border-0 d-flex align-items-center justify-content-center w-100 disabled">
                     <i class='fa fa-shopping-cart me-2'></i> Checkout
                 </button>
                 @endif

@@ -97,7 +97,9 @@
                     <div class="img-wrapper">
                         <img src="/{{ $book->book_pict }}" alt="" class="img-container rounded-4">
                     </div>
-                    <a href="/books/{{ $book->id }}"><h4 class=" title mt-3">{{ $book->book_title }}</h4></a>
+                    <a href="/books/{{ $book->id }}">
+                        <h4 class=" title mt-3">{{ $book->book_title }}</h4>
+                    </a>
                     <p class="author">{{ $book->book_author }}</p>
                     <div>
                         <a href="/genres/{{ $book->category->category_slug }}" class="badge">{{
@@ -141,8 +143,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
-
+                        @foreach($leaderboard as $item)
+                        <tr>
+                            <th scope="col">{{ $loop->iteration }}</th>
+                            <th scope="col">
+                                <a href="/user/{{ $item->user->username }}">
+                                    {{ $item->user->username }}
+                                </a>
+                            </th>
+                            <th scope="col"><i class='bx bxs-star' style="color: orange;"></i> {{ $item->ratingavg }}
+                            </th>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

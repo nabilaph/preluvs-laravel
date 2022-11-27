@@ -30,9 +30,11 @@
                 @break
                 @case('PAID')
                 <p class="product-description"> Your book has been paid</p>
-                <div class="btn-groups">
-                    <button type="button" class="close-btn rounded">Back</button>
-                </div>
+                <form action="/notification" method="get">
+                    <div class="btn-groups">
+                        <button type="submit" class="close-btn rounded">Back</button>
+                    </div>
+                </form>
                 @break
                 @case('DELIVERED')
                 <p class="product-description"> Your book has been delivered. Your receipt number is {{
