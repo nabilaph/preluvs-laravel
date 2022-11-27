@@ -117,11 +117,11 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $item->created_at }}</td>
-                                        <td><img src="/{{ $item->cart->book->book_pict }}"
-                                                alt="{{ $item->cart->book->book_title }}" class="w-75"></td>
-                                        <td>{{ $item->cart->book->book_title }}</td>
-                                        <td>{{ $item->cart->book->seller->username }}</td>
-                                        <td>{{ $item->cart->book->book_price }}</td>
+                                        <td><img src="/{{ $item->book->book_pict }}"
+                                                alt="{{ $item->book->book_title }}" class="w-75"></td>
+                                        <td><a href="/books/{{ $item->book->id }}">{{ $item->book->book_title }}</a></td>
+                                        <td><a href="/user/{{ $item->book->seller->username }}">{{ $item->book->seller->username }}</a></td>
+                                        <td>{{ $item->book->book_price }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->receipt_no }}</td>
                                         <td>
@@ -141,7 +141,7 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="/saverating/{{ $item->cart->book->seller->id }}" method="post" class="w-100">
+                                                            <form action="/saverating/{{ $item->book->seller->id }}" method="post" class="w-100">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <div class="row">
@@ -151,16 +151,16 @@
                                                                                     alt="">
                                                                             </div>
                                                                             <div class="img2 position-relative">
-                                                                                <img src="{{ $item->cart->book->seller->user_pict }}"
+                                                                                <img src="{{ $item->book->seller->user_pict }}"
                                                                                     alt="">
                                                                             </div>
                                                                             <div
                                                                                 class="main-text text-center position-relative">
                                                                                 <h3 class="fw-bold">{{
-                                                                                    $item->cart->book->seller->user_name
+                                                                                    $item->book->seller->user_name
                                                                                     }}</h3>
                                                                                 <p>{{
-                                                                                    $item->cart->book->seller->user_username
+                                                                                    $item->book->seller->user_username
                                                                                     }}</p>
                                                                             </div>
                                                                         </div>

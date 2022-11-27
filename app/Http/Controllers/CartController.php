@@ -19,14 +19,26 @@ class CartController extends Controller
         $itemuser = auth()->user()->id;
         $itemcart = Cart::where('user_id', $itemuser)->get();
 
-        //ddd($itemwishlist);
+        // ddd($itemcart);
+        $subtotalcart = 0;
+
+        foreach ($itemcart as $key => $value) {
+            //dd($value);
+            $subtotalcart = $subtotalcart + $value->total_price;
+        }
+
+        $totalcart = $subtotalcart + 9000;
                             
         $data = array(
             'title' => auth()->user()->user_name.' Cart',
             "active" => 'cart',
             "css" => 'css/cart.css',
             "js" => '',
-            'itemcart' => $itemcart);
+            'itemcart' => $itemcart,
+            'subtotal' => $subtotalcart,
+            'total' => $totalcart,
+            
+        );
 
         return view('cart', $data);
     }

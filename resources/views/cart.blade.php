@@ -20,15 +20,18 @@
     @endif
 
     <div class="project section-margin">
+
         <div class="shop">
             @if ($itemcart->count())
             @foreach ($itemcart as $cart)
-            <div class="box shadow-lg">
-                <img src="{{ $cart->book->book_pict }}" alt="">
-                <div class="content">
+            <div class="box p-3 shadow-lg d-flex flex-row align-items-center">
+                <input class="form-check-input" type="radio" name="selectedcart" id="selectedcart" value="{{ $cart->book->id }}"
+                    class="my-auto mr-3 h-100">
+                <img src="{{ $cart->book->book_pict }}" alt="" class="m-3">
+                <div class="content ms-3">
                     <h3 class="fw-bold">{{ $cart->book->book_title }}</h3>
                     <h4>Price: IDR. {{ $cart->book->book_price }}</h4>
-                    <p class="unit">Quantity: <input value="{{ $cart->book->book_quantity }}"></p>
+                    <p class="unit">Quantity: <input value="{{ $cart->book->book_quantity }}" disabled></p>
                     <form action="/cartdel/{{ $cart->id }}" method="post" class="w-100 d-flex align-items-end">
                         @csrf
                         @method("DELETE")
@@ -47,15 +50,12 @@
             @endif
         </div>
         <div class="right-bar shadow-lg">
-            <p><span>Subtotal</span> <span>$120</span></p>
+            <p><span>Subtotal</span> <span>Rp. {{ $subtotal }}</span></p>
             <hr>
-            <p><span>Tax (5%)</span> <span>$20</span></p>
+            <p><span>Shipping</span> <span>Rp. 9000</span></p>
             <hr>
-            <p><span>Shipping</span> <span>$70</span></p>
-            <hr>
-            <p><span>Total</span> <span>$210</span></p>
-
-            <form action="/checkout" method="get" class="w-100">
+            <p class="fw-bold"><span>Total</span> <span>Rp. {{ $total }}</span></p>
+            <form action="/checkout" method="get" class="w-75 d-flex">
                 @csrf
                 @if($itemcart->count())
                 <button type="submit"

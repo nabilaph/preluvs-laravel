@@ -7,7 +7,7 @@
         <div class="product-div shadow w-75 d-flex justify-content-around align-items-center p-4 mx-auto rounded">
             <div class="product-div-left">
                 <div class="img-container text-center">
-                    <img src="/{{ $notif->cart->book->book_pict }}" alt="watch">
+                    <img src="/{{ $notif->book->book_pict }}" alt="watch">
                 </div>
                 <!-- {{-- <div class="hover-container">
                     <div><img src="/img/buk_1.jpg"></div>
@@ -15,8 +15,8 @@
                 </div> --}} -->
             </div>
             <div class="product-div-right">
-                <h2 class="product-name fw-bold"> {{ $notif->cart->book->book_title }}</h2>
-                <h4 class="product-price mb-3">Rp. {{ $notif->cart->book->book_price }}</h4>
+                <h2 class="product-name fw-bold"> {{ $notif->book->book_title }}</h2>
+                <h4 class="product-price mb-3">Rp. {{ $notif->book->book_price }}</h4>
                 @switch($notif->status)
                 @case('UNPAID')
                 <p class="product-description"> Your book has not been paid </p>
@@ -43,7 +43,7 @@
                 @break
                 @endswitch
 
-                
+
             </div>
         </div>
     </div>

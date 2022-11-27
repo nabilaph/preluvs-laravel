@@ -48,32 +48,44 @@ class CheckoutController extends Controller
      * @param  \App\Http\Requests\StoreCheckoutRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCheckoutRequest $request, Cart $cart)
+    public function store(StoreCheckoutRequest $request)
     {
         //dd($request->all());
 
         $itemuser = auth()->user()->id;
         $no_invoice = Cart::where('user_id', $itemuser)->count();
         $invoice = 'INV'.str_pad(($no_invoice + 1),'3', '0', STR_PAD_LEFT);
-        $cart = $request->cart_id;
+        $cart = Cart::where('user_id', $itemuser)->first();
         $payment_method = $request->payment_method;
+
+        //dd($cart->book_id);
+
+        $checkout = new Checkout();
+        $checkout->user_id = $itemuser;
+        $checkout->book_id = $cart->book_id;
+        $checkout->number_invoice = $invoice;
+        $checkout->receipt_no = '-';
+        $checkout->payment_method = $payment_method;
+        $checkout->status = 'UNPAID';
+
+        $checkout->save();
         
-        foreach ($cart as $key => $value) {
-            $checkout = new Checkout();
-            $checkout->user_id = $itemuser;
-            $checkout->cart_id = $value;
-            $checkout->number_invoice = $invoice;
-            $checkout->receipt_no = '-';
-            $checkout->payment_method = $payment_method;
-            $checkout->status = 'UNPAID';
+        // foreach ($cart as $key => $value) {
+        //     $checkout = new Checkout();
+        //     $checkout->user_id = $itemuser;
+        //     $checkout->book_id = $value;
+        //     $checkout->number_invoice = $invoice;
+        //     $checkout->receipt_no = '-';
+        //     $checkout->payment_method = $payment_method;
+        //     $checkout->status = 'UNPAID';
 
             
-            $checkout->save();
-            // $validasicart = Cart::where('id', $checkout->cart_id)
-            //                             ->first();
-            // $validasicart->delete();
+        //     $checkout->save();
+        //     // $validasicart = Cart::where('id', $checkout->cart_id)
+        //     //                             ->first();
+        //     // $validasicart->delete();
 
-        }
+        // }
         
 
             if ($checkout->save) {

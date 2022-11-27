@@ -13,8 +13,8 @@ class Checkout extends Model
         'id'
     ];
 
-    public function cart(){
-        return $this->belongsTo(Cart::class, 'cart_id');
+    public function book(){
+        return $this->belongsTo(Book::class, 'book_id');
     }
 
     public function total($itemcart, $subtotal) {

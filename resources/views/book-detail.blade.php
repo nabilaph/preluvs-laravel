@@ -34,7 +34,7 @@
                 <img class="img-fluid rounded-2" src="/{{ $book->book_pict}}" alt="">
             </div>
             <div class="seller d-flex align-items-center justify-content-center">
-                <img class="me-3 prof-pict" src="/img/comics-haikyuu.png" alt="">
+                <img class="me-3 prof-pict" src="/{{ $book->seller->user_pict }}" alt="">
                 @auth
                 @if($book->user_id == auth()->user()->id)
                 <a href="/profile" class="seller-name">{{ $book->seller->user_name }}</a>
@@ -96,6 +96,10 @@
             </div>
         </div>
         <div class="buttons col-lg-3 d-flex flex-column align-items-center">
+            @if($book->isBookPaid)
+            <h4 class="text-danger fw-bold mb-3">SOLD</h4>
+            @else
+            <h4 class="text-success fw-bold mb-3">AVAILABLE</h4>
             @auth
             @if($book->user_id == auth()->user()->id)
             <div></div>
@@ -103,8 +107,7 @@
             <form action="/cart/{{ $book->id }}" method="post" class="w-100">
                 @csrf
                 <input type="number" value="{{ $book->id }}" name="bookId" class="d-none">
-                <button
-                    class="nav-link btn-prim me-lg-3 d-flex align-items-center justify-content-center w-100 border-0">
+                <button class="nav-link btn-prim me-lg-3 d-flex align-items-center justify-content-center w-100 border-0">
                     <i class='bx bx-cart-alt me-3'></i> Add to cart
                 </button>
             </form>
@@ -127,8 +130,7 @@
             <form action="/cart/{{ $book->id }}" method="post" class="w-100">
                 @csrf
                 <input type="number" value="{{ $book->id }}" name="bookId" class="d-none">
-                <button
-                    class="nav-link btn-prim me-lg-3 d-flex align-items-center justify-content-center w-100 border-0">
+                <button class="nav-link btn-prim me-lg-3 d-flex align-items-center justify-content-center w-100 border-0">
                     <i class='bx bx-cart-alt me-3'></i> Add to cart
                 </button>
             </form>
@@ -147,6 +149,9 @@
                 @endif
             </form>
             @endauth
+            @endif
+
+            
 
         </div>
     </div>

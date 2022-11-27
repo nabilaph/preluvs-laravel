@@ -45,7 +45,7 @@ class NotificationController extends Controller
     public function editStatus(Checkout $checkout){
 
         $itemcheckout =$checkout->id;
-        $itembook =$checkout->cart()->first();
+        $itembook =$checkout->first();
         
         //dd($itembook->book_id);
 
