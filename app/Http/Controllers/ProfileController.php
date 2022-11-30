@@ -19,6 +19,11 @@ class ProfileController extends Controller
         //dd($meanrating);
         $purchase = Checkout::where('user_id', $itemuser->id)->get();
 
+        $selling = Book::where('user_id', $itemuser->id)->get();
+
+        // $sellingbuyer = Checkout::where('book_id', $selling->id)->get();
+
+        // dd($sellingbuyer);
         
         // dd($purchase->all());
         return view('profile',[
@@ -26,7 +31,7 @@ class ProfileController extends Controller
             "active" => 'profile',
             "css" => 'css/profile.css',
             "js" => '',
-            "selling" => Book::where('user_id', $itemuser->id)->get(),
+            "selling" => $selling,
             "purchase" => $purchase,
             "rating" => $meanrating,
             "totalrating" => $totalrating

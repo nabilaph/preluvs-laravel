@@ -31,7 +31,7 @@ class Book extends Model
 
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
-    } 
+    }
 
     // public function buyer(){
     //     return $this->belongsTo(User::class, 'buyer_id');

@@ -4,29 +4,27 @@
 
 <div class="wrapper">
     <div id="buttons" class="d-flex justify-content-center">
-        <a class="button-value mx-2" onclick="filterProduct('All')" href="/books">
+        <a class="button-value mx-2 {{ Request::is('books')  ? 'active' : '' }}" onclick="filterProduct('All')" href="/books">
             All
         </a>
-        @foreach ($categories as $category)
-        <a class="button-value mx-2" onclick="filterProduct('{{ $category->category_name }}')"
+        <!-- @foreach ($categories as $category)
+        <a class="button-value mx-2 {{ ($active === $category->category_slug) ? 'active' : '' }}" onclick="filterProduct('{{ $category->category_name }}')"
             href="/genres/{{ $category->category_slug }}">{{ $category->category_name }}</a>
-        @endforeach
-        <!-- <button class="button-value mx-2" onclick="filterProduct('Comic')">
-            Comic
-        </button>
-        <button class="button-value mx-2" onclick="filterProduct('Novel')">
-            Novel
-        </button>
-        <button class="button-value mx-2" onclick="filterProduct('Education')">
-            Education
-        </button>
-        <button class="button-value mx-2" onclick="filterProduct('Technology')">
-            Technology
-        </button>
-        <button class="button-value mx-2" onclick="filterProduct('Sains')">
-            Sains
-        </button> -->
+        @endforeach -->
+        <a class="button-value mx-2 {{ Request::is('genres/novel')  ? 'active' : '' }}" onclick="filterProduct('novel')"
+            href="/genres/novel">Novel</a>
+        <a class="button-value mx-2 {{ Request::is('genres/education')  ? 'active' : '' }}" onclick="filterProduct('education')"
+            href="/genres/education">Education</a>
+        <a class="button-value mx-2 {{ Request::is('genres/comics')  ? 'active' : '' }}" onclick="filterProduct('comics')"
+            href="/genres/comics">Comics</a>
+        <a class="button-value mx-2 {{ Request::is('genres/technology')  ? 'active' : '' }}"
+            onclick="filterProduct('technology')" href="/genres/technology">Technology</a>
+        <a class="button-value mx-2 {{ Request::is('genres/self-improvement')  ? 'active' : '' }}"
+            onclick="filterProduct('self-improvement')" href="/genres/self-improvement">Self Improvment</a>
+        <a class="button-value mx-2 {{ Request::is('genres/poetry')  ? 'active' : '' }}" onclick="filterProduct('poetry')"
+            href="/genres/poetry">Poetry</a>
     </div>
+
     @if(session()->has('success'))
     <div class="alert alert-success mt-3 text-center" role="alert">
         {{ session('success') }}

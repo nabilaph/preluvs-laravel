@@ -251,14 +251,19 @@
                         Sold
                     </td>
                     @endif
-                    <td>{{ $book->category->category_name }}</td>
-                    <td>@mdo</td>
+                    <td>buyer name</td>
+                    <td>receipt number</td>
                     <td class="d-flex flex-column justify-content-between">
                         <a class="btn btn-prim mb-2" href="/books/{{ $book->book_id }}" role="button">Details</a>
                         <a class="btn btn-second" href="/profile/books/{{ $book->book_title }}/edit"
                             role="button">Edit</a>
-                        <a class="btn btn-second my-2" href="enter-receipt.html" role="button">Add
+                        @if ($book->isBookPaid == 0)
+                        <a class="btn btn-second disabled my-2" href="/addreceipt/{{ $book->id }}" role="button" style="pointer-events: none">Add
                             receipt</a>
+                        @else
+                        <a class="btn btn-second my-2" href="/addreceipt/{{ $book->id }}" role="button">Add
+                            receipt</a>
+                        @endif
                         <form action="/profile/books/{{ $book->book_title }}" method="post">
                             @method('delete')
                             @csrf

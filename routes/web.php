@@ -42,13 +42,11 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 // Profile
 Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
-
 Route::get('/editprofile', [ProfileController::class, 'edit'])->middleware('auth');
 Route::put('/editprofile', [ProfileController::class, 'update'])->middleware('auth');
 
 // upload book
 Route::get('/uploadbook', 'BookController@create')->middleware('auth');
-//Route::get('/uploadbook/checkSlug', [BookController::class, 'checkSlug'])->middleware('auth');
 Route::post('/uploadbook', 'BookController@store')->middleware('auth');
 
 // delete book
@@ -77,7 +75,7 @@ Route::get('/genres', function () {
 Route::get('/genres/{category:category_slug}', function(Category $category){
     return view('list-books',[
         "title" => $category->category_name,
-        "active" => '',
+        "active" => $category->category_slug,
         "css" => '/css/list-books.css',
         "js" => '',
         "books" => $category->books,
@@ -89,26 +87,6 @@ Route::get('/genres/{category:category_slug}', function(Category $category){
 // book detail
 Route::get('/books/{book:id}', [BookController::class, 'detailBook']);
 
-//Receipt
-Route::get('/enter-receipt', function () {
-    return view('enter-receipt',[
-        "title" => "Enter Receipt",
-        "active" => 'enter recipt',
-        "css" => 'css/enter-receipt.css',
-        "js" => '',
-    ]);
-})->middleware('auth');
-
-//Notification
-Route::get('/notification', function () {
-    return view('notifications',[
-        "title" => "Notifications",
-        "active" => 'notif',
-        "css" => 'css/notification.css',
-        "js" => 'js/notifications.js',
-    ]);
-})->middleware('auth');
-
 //Cart
 Route::post('/cart/{book:id}','CartController@store')->middleware('auth');
 Route::get('/cart','CartController@index')->middleware('auth');
@@ -117,8 +95,6 @@ Route::delete('/cartdel/{cart:id}', [CartController::class, 'destroy'])->middlew
 // wishlist
 Route::get('/wishlist', 'WishlistController@index')->middleware('auth');
 Route::post('/wishlist/{book:id}', 'WishlistController@store')->middleware('auth');
-// Route::get('/wishlist', '\App\Http\Controllers\WishlistController@index')->middleware('auth');
-// Route::post('/wishlist/{book:book_id}', '\App\Http\Controllers\WishlistController@store')->middleware('auth');
 
 // other user
 Route::get('/user/{user:username}', [ProfileController::class, 'otheruser']);
@@ -137,10 +113,10 @@ Route::get('/notification','NotificationController@index')->middleware('auth');
 //Notificationdetail
 Route::get('/notification/detail/{checkout:id}','NotificationController@detail')->middleware('auth');
 Route::put('/editstatus/{checkout:id}','NotificationController@editStatus')->middleware('auth');
-//Route::post('/notification-detail', 'NotificationDetailController@store')->middleware('auth');
 
 //EnterReceipt
 Route::get('/addreceipt/{book:id}','CheckoutController@displayreceipt')->middleware('auth');
-Route::post('/addreceipt/{book:id}','CheckoutController@storereceipt')->middleware('auth');
+Route::put('/addreceipt/{checkout:id}','CheckoutController@storereceipt')->middleware('auth');
 
+// Billing
 Route::get('/billing','CheckoutController@displaybilling')->middleware('auth');

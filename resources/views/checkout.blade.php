@@ -136,12 +136,12 @@
                         <tr>
                             <td class="fw-bold">Subtotal</td>
                             <td></td>
-                            <td>Rp. 45.000</td>
+                            <td class="text-end">Rp. {{ $subtotal }}</td>
                         </tr>
                         <tr>
                             <td class="fw-bold">Shipping cost</td>
                             <td></td>
-                            <td>Rp. 9.000</td>
+                            <td class="text-end">Rp. 9000</td>
                         </tr>
                         <tr>
                             <td>
@@ -149,7 +149,7 @@
                             </td>
                             <td></td>
                             <td>
-                                <h5 class="mb-4 fw-bold">Rp. 54.000</h5>
+                                <h5 class="mb-4 fw-bold text-end">Rp. {{ $total }}</h5>
                             </td>
                         </tr>
                     </tbody>
@@ -157,6 +157,7 @@
 
                 @foreach ($itemcart as $item)
                 <input type="hidden" name="cart_id[]" value="{{ $item->id }}">
+                <input type="hidden" name="book_id[]" value="{{ $item->book_id }}">
 
                 @endforeach
 

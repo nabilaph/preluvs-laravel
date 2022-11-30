@@ -147,9 +147,21 @@
                         <tr>
                             <th scope="col">{{ $loop->iteration }}</th>
                             <th scope="col">
+                                @auth
+                                @if (Auth::user()->id == $item->user->id )
+                                <a href="/profile">
+                                    {{ $item->user->username }}
+                                </a>
+                                @else
                                 <a href="/user/{{ $item->user->username }}">
                                     {{ $item->user->username }}
                                 </a>
+                                @endif
+                                @else
+                                <a href="/user/{{ $item->user->username }}">
+                                    {{ $item->user->username }}
+                                </a>
+                                @endauth
                             </th>
                             <th scope="col"><i class='bx bxs-star' style="color: orange;"></i> {{ $item->ratingavg }}
                             </th>

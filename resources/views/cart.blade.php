@@ -25,8 +25,8 @@
             @if ($itemcart->count())
             @foreach ($itemcart as $cart)
             <div class="box p-3 shadow-lg d-flex flex-row align-items-center">
-                <input class="form-check-input" type="radio" name="selectedcart" id="selectedcart" value="{{ $cart->book->id }}"
-                    class="my-auto mr-3 h-100">
+                <!-- <input class="form-check-input" type="radio" name="selectedcart" id="selectedcart" value="{{ $cart->book->id }}"
+                    class="my-auto mr-3 h-100"> -->
                 <img src="{{ $cart->book->book_pict }}" alt="" class="m-3">
                 <div class="content ms-3">
                     <h3 class="fw-bold">{{ $cart->book->book_title }}</h3>
@@ -50,11 +50,11 @@
             @endif
         </div>
         <div class="right-bar shadow-lg">
-            <p><span>Subtotal</span> <span>Rp. {{ $subtotal }}</span></p>
+            <p><span>Subtotal</span> <span class="text-end">Rp. {{ $subtotal }}</span></p>
             <hr>
-            <p><span>Shipping</span> <span>Rp. 9000</span></p>
+            <p><span>Shipping</span> <span class="text-end">Rp. 9000</span></p>
             <hr>
-            <p class="fw-bold"><span>Total</span> <span>Rp. {{ $total }}</span></p>
+            <p class="fw-bold" style="font-size: 26px;"><span>Total</span> <span class="text-end">Rp. {{ $total }}</span></p>
             <form action="/checkout" method="get" class="w-100 d-flex justify-content-center">
                 @csrf
                 @if($itemcart->count())

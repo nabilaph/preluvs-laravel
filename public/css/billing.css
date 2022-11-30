@@ -33,6 +33,15 @@ p{
 i {
   font-size: 1.8rem;
 }
+a{
+  color: var(--primaryDarkColor);
+  text-decoration: underline !important;
+  
+}
+a:hover{
+  color: var(--primaryColor);
+  font-weight: 600;
+}
 .heading {
   font-size: 24px;
   font-weight: 700;

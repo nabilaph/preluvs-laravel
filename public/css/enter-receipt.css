@@ -16,6 +16,16 @@ html,body{
     font-family: var(--mainFont);
 }
 
+a{
+  color: var(--primaryDarkColor);
+  text-decoration: underline !important;
+  
+}
+a:hover{
+  color: var(--primaryColor);
+  font-weight: 600;
+}
+
 .card{
     width:350px;
     height:400px;
