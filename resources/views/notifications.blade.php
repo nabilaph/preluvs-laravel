@@ -6,6 +6,19 @@
     <div class="d-flex justify-content-center align-items-center mb-3 section-margin">
         <h2 class="text-center fw-bolder">{{ auth()->user()->user_name }} 's Notification</h2>
     </div>
+
+    @if(session()->has('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    
+    @if(session()->has('deleted'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('deleted') }}
+    </div>
+    @endif
+    
     <div class="notification_wrap">
         {{-- <div class="notification_icon">
             <i class="fas fa-bell"></i>
@@ -59,7 +72,6 @@
                     <p>Your book has been delivered
                     <p>
                     <div class="notify_desc">
-                        <p>Your book has been delivered
                         <p>Your receipt number for Book <span>" {{ $item->book->book_title }} " </span>
                         <p> is {{ $item->receipt_no }} </p>
                     </div>

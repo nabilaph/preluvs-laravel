@@ -33,7 +33,7 @@ class NotificationController extends Controller
                                 ->where('user_id', $itemuser)
                                 ->first();
 
-        //dd($itemcheckout->all());
+        //dd($itemcheckout->id);
         return view('notification-detail',[
             "title" => "NotificationDetail",
             "active" => 'NotificationDetail',
@@ -47,16 +47,28 @@ class NotificationController extends Controller
     public function editStatus(Checkout $checkout){
 
         $itemcheckout =$checkout->id;
-        $itembook =$checkout->first();
+        $itembook =$checkout->book_id;
         
-        //dd($itembook->book_id);
+        //dd($itembook);
 
-        Checkout::where('id', $itemcheckout)
-                ->update(['status' => 'PAID']);
+        $statuschange = Checkout::where('id', $itemcheckout)
+                                ->update(['status' => 'PAID']);
         
-        Book::where('id', $itembook->book_id)
-                ->update(['isBookPaid' => 1]);
+        if ($statuschange) {
+            $bookpaid = Book::where('id', $itembook)
+                                ->update(['isBookPaid' => 1]);
 
-        return redirect('/profile')->with('success', 'Your order is paid. The seller will send your book(s).');
+            //dd($bookpaid);
+            if ($bookpaid) {
+                return redirect('/profile')->with('success', 'Your order is paid. The seller will send your book(s).');
+            } else {
+                return back()->with('deleted', 'failed.');
+            }
+            
+        } else {
+            return back()->with('deleted', 'failed.');
+        }
+        
+        
     }
 }

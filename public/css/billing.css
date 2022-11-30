@@ -21,7 +21,7 @@ body {
   font-size: 1.1rem;
   background-color: white;
 }
-img{
+.img-pay{
   margin-top: -60px;
 }
 p1{
@@ -35,7 +35,6 @@ i {
 }
 a{
   color: var(--primaryDarkColor);
-  text-decoration: underline !important;
   
 }
 a:hover{

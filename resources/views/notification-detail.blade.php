@@ -24,6 +24,7 @@
                     @method('put')
                     @csrf
                     <div class="btn-groups">
+                        <input type="hidden" name="checkoutid" value="{{ $notif->id }}">
                         <button type="submit" class="close-btn rounded">Already paid</button>
                     </div>
                 </form>

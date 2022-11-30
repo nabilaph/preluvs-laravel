@@ -62,27 +62,27 @@
             </div>
             @switch($payment_method)
                 @case('BCA')
-                    <div class="img">
+                    <div class="img-pay">
                         <img src="/img/bca-logo.png" alt="image" height="150" width="150">
                     </div>
                     @break
                 @case('GOPAY')
-                    <div class="img">
+                    <div class="img-pay">
                         <img src="/img/GoPay.png" alt="image" height="150" width="150">
                     </div>
                     @break
                 @case('OVO')
-                    <div class="img">
+                    <div class="img-pay">
                         <img src="/img/logo-ovo.png" alt="image" height="150" width="150">
                     </div>
                     @break
                 @case('BNI')
-                    <div class="img">
+                    <div class="img-pay">
                         <img src="/img/bni-logo.png" alt="image" height="150" width="150">
                     </div>
                     @break
                 @case('MANDIRI')
-                    <div class="img">
+                    <div class="img-pay">
                         <img src="/img/mandiri-logo.png" alt="image" height="150" width="150">
                     </div>
                     @break
@@ -101,7 +101,7 @@
            
         </div>
         <div class="alert alert-secondary w-75 mt-5 mx-auto" role="alert">
-            You can confirm your payment through <span><a href="/notification">notification</a></span>. Click your book ordered and then click <b>Already paid</b> button.
+            You can confirm your payment through <span><a class="text-decoration-underline" href="/notification">notification</a></span>. Click your book ordered and then click <b>Already paid</b> button.
         </div>
     </div>
 </div>
