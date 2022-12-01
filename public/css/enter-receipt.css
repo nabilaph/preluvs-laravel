@@ -18,7 +18,6 @@ html,body{
 
 a{
   color: var(--primaryDarkColor);
-  text-decoration: underline !important;
   
 }
 a:hover{

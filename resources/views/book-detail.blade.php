@@ -52,8 +52,8 @@
                     <a href="/genres/{{ $book->category->category_slug }}" class="badge">{{
                         $book->category->category_name }}</a>
                 </div>
-                <h3 class="fw-bolder">{{ $book->book_title }}</h3>
-                <a href="">{{ $book->book_author }}</a>
+                <h3 class="fw-bolder my-2">{{ $book->book_title }}</h3>
+                <p class="my-2">{{ $book->book_author }}</p>
 
             </div>
             <h3 class="my-3 fw-bold" style="color: #6c6d89;">Rp{{ $book->book_price }}</h3>
@@ -159,7 +159,7 @@
 </section>
 
 <!-- comment section -->
-<section class="comment card p-3 m-4">
+<!-- <section class="comment card p-3 m-4">
     <h5 class="fw-semibold mb-3">Comments (2)</h5>
     <div class="form-floating mb-3">
         <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
@@ -245,6 +245,6 @@
         </div>
     </div>
 
-</section>
+</section> -->
 
 @endsection

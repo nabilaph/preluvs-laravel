@@ -6,7 +6,7 @@
 
     @if($checkout->receipt_no !== '-')
     <div class="alert alert-danger mt-5 mb-3" role="alert">
-        The receipt number was already sent to the buyer. <span><a class="text-decoration-" href="/profile">Back to
+        The receipt number was already sent to the buyer. <span><a class="text-decoration-underline" href="/profile">Back to
                 profile</a></span>.
     </div>
     @else
@@ -22,6 +22,10 @@
         <div class="col-8">
             <h3>The book will be delivered to</h3>
             <table class="w-100 table table-light table-bordered mt-4">
+                <tr>
+                    <th>No. invoice</th>
+                    <td>{{ $checkout->number_invoice }}</td>
+                </tr>
                 <tr>
                     <th>Buyer name</th>
                     <td>{{ $checkout->user->user_name }}</td>
