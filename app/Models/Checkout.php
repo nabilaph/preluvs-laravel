@@ -17,6 +17,10 @@ class Checkout extends Model
         return $this->belongsTo(Book::class, 'book_id');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function total($itemcart, $subtotal) {
         $this->attributes['subtotal'] = $itemcart->subtotal + $subtotal;
         $this->attributes['total'] = $itemcart->total + $subtotal;

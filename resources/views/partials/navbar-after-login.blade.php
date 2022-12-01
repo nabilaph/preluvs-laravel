@@ -61,10 +61,10 @@
                         Menu
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Home</a></li>
-                        <li><a class="dropdown-item" href="#">Genres</a></li>
-                        <li><a class="dropdown-item" href="#">New uploads</a></li>
-                        <li><a class="dropdown-item" href="#">Seller leaderboard</a></li>
+                        <li><a class="dropdown-item" href="/">Home</a></li>
+                        <li><a class="dropdown-item" href="/genres">Genres</a></li>
+                        <li><a class="dropdown-item" href="/books">New uploads</a></li>
+                        <li><a class="dropdown-item" href="/#seller-leaderboard">Seller leaderboard</a></li>
                     </ul>
                 </div>
             </div>

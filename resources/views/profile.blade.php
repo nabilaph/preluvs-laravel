@@ -229,8 +229,6 @@
                     <th scope="col">Book title</th>
                     <th scope="col">Price</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Buyer</th>
-                    <th scope="col">Receipt number</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -239,7 +237,7 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $book->created_at }}</td>
-                    <td><img src="/{{ $book->book_pict }}" alt="{{ $book->book_title }}" class="w-100"></td>
+                    <td><img src="/{{ $book->book_pict }}" alt="{{ $book->book_title }}" class="w-75"></td>
                     <td>{{ $book->book_title }}</td>
                     <td>{{ $book->book_price }}</td>
                     @if ($book->isBookPaid == 0)
@@ -251,8 +249,6 @@
                         Sold
                     </td>
                     @endif
-                    <td>buyer name</td>
-                    <td>receipt number</td>
                     <td class="d-flex flex-column justify-content-between">
                         <a class="btn btn-prim mb-2" href="/books/{{ $book->book_id }}" role="button">Details</a>
                         <a class="btn btn-second" href="/profile/books/{{ $book->book_title }}/edit"
