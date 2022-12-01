@@ -249,8 +249,9 @@
                         Sold
                     </td>
                     @endif
+                    
                     <td class="d-flex flex-column justify-content-between">
-                        <a class="btn btn-prim mb-2" href="/books/{{ $book->book_id }}" role="button">Details</a>
+                        <a class="btn btn-prim mb-2" href="/books/{{ $book->id }}" role="button">Details</a>
                         <a class="btn btn-second" href="/profile/books/{{ $book->book_title }}/edit"
                             role="button">Edit</a>
                         @if ($book->isBookPaid == 0)
