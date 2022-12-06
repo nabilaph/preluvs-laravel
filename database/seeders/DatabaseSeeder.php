@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Book;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Rating;
 use Illuminate\Database\Seeder;
 
 
@@ -29,6 +30,24 @@ class DatabaseSeeder extends Seeder
             'email' => 'bia@gmail.com',
             'password' => bcrypt('grande'),
             'user_name' => 'Grande',
+        ]);
+        User::create([
+            'username' => 'inasamany',
+            'email' => 'inasamany@gmail.com',
+            'password' => bcrypt('inasinas'),
+            'user_name' => 'Inas Amany',
+        ]);
+        User::create([
+            'username' => 'tiarayaya',
+            'email' => 'yaya@gmail.com',
+            'password' => bcrypt('yaya123'),
+            'user_name' => 'Tiara',
+        ]);
+        User::create([
+            'username' => 'putrinabila',
+            'email' => 'putri@gmail.com',
+            'password' => bcrypt('bia1234'),
+            'user_name' => 'Putri',
         ]);
 
         Category::create(
@@ -162,7 +181,95 @@ class DatabaseSeeder extends Seeder
             'book_publishDate' => '2022-11-01',
             'book_isbn' => '9381738473',
             'category_id' =>'1',
-            'user_id' =>'1'
+            'user_id' =>'2'
+        ]);
+        Book::create(
+        [
+            'book_title' => 'Disruption',
+            'book_pict' => 'book-pics/LDz0f3h2STZtldDZOICAqyhLgW0JrU9szBqnb1gp.webp',
+            'book_price' => '46000',
+            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_author' => 'Rhenald Kasali',
+            'book_quantity' => '1',
+            'book_pageNum' => '456',
+            'book_lang' => 'English',
+            'book_publisher' => 'Gramedia',
+            'book_publishDate' => '2022-11-01',
+            'book_isbn' => '9381738473',
+            'category_id' =>'4',
+            'user_id' =>'2'
+        ]);
+
+        // rating
+        Rating::create(
+        [
+            'user_id' => '1',
+            'ratingNum' => '3',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '1',
+            'ratingNum' => '5',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '1',
+            'ratingNum' => '4',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '1',
+            'ratingNum' => '4',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '2',
+            'ratingNum' => '5',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '2',
+            'ratingNum' => '2',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '2',
+            'ratingNum' => '3',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '3',
+            'ratingNum' => '3',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '3',
+            'ratingNum' => '5',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '4',
+            'ratingNum' => '2',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '4',
+            'ratingNum' => '3',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '5',
+            'ratingNum' => '1',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '5',
+            'ratingNum' => '5',
+        ]);
+        Rating::create(
+        [
+            'user_id' => '5',
+            'ratingNum' => '5',
         ]);
     }
 }

@@ -27,38 +27,42 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <div class="modal-body">
-                                    <form>
+                                <!-- <form action="/editaddress" method="post">
+                                    @method('put')
+                                    @csrf -->
+                                    <div class="modal-body">
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                            <input type="text" class="form-control" id="recipient-name"
-                                                value="{{ auth()->user()->user_name }}">
+                                            <input type="text"
+                                                class="form-control @error('user_name') is-invalid @enderror"
+                                                id="recipient-name" value="{{ auth()->user()->user_name }}"
+                                                name="user_name">
                                         </div>
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">Phone:</label>
-                                            <input type="text" class="form-control" id="recipient-name"
-                                                value="{{ auth()->user()->user_phoneNumber }}">
+                                            <input type="text"
+                                                class="form-control @error('user_phoneNumber') is-invalid @enderror"
+                                                id="recipient-name" value="{{ auth()->user()->user_phoneNumber }}"
+                                                name="user_phoneNumber">
                                         </div>
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">Email:</label>
-                                            <input type="text" class="form-control" id="recipient-name"
-                                                value="{{ auth()->user()->email}}">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="message-text" class="col-form-label">City:</label>
-                                            <input type="text" class="form-control" id="recipient-name">
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror"
+                                                id="recipient-name" value="{{ auth()->user()->email}}" name="email">
                                         </div>
                                         <div class="mb-3">
                                             <label for="message-text" class="col-form-label">Address:</label>
-                                            <textarea class="form-control" id="message-text"></textarea>
+                                            <textarea class="form-control  @error('user_address') is-invalid @enderror"
+                                                name="user_address"
+                                                id="message-text">{{ auth()->user()->user_address }}</textarea>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-secondary"
+                                            data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                <!-- </form> -->
 
                             </div>
                         </div>

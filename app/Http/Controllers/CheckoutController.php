@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Checkout;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCheckoutRequest;
 use App\Http\Requests\UpdateCheckoutRequest;
 
@@ -205,9 +207,28 @@ class CheckoutController extends Controller
      * @param  \App\Models\Checkout  $checkout
      * @return \Illuminate\Http\Response
      */
-    public function edit(Checkout $checkout)
+    public function editAddress(Request $request)
     {
-        //
+        $itemuser = auth()->user()->id;
+
+        $validatedData = $request->validate([
+                        'user_name' => 'required|min:3|max:255',
+                        'user_phoneNumber' => 'required',
+                        'email' => 'required|email:dns',                        
+                        'user_address' => 'required',
+                    ]);
+
+        $validasi = User::where('id', $itemuser)
+                            ->update($validatedData);
+
+        if ($validasi) {
+            return back()->with('delete', 'Address change failed!');
+
+        } else {
+                
+            return back()->with('success','Address changed');
+        }
+        
     }
 
     /**

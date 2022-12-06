@@ -35,7 +35,7 @@ class NotificationController extends Controller
 
         //dd($itemcheckout->id);
         return view('notification-detail',[
-            "title" => "NotificationDetail",
+            "title" => "Notification detail",
             "active" => 'NotificationDetail',
             "css" => '/css/notification-detail.css',
             "js" => '',
