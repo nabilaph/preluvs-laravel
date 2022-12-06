@@ -207,7 +207,7 @@ class CheckoutController extends Controller
      * @param  \App\Models\Checkout  $checkout
      * @return \Illuminate\Http\Response
      */
-    public function editAddress(Request $request)
+    public function editAddress(Request $request, User $user)
     {
         $itemuser = auth()->user()->id;
 

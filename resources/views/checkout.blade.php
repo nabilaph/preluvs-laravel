@@ -12,9 +12,8 @@
                 <!-- address -->
                 <section class="address card p-3">
                     <h5 class="mb-4 fw-bolder">Address</h5>
-                    <p class="mb-2">My Address</p>
                     <p>{{ auth()->user()->user_address }}</p>
-                    <a class="nav-link btn-second mt-3 d-flex align-items-center justify-content-center" href="#"
+                    <!-- <a class="nav-link btn-second mt-3 d-flex align-items-center justify-content-center" href="#"
                         data-bs-toggle="modal" data-bs-target="#addressEdit">
                         <i class='bx bx-pencil me-2'></i> Edit address
                     </a>
@@ -27,9 +26,9 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <!-- <form action="/editaddress" method="post">
+                               <form action="/editaddress/{{ auth()->user()->id }}" method="post">
                                     @method('put')
-                                    @csrf -->
+                                    @csrf
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label for="recipient-name" class="col-form-label">Recipient:</label>
@@ -62,11 +61,11 @@
                                             data-bs-dismiss="modal">Close</button>
                                         <button type="submit" class="btn btn-primary">Save changes</button>
                                     </div>
-                                <!-- </form> -->
+                                </form>
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </section>
 
                 <section class="payment-select card p-3 mt-4">

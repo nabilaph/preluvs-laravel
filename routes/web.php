@@ -102,7 +102,7 @@ Route::get('/user/{user:username}', [ProfileController::class, 'otheruser']);
 //Checkout
 Route::get('/checkout','CheckoutController@index')->middleware('auth');
 Route::post('/checkout', 'CheckoutController@store')->middleware('auth');
-Route::put('/editaddress','CheckoutController@editAddress')->middleware('auth');
+Route::put('/editaddress/{user:id}','CheckoutController@editAddress')->middleware('auth');
 
 //Rating
 Route::post('/saverating/{user:id}', 'RatingController@store')->middleware('auth');

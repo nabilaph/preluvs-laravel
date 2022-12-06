@@ -80,6 +80,14 @@
             </div>
             @endif
 
+            @if(auth()->user()->user_phoneNumber === null)
+            <div class="alert alert-info d-flex" role="alert">
+                <i class='bx bxs-info-circle me-3'></i>
+                You have to complete your profile first. <a href="/editprofile" class="text-decoration-underline"> Edit
+                    your profile</a>.
+            </div>
+            @endif
+
             <div class="row">
                 <ul class="nav nav-pills nav-justified mb-3" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
