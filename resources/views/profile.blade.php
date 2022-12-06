@@ -19,7 +19,9 @@
                     <div class="main-text text-center position-relative">
                         <h3 class="fw-bold">{{ auth()->user()->user_name }}</h3>
                         <p>{{ auth()->user()->username }}</p>
-                        <h2 class="fa fa-star checked badge bg-white border mb-2" style="color: orange;"> {{ $rating }} <span class="text-secondary">({{ $totalrating }})</span></h2>
+                        <h2 class="fa fa-star checked badge bg-white border mb-2" style="color: orange;"> {{ $rating }}
+                            <span class="text-secondary">({{ $totalrating }})</span>
+                        </h2>
                     </div>
                 </div>
 
@@ -117,10 +119,12 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $item->created_at }}</td>
-                                        <td><img src="/{{ $item->book->book_pict }}"
-                                                alt="{{ $item->book->book_title }}" class="w-75"></td>
-                                        <td><a href="/books/{{ $item->book->id }}">{{ $item->book->book_title }}</a></td>
-                                        <td><a href="/user/{{ $item->book->seller->username }}">{{ $item->book->seller->username }}</a></td>
+                                        <td><img src="/{{ $item->book->book_pict }}" alt="{{ $item->book->book_title }}"
+                                                class="w-75"></td>
+                                        <td><a href="/books/{{ $item->book->id }}">{{ $item->book->book_title }}</a>
+                                        </td>
+                                        <td><a href="/user/{{ $item->book->seller->username }}">{{
+                                                $item->book->seller->username }}</a></td>
                                         <td>{{ $item->book->book_price }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->receipt_no }}</td>
@@ -141,7 +145,8 @@
                                                                 data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="/saverating/{{ $item->book->seller->id }}" method="post" class="w-100">
+                                                            <form action="/saverating/{{ $item->book->seller->id }}"
+                                                                method="post" class="w-100">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <div class="row">
@@ -249,24 +254,35 @@
                         Sold
                     </td>
                     @endif
-                    
+
                     <td class="d-flex flex-column justify-content-between">
                         <a class="btn btn-prim mb-2" href="/books/{{ $book->id }}" role="button">Details</a>
                         <a class="btn btn-second" href="/profile/books/{{ $book->book_title }}/edit"
                             role="button">Edit</a>
                         @if ($book->isBookPaid == 0)
-                        <a class="btn btn-second disabled my-2" href="/addreceipt/{{ $book->id }}" role="button" style="pointer-events: none">Add
+                        <a class="btn btn-second disabled my-2" href="/addreceipt/{{ $book->id }}" role="button"
+                            style="pointer-events: none" data-bs-toggle="tooltip"
+                            data-bs-title="Receipt number is only for sold books.">Add
                             receipt</a>
                         @else
                         <a class="btn btn-second my-2" href="/addreceipt/{{ $book->id }}" role="button">Add
                             receipt</a>
                         @endif
+
+                        @if($book->isBookPaid === '1')
+                        <span class="d-inline-block" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                            data-bs-title="Sold book cannot be deleted.">
+                            <button type="button" class="btn btn-danger w-100" disabled
+                                onclick="return confirm('Are you sure want to delete this book?')">Delete</button>
+                        </span>
+                        @else
                         <form action="/profile/books/{{ $book->book_title }}" method="post">
                             @method('delete')
                             @csrf
                             <button type="submit" class="btn btn-danger w-100"
                                 onclick="return confirm('Are you sure want to delete this book?')">Delete</button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
@@ -285,5 +301,10 @@
 </section>
 
 </div>
+
+<script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 
 @endsection

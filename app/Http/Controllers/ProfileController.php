@@ -21,8 +21,6 @@ class ProfileController extends Controller
 
         $selling = Book::where('user_id', $itemuser->id)->get();
 
-        // $sellingbuyer = Checkout::where('book_id', $selling->id)->get();
-
         // dd($sellingbuyer);
         
         // dd($purchase->all());

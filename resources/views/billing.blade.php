@@ -65,28 +65,28 @@
             </div>
             @switch($payment_method)
             @case('BCA')
-            <div class="img-pay">
-                <img src="/img/bca-logo.png" alt="image" height="150" width="150">
+            <div class="img-pay my-3">
+                <img src="/img/bca-logo.png" alt="image" height="150">
             </div>
             @break
             @case('GOPAY')
-            <div class="img-pay">
-                <img src="/img/GoPay.png" alt="image" height="150" width="150">
+            <div class="img-pay my-1">
+                <img src="/img/GoPay.png" alt="image" height="150">
             </div>
             @break
             @case('OVO')
-            <div class="img-pay">
-                <img src="/img/logo-ovo.png" alt="image" height="150" width="150">
+            <div class="img-pay my-3">
+                <img src="/img/logo-ovo.png" alt="image" height="100">
             </div>
             @break
             @case('BNI')
-            <div class="img-pay">
-                <img src="/img/bni-logo.png" alt="image" height="150" width="150">
+            <div class="img-pay my-5">
+                <img src="/img/bni-logo.png" alt="image" height="50">
             </div>
             @break
             @case('MANDIRI')
-            <div class="img-pay">
-                <img src="/img/mandiri-logo.png" alt="image" height="150" width="150">
+            <div class="img-pay my-1">
+                <img src="/img/mandiri-logo.png" alt="image" height="150">
             </div>
             @break
             @endswitch
@@ -97,7 +97,7 @@
             </div>
             <div class="p-0 mt-3 d-flex flex-column text-center justify-content-center align-items-center">
                 <p> Total price </p>
-                <h1>
+                <h1 class="fw-bold">
                     {{ $total }}
                 </h1>
             </div>
