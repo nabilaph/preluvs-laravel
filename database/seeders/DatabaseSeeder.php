@@ -92,6 +92,12 @@ class DatabaseSeeder extends Seeder
             'category_pict' => '/img/Poetry.png',
             'category_slug' => 'poetry'
         ]);
+        Category::create(
+        [
+            'category_name' => 'Others',
+            'category_pict' => '/img/Other.png',
+            'category_slug' => 'other'
+        ]);
 
         Book::create(
         [

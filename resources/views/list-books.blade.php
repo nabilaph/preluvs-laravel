@@ -23,6 +23,8 @@
             onclick="filterProduct('self-improvement')" href="/genres/self-improvement">Self Improvment</a>
         <a class="button-value mx-2 {{ Request::is('genres/poetry')  ? 'active' : '' }}" onclick="filterProduct('poetry')"
             href="/genres/poetry">Poetry</a>
+        <a class="button-value mx-2 {{ Request::is('genres/other')  ? 'active' : '' }}" onclick="filterProduct('other')"
+            href="/genres/other">Others</a>
     </div>
 
     @if(session()->has('success'))
