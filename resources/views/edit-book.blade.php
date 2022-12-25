@@ -14,11 +14,11 @@
                     <form method="post" action="/profile/books/{{ $book->book_title }}" enctype="multipart/form-data">
                         @method('put')
                         @csrf
-                        <div class="form-group mt-3">
+                        <div class="form-group mt-3 mb-3">
                             <label for="titlebook">Title</label>
                             <input type="text" class="form-control @error('book_title') is-invalid @enderror" id="titlebook"
                                 placeholder="Title of Book" name="book_title" value="{{ old('book_title', $book->book_title) }}" required />
-                            <p class="fs-6 fw-lighter text-black-50" id="titleslug">Here is your slug</p>
+                            <!-- <p class="fs-6 fw-lighter text-black-50" id="titleslug">Here is your slug</p> -->
                             @error('book_title')
                             <div class="invalid-feedback">
                                 {{ $message }}

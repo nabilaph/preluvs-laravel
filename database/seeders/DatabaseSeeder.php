@@ -24,30 +24,36 @@ class DatabaseSeeder extends Seeder
             'email' => 'omegari26@gmail.com',
             'password' => bcrypt('omegari'),
             'user_name' => 'bia',
+            'user_pict' => 'user-pics/08uFqHzodnaZ1f7lxe0ZxEfdwf33ywutXzxmqQio.jpg'
+            
         ]);
         User::create([
             'username' => 'grandexhood',
             'email' => 'bia@gmail.com',
             'password' => bcrypt('grande'),
             'user_name' => 'Grande',
+            'user_pict' => 'user-pics/AGaJrNDvePGOUWVxFoyAkrf9EPCp3HwhVAaxerGI.jpg'
         ]);
         User::create([
             'username' => 'inasamany',
             'email' => 'inasamany@gmail.com',
             'password' => bcrypt('inasinas'),
             'user_name' => 'Inas Amany',
+            'user_pict' => 'user-pics/tcyA5IdKBPHGNgDNeMvkboGZ58chda1sscyge3Ph.jpg'
         ]);
         User::create([
             'username' => 'tiarayaya',
             'email' => 'yaya@gmail.com',
             'password' => bcrypt('yaya123'),
             'user_name' => 'Tiara',
+            'user_pict' => 'user-pics/OyBcTCUisIFvYb7ZQxp4rVvjcF1ICurEyNRdvYhC.jpg'
         ]);
         User::create([
             'username' => 'putrinabila',
             'email' => 'putri@gmail.com',
             'password' => bcrypt('bia1234'),
             'user_name' => 'Putri',
+            'user_pict' => 'user-pics/i9Q8kf8B67zLgWshy2wz6glwF0NH56p8Kr9kn8MP.jpg'
         ]);
 
         Category::create(

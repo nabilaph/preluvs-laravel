@@ -17,7 +17,7 @@
             <div class="input-group mx-auto mt-4 mt-lg-0">
                 <form action="/search" class="w-100 d-flex">
                     @csrf
-                    <input type="text" class="form-control" placeholder="Search book title here..." name="searchbook"
+                    <input type="text" class="form-control" placeholder="Search book title or author here..." name="searchbook"
                         value="{{ old('searchbook') }}">
                     <button class="btn btn-outline-secondary d-flex align-items-center" type="submit"
                         id="button-addon2">

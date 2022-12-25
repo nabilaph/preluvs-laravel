@@ -16,6 +16,7 @@
     </div>
     @endif
 
+    @auth
     @if(auth()->user()->user_phoneNumber === null)
     <div class="alert alert-info d-flex w-75 mx-auto" role="alert">
         <i class='bx bxs-info-circle me-3'></i>
@@ -23,6 +24,7 @@
             your profile</a>.
     </div>
     @endif
+    @endauth
 
     <div class="container">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">

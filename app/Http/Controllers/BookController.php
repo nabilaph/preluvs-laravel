@@ -24,7 +24,8 @@ class BookController extends Controller
         $books= Book::orderBy('id', 'DESC');
 
         if(request('searchbook')){
-            $books->where('book_title','like', '%'. request('searchbook'). '%');
+            $books->where('book_title','like', '%'. request('searchbook'). '%')
+                  ->orWhere('book_author', 'LIKE', '%' . request('searchbook') . '%');
         }
 
         return view('list-books',[
