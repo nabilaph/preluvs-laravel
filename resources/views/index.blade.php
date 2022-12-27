@@ -140,7 +140,7 @@
         <div class="row">
             <div class="col d-flex flex-column">
                 <h1 class="heading">Seller leaderboard</h1>
-                <h6>Top 5 seller this month</h6>
+                <h6>Top 5 seller in Preluvs</h6>
             </div>
         </div>
         <div class="row mt-3 mx-2">

@@ -43,21 +43,7 @@
                             value="{{ old('password') }}" />
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
-                    <p class="social-text">Or Sign in with social platforms</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
+                    
                 </form>
                 <form action="/register" method="post" class="sign-up-form">
                     @csrf
@@ -83,21 +69,7 @@
                             value="{{ old('password') }}" />
                     </div>
                     <input type="submit" class="btn" value="Sign up" />
-                    <p class="social-text">Or Sign up with social platforms</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
+                    
                 </form>
             </div>
         </div>
@@ -106,7 +78,7 @@
             <div class="panel left-panel">
                 <div class="content">
                     <h3>New here ?</h3>
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, ex ratione. Aliquid!</p>
+                    <p>Please register your account first before purchasing preloved books.</p>
                     <button class="btn transparent" id="sign-up-btn">Sign up</button>
                 </div>
                 <img src="img/womenbk2.png" class="image" alt="" />
@@ -114,7 +86,7 @@
             <div class="panel right-panel">
                 <div class="content">
                     <h3>One of us ?</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum laboriosam ad deleniti.</p>
+                    <p>Log in with your account to continue doing transaction of preloved books here.</p>
                     <button class="btn transparent" id="sign-in-btn">Sign in</button>
                 </div>
                 <img src="img/womenbk1.png" class="image" alt="" />
