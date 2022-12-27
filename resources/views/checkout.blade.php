@@ -69,7 +69,7 @@
                 </section>
 
                 <section class="payment-select card p-3 mt-4">
-                    <h5 class="mb-4 fw-bold">Select Payment</h5>
+                    <h5 class="mb-4 fw-bold">Select Payment Method</h5>
 
                     <div class="form-check mb-2">
                         <input class="form-check-input" type="radio" name="payment_method" id="flexRadioDefault1"

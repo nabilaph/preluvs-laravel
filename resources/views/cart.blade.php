@@ -52,7 +52,7 @@
         <div class="right-bar shadow-lg">
             <p><span>Subtotal</span> <span class="text-end">Rp. {{ $subtotal }}</span></p>
             <hr>
-            <p><span>Shipping</span> <span class="text-end">Rp. 9000</span></p>
+            <p><span>Shipping cost</span> <span class="text-end">Rp. 9000</span></p>
             <hr>
             <p class="fw-bold" style="font-size: 26px;"><span>Total</span> <span class="text-end">Rp. {{ $total }}</span></p>
             <form action="/checkout" method="get" class="w-100 d-flex justify-content-center">
