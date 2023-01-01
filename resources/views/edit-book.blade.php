@@ -68,7 +68,7 @@
                         <div class="form-group mt-3">
                             <label for="itembook">Quantity</label>
                             <input type="number" class="form-control @error('book_quantity') is-invalid @enderror" id="itembook"
-                                placeholder="Quantity of Book" name="book_quantity" value="{{ old('book_quantity', $book->book_quantity) }}" required />
+                                placeholder="Quantity of Book" name="book_quantity" value="{{ old('book_quantity', $book->book_quantity) }}" disabled />
                             @error('book_quantity')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -129,13 +129,12 @@
                             <label for="exampleFormControlSelect1">Genre of Book</label>
                             <select class="form-select" name="category_id">
                                 @foreach ($categories as $category)
-                                    @if (old('category_id', $book->category_id)) == $category->category_id)
+                                    @if (old('category_id', $book->category_id) == $category->id)
                                     <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
                                     @else
                                     <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                     @endif
                                 @endforeach
-                        
                             </select>
                         </div>
                         

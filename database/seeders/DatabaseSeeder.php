@@ -22,8 +22,10 @@ class DatabaseSeeder extends Seeder
         User::create([
             'username' => 'omegari26',
             'email' => 'omegari26@gmail.com',
-            'password' => bcrypt('omegari'),
+            'password'  => bcrypt('omegari'),
             'user_name' => 'bia',
+            'user_address' => 'Kenangan Street',
+            'user_phoneNumber' => '087884736278',
             'user_pict' => 'user-pics/08uFqHzodnaZ1f7lxe0ZxEfdwf33ywutXzxmqQio.jpg'
             
         ]);
@@ -32,6 +34,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'bia@gmail.com',
             'password' => bcrypt('grande'),
             'user_name' => 'Grande',
+            'user_address' => 'Kenangan Street',
+            'user_phoneNumber' => '087884736278',
             'user_pict' => 'user-pics/AGaJrNDvePGOUWVxFoyAkrf9EPCp3HwhVAaxerGI.jpg'
         ]);
         User::create([
@@ -104,7 +108,7 @@ class DatabaseSeeder extends Seeder
             'book_title' => 'Riwayat Sang Kala',
             'book_pict' => 'book-pics/CNfA2auD81CAlcts1KK8U8FYBG6VsbTtic3E3Xh1.jpg',
             'book_price' => '20000',
-            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_description' => 'The condition is 70% good',
             'book_author' => 'Namiya',
             'book_quantity' => '1',
             'book_pageNum' => '200',
@@ -120,9 +124,9 @@ class DatabaseSeeder extends Seeder
             'book_title' => 'Pinoccio',
             'book_pict' => 'book-pics/uKy0dBcPjCdtIzLAjog7OOqHXWDp4ETGCGKfdOCH.jpg',
             'book_price' => '35000',
-            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_description' => 'The book is 50% good. Still readable',
             'book_author' => 'Yook',
-            'book_quantity' => '2',
+            'book_quantity' => '1',
             'book_pageNum' => '230',
             'book_lang' => 'English',
             'book_publisher' => 'Gramedia',
@@ -136,7 +140,7 @@ class DatabaseSeeder extends Seeder
             'book_title' => 'Einstein Girl',
             'book_pict' => 'book-pics/mrZIzV9wmxdXR8xPC0NNILdazTQadTtLzNbmF3Ti.jpg',
             'book_price' => '45000',
-            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_description' => 'Book is still in good condition. Readable.',
             'book_author' => 'Einstein',
             'book_quantity' => '1',
             'book_pageNum' => '300',
@@ -152,7 +156,7 @@ class DatabaseSeeder extends Seeder
             'book_title' => 'Gideon',
             'book_pict' => 'book-pics/UZlT5RF6MkpCwcUVhCTFSnmoDFyQbUg1V1xTqjly.jpg',
             'book_price' => '46000',
-            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_description' => 'It is still readable, but there is a scratch on the cover.',
             'book_author' => 'Namiya',
             'book_quantity' => '1',
             'book_pageNum' => '200',
@@ -161,14 +165,14 @@ class DatabaseSeeder extends Seeder
             'book_publishDate' => '2022-11-01',
             'book_isbn' => '9381738473',
             'category_id' =>'1',
-            'user_id' =>'1'
+            'user_id' =>'4'
         ]);
         Book::create(
         [
             'book_title' => 'Tak Bersuara',
             'book_pict' => 'book-pics/fY9tPMFguksZEAdwMgOUDPt0dCQW423l34wBhK76.jpg',
             'book_price' => '100000',
-            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_description' => '90% good condition',
             'book_author' => 'Yook',
             'book_quantity' => '1',
             'book_pageNum' => '200',
@@ -177,14 +181,14 @@ class DatabaseSeeder extends Seeder
             'book_publishDate' => '2022-11-01',
             'book_isbn' => '9381738473',
             'category_id' =>'4',
-            'user_id' =>'1'
+            'user_id' =>'3'
         ]);
         Book::create(
         [
             'book_title' => 'Cinta Selamanya',
             'book_pict' => 'book-pics/X93QsbfKVYUv9omhGwIS8w5C4i6pGj2B93v3Wv8x.jpg',
             'book_price' => '25000',
-            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_description' => 'Book is good condition.',
             'book_author' => 'Fira Basuki',
             'book_quantity' => '1',
             'book_pageNum' => '200',
@@ -200,7 +204,7 @@ class DatabaseSeeder extends Seeder
             'book_title' => 'Disruption',
             'book_pict' => 'book-pics/LDz0f3h2STZtldDZOICAqyhLgW0JrU9szBqnb1gp.webp',
             'book_price' => '46000',
-            'book_description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, iusto eligendi. Nobis expedita maxime quaerat obcaecati laborum porro, voluptas sunt accusantium soluta vitae, architecto, dolore excepturi odio illum natus. Cumque.',
+            'book_description' => '100% like new.',
             'book_author' => 'Rhenald Kasali',
             'book_quantity' => '1',
             'book_pageNum' => '456',

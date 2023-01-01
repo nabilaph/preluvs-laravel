@@ -159,9 +159,9 @@ class CartController extends Controller
 
         //dd($itemcart);
         if ($itemcart) {
-            return back()->with('success', 'Cart berhasil dihapus');
+            return back()->with('success', 'Cart deleted');
         } else {
-            return back()->with('error', 'Cart gagal dihapus');
+            return back()->with('error', 'Cart failed to delete');
         }
     }
 }

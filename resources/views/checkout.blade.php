@@ -119,11 +119,11 @@
                             @foreach ($itemcart as $item)
                             <tr>
                                 <td><img src="{{ $item->book->book_pict }}" alt="" width="100"></td>
-                                <td>{{ $item->book->book_title }}</td>
                                 <td>
-                                    <a href="/user/{{ $item->book->seller->username }}">
-                                        {{ $item->book->seller->username }}
-                                    </a>
+                                    {{ $item->book->book_title }}
+                                </td>
+                                <td>
+                                    {{ $item->book->seller->username }}
                                 </td>
                                 <td class="fw-bold">Rp. {{ $item->book->book_price }}</td>
                             </tr>

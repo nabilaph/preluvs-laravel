@@ -70,7 +70,6 @@ class BookController extends Controller
                         'book_price' => 'required|integer',
                         'book_description' => 'max:1000',
                         'book_author' => 'required|min:3|max:255',
-                        'book_quantity' => 'required|integer',
                         'book_pageNum' => 'required|integer',
                         'book_lang' => 'required|min:6|max:255',
                         'book_publisher' => 'min:3|max:100',
@@ -85,6 +84,7 @@ class BookController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['book_quantity'] = 1;
 
         Book::create($validatedData);
 
@@ -158,6 +158,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
+        //dd($book->category_id);
         return view('edit-book',[
             'categories' => Category::all(),
             'book' => $book,
@@ -184,7 +185,6 @@ class BookController extends Controller
                         'book_price' => 'required|integer',
                         'book_description' => 'max:1000',
                         'book_author' => 'required|min:3|max:255',
-                        'book_quantity' => 'required|integer',
                         'book_pageNum' => 'required|integer',
                         'book_lang' => 'required|min:6|max:255',
                         'book_publisher' => 'min:3|max:100',
@@ -198,6 +198,7 @@ class BookController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['book_quantity'] = 1;
 
         Book::where('id', $book->id)
                 ->update($validatedData);
