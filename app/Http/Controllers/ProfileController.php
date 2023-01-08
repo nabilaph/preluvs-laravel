@@ -90,7 +90,7 @@ class ProfileController extends Controller
         //dd($meanrating);
                             
         return view('other-user2',[
-            "title" => "other-user",
+            "title" => "$user->username",
             "active" => 'other-user',
             "css" => '/css/other-user.css',
             "js" => '',
