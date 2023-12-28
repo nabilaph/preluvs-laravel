@@ -4,21 +4,21 @@ At Preluvs, we've crafted a web-based haven exclusively for preloved books. Our 
 
 Key Features of Preluvs:
 - User-Friendly Registration and Login:
--     Seamlessly create and access your account as a buyer or seller.
+  Seamlessly create and access your account as a buyer or seller.
 - Effortless Posting of Preloved Books:
--     Showcase your preloved books for sale with easy-to-use posting features.
+  Showcase your preloved books for sale with easy-to-use posting features.
 - Book Purchases Made Simple:
--     Explore and purchase preloved books hassle-free.
+  Explore and purchase preloved books hassle-free.
 - Detailed Book Information:
--     Dive into comprehensive details about each preloved book to make informed choices.
+  Dive into comprehensive details about each preloved book to make informed choices.
 - Stay Informed with Notifications:
--     Receive timely notifications throughout the buying and selling process.
+  Receive timely notifications throughout the buying and selling process.
 - Build Your Wishlist:
--     Curate your personalized wishlist of preloved books you're eager to own.
+  Curate your personalized wishlist of preloved books you're eager to own.
 - Rate Trustworthy Sellers:
--     Share your experiences and contribute to a reliable community by rating sellers.
+  Share your experiences and contribute to a reliable community by rating sellers.
 - Trusted Seller Leaderboard:
--     Recognize and engage with top-notch sellers through our leaderboard.
+  Recognize and engage with top-notch sellers through our leaderboard.
   
 Powered by:
 - Laravel: Robust and efficient PHP web framework.
